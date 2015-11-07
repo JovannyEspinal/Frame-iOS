@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Bxf-El-8RY">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bS9-XU-OC3">
+                                <rect key="frame" x="20" y="550" width="114" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Political Analysis"/>
+                                <connections>
+                                    <action selector="politicalAnalysisTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ohb-kt-y37"/>
+                                    <segue destination="p7u-si-rKQ" kind="show" identifier="Political Analysis" id="bcZ-NF-bKK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N40-4m-RTN">
+                                <rect key="frame" x="449" y="550" width="131" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Sentiment Analysis"/>
+                                <connections>
+                                    <action selector="sentimentAnalysisTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ros-JC-B7P"/>
+                                    <segue destination="p7u-si-rKQ" kind="show" identifier="Sentiment Analysis" id="2aO-mc-SH7"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Mpp-9F-wfB">
+                                <rect key="frame" x="20" y="152" width="560" height="296"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">SGoogle has acquired the team behind Fly Labs, a New York-based startup that makes video-editing apps.
+
+Fly Labs had produced a quartet of video-editing apps to help people "edit on the fly." One of the apps, Crop, turned vertical cellphone videos into horizontal, YouTube-friendly ones. Its newest release, Clips, turned small video fragments into so-called masterpiece short films.
+
+In the Fly Labs announcement the startup said more than 20 million videos had been created through its product.
+
+The Google acquisition came after the company reported its lowest deal activity, by value, in six years. Terms of the deal were not disclosed, and the New York startup had reportedly raised $750,000.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="N40-4m-RTN" secondAttribute="bottom" constant="20" id="3xj-cx-qzt"/>
+                            <constraint firstItem="Mpp-9F-wfB" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="BfC-Ed-nj3"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bS9-XU-OC3" secondAttribute="bottom" constant="20" id="S74-dj-d62"/>
+                            <constraint firstItem="bS9-XU-OC3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ac2-vU-gK2"/>
+                            <constraint firstItem="Mpp-9F-wfB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ifE-Nx-Wpy"/>
+                            <constraint firstItem="N40-4m-RTN" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="rxM-GW-Lag"/>
+                            <constraint firstItem="Mpp-9F-wfB" firstAttribute="leading" secondItem="bS9-XU-OC3" secondAttribute="leading" id="zAU-T1-etG"/>
+                            <constraint firstItem="Mpp-9F-wfB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="88" id="zqB-Vb-0jb"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="7oh-zD-iTC"/>
+                    <connections>
+                        <outlet property="articleSnippet" destination="Mpp-9F-wfB" id="Pjs-WB-Eqk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1150" y="429"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="3LG-I0-OIs">
+            <objects>
+                <viewController id="p7u-si-rKQ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wlf-qz-fCS"/>
+                        <viewControllerLayoutGuide type="bottom" id="Esi-YU-6sh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mG1-LJ-Lm9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zmq-9r-tgV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1802" y="429"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="S2i-7y-pDk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Bxf-El-8RY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="H2A-dN-yk2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="bec-Ng-ogM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sTt-WM-LgP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="338" y="429"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="2aO-mc-SH7"/>
+    </inferredMetricsTieBreakers>
+</document>

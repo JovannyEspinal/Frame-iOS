@@ -1,0 +1,1 @@
+../../../LQIndicoAPI/LQIndicoAPI/Categories/UIImage+LQ.h
