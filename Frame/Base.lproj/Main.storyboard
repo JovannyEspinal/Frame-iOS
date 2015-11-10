@@ -40,13 +40,7 @@
                                 <rect key="frame" x="20" y="152" width="560" height="296"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">SGoogle has acquired the team behind Fly Labs, a New York-based startup that makes video-editing apps.
-
-Fly Labs had produced a quartet of video-editing apps to help people "edit on the fly." One of the apps, Crop, turned vertical cellphone videos into horizontal, YouTube-friendly ones. Its newest release, Clips, turned small video fragments into so-called masterpiece short films.
-
-In the Fly Labs announcement the startup said more than 20 million videos had been created through its product.
-
-The Google acquisition came after the company reported its lowest deal activity, by value, in six years. Terms of the deal were not disclosed, and the New York startup had reportedly raised $750,000.</string>
+                                <string key="text">China wants to get its renminbi into the International Monetary Fund's reserve-assets classification known as the special drawing rights, or the SDR. And its inclusion or exclusion could have major ramifications in the global markets.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
