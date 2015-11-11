@@ -23,6 +23,5 @@ Baseline Features:
   *  Bonus features you plan to implement if baseline features are completed in time (what + why).
 
 ## Execution
-Please describe how you will build this app. Include: 
-  *  A detailed timeline for building the product, broken out by weekly sprints. Think about the user stories you would frame your weeks around. *Your polished MVP (baseline features) should be ready to demo by Demo 1 on Thursday 11/17/2015.*  
-  *  A breakdown of team member responsibilities. Team members should take ownership over a specific feature or aspect of the app.
+Work in progress.
+
