@@ -19,7 +19,7 @@ Frame aims to provide the user with a sense of what bias is coming out of the ne
 
 Baseline Features:
   *  Article Analysis via Machine Learning APIs to provide the user with the implicit bias of the articles that they read. Article chaining, which allows user to attach articles of the same topic to provide a wholistic view from different perspectives. User profiles that contain the user's reading bias.
-  *  Bonus features: Work in progress
+  *  Bonus features: Users will be able to upload user-created news content
 
 ## Execution
 Work in progress.
