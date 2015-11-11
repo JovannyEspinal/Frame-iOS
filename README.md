@@ -9,7 +9,7 @@
 ## The Problem 
 Engagement in media is low due to bias and lack of diversity.   
 
-6 corporations control 90% of the media in America. Our users tend to be college educated, aged 18-28, aren't receiving a diverse set of news, receive most of their news through social media outlets. 
+6 corporations control 90% of the media in America. Our users tend to be college educated, aged 18-28, aren't receiving a diverse set of news, and receive most of their news through social media outlets. 
 
 Use Cases:  Someone wants to know whom they are going to vote for in the primary, and wants to make sure they are receiving the correct information.  For example, if it is announced that a company funded Hillary Clinton’s campaign, it frames the perspective of the voter and provides some background information.
 
