@@ -32,22 +32,33 @@
 //              NSLog(@"Error: %@", error);
 //          }];
     
-    //Diffbot API
-    [manager GET:@"http://api.diffbot.com/v3/article"
-      parameters:@{@"token": @"fcbd17950b98e6d4138a9de24c642347",
-                   @"url": @"http://www.digitalspy.com/movies/star-wars/news/a773508/star-wars-fan-daniel-fleetwood-dies-aged-32/"}
-         success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-             
-             NSArray *data = responseObject[@"objects"];
-             NSString *text = [data firstObject][@"text"];
-             
-             NSLog(@"%@",text);
-         }
-         failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
-             NSLog(@"Failed.");
-         }];
+//    //Diffbot API
+//    [manager GET:@"http://api.diffbot.com/v3/article"
+//      parameters:@{@"token": @"fcbd17950b98e6d4138a9de24c642347",
+//                   @"url": @"http://www.digitalspy.com/movies/star-wars/news/a773508/star-wars-fan-daniel-fleetwood-dies-aged-32/"}
+//         success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+//             
+//             NSArray *data = responseObject[@"objects"];
+//             NSString *text = [data firstObject][@"text"];
+//             
+//             NSLog(@"%@",text);
+//         }
+//         failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+//             NSLog(@"Failed.");
+//         }];
+//    
     
+    // Indico API
     [[LQNetworkManager sharedManager] setApiKey:@"9b41f9a9dec46968939722b005f52be4"];
+    
+    [manager GET:@"http://api.breakingnews.com/api/v1/item/?format=json" parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        NSLog(@"%@", responseObject);
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        NSLog(@"Failed. Error is : %@", error);
+    }];
+    
+    
+    
     
     
     
