@@ -1,14 +1,14 @@
 ## Weekly Retro Template  
 
 **Goals for last week**:
-	* Finish MVP
-	* Research APIs
-	* Get basic wireframe down
+* Finish MVP
+* Research APIs
+* Finish basic wireframe
 
 **Goals for this week**:
-	* Finish final 1st version
-	* Polish MVP and tighten functions / features
-	* Define user flow
+* Finish 1st version
+* Polish features
+* Define user flow
 
 **Guiding Questions** (consider before the meeting):
 
