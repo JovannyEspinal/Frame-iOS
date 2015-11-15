@@ -20,18 +20,18 @@
 **Team Member Analysis**:
 If you did not meet your goals, how will this affect the progression of the product? What will you do differently to meet your goals this week?
 
-  *  Team Member #1
+  *  Team Member #1 (Jovanny)
     * Goals/Responsibilities Last Week:
         * Did you meet your goals/responsibilities last week? Why or why not?
     * Goals/Responsibilities This Week:
-  *  Team Member #2    
+  *  Team Member #2 (Bereket)
     * Goals/Responsibilities Last Week:
          * Did you meet your goals/responsibilities last week? Why or why not?
     * Goals/Responsibilities This Week:
-  *  Team Member #3
-    * Goals/Responsibilities Last Week:
-        * Did you meet your goals/responsibilities last week? Why or why not?
-    * Goals/Responsibilities This Week:
+  *  Team Member #3 (Lauren)
+    * Goals/Responsibilities Last Week: wireframing, working with Parse
+        * Did you meet your goals/responsibilities last week? Why or why not? Yes
+    * Goals/Responsibilities This Week: UI/UX research, implementing Parse for user profiling
 
 
 **Additional Discussion Topics**:
