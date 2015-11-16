@@ -1,0 +1,1 @@
+../../../KSGallerySlidingCollectionView/KSGallerySlidingCollectionView/KSGallerySlidingCell.h
