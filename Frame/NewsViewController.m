@@ -11,6 +11,7 @@
 #import "HomeNewsCell.h"
 #import "AFNetworking.h"
 #import "Article.h"
+#import "ArticleViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface NewsViewController () <KSGallerySlidingLayoutLayoutDelegate>
@@ -25,7 +26,7 @@
     [super viewDidLoad];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     self.articleObjects = [[NSMutableArray alloc] init];
-    
+    [[SDWebImageDownloader sharedDownloader] setMaxConcurrentDownloads:6];
     [self breakingNews:manager intoArray:self.articleObjects];
     
     KSGallerySlidingLayout *layout = [[KSGallerySlidingLayout alloc] initWithDelegate:self];
@@ -54,7 +55,7 @@
             
             Article *articleObject = [[Article alloc] init];
             
-            articleObject.content = headline;
+            articleObject.headline = headline;
             articleObject.url = url;
             
             [articleObjects addObject:articleObject];
@@ -81,15 +82,19 @@
                    @"url": articleObject.url}
          success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
              
-             NSArray *data = responseObject[@"objects"];
-             NSDictionary *images = [[data firstObject][@"images"] firstObject];
+             NSDictionary *data = [responseObject[@"objects"] firstObject];
+             NSDictionary *images = [data[@"images"] firstObject];
              
+             
+             NSString *html = data[@"html"];
              NSString *imageUrl = images[@"url"];
+             
+             articleObject.htmlSource = html;
+
              
              if (imageUrl) {
                  articleObject.imageUrl = imageUrl;
              }
-             
              
              [self.collectionView reloadData];
          }
@@ -110,7 +115,7 @@
     
      Article *articleObject = self.articleObjects[indexPath.row];
     
-        cell.lTitle.text = articleObject.content;
+        cell.lTitle.text = articleObject.headline;
         cell.lSubTitle.text = articleObject.url;
     
     [cell.imageView sd_setImageWithURL:[NSURL URLWithString:articleObject.imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
@@ -120,9 +125,17 @@
     return cell;
 }
 
-//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    ArticleViewController* detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ArticleViewController"];
+    
+    NSString *url = self.articleObjects[indexPath.row].url;
+    
+    detailViewController.url = url;
+    
+    detailViewController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:detailViewController animated:YES];
+}
 
 #pragma mark - KSGallerySlidingLayoutLayoutDelegate
 
@@ -138,7 +151,7 @@
     return HomeNewsCellCollapsedHeight;
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -146,6 +159,6 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end

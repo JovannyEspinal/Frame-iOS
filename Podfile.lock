@@ -20,6 +20,10 @@ PODS:
   - AFNetworking/UIKit (2.6.2):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - AFWebViewController (1.2):
+    - ARChromeActivity (~> 1.0.4)
+    - TUSafariActivity (~> 1.0.4)
+  - ARChromeActivity (1.0.5)
   - KSGallerySlidingCollectionView (0.0.1)
   - LQIndicoAPI (0.0.1):
     - LQIndicoAPI/AFNetworking (= 0.0.1)
@@ -34,9 +38,11 @@ PODS:
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
+  - TUSafariActivity (1.0.4)
   - Unirest (1.1.4)
 
 DEPENDENCIES:
+  - AFWebViewController (~> 1.0)
   - KSGallerySlidingCollectionView
   - LQIndicoAPI
   - SDWebImage (~> 3.7)
@@ -44,9 +50,12 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 7f317038a9710cabfa43ec56396b307b45df72ab
+  AFWebViewController: 58d2679d4ad060b845da0d8e44f922c3ab28a44a
+  ARChromeActivity: 821c7849b566f49583987468733a896fee35aa4d
   KSGallerySlidingCollectionView: 5bb49a24dad3642bb8659212b39a36e6fae80b87
   LQIndicoAPI: c83fdc66467118d262cb649aebb905ab8d8fb14b
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
+  TUSafariActivity: afc55a00965377939107ce4fdc7f951f62454546
   Unirest: 5e4d93eaf32463bf619a4ecd3bbc8c32acf21eac
 
 COCOAPODS: 0.38.2

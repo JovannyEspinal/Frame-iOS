@@ -1,0 +1,1 @@
+AFWEBVIEWCONTROLLER_OTHER_LDFLAGS = -weak_framework "WebKit"

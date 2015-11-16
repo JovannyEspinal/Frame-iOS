@@ -11,7 +11,8 @@
 
 @interface Article : NSObject
 @property (strong, nonatomic) NSString *url;
-@property (strong, nonatomic) NSString *content;
+@property (strong, nonatomic) NSString *headline;
 @property (strong, nonatomic) NSString *imageUrl;
+@property (strong, nonatomic) NSString *htmlSource;
 
 @end
