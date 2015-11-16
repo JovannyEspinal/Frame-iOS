@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--News View Controller-->
@@ -62,6 +63,79 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YjL-ZW-JNs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2584" y="-1284"/>
+        </scene>
+        <!--Article View Controller-->
+        <scene sceneID="HjX-ei-yay">
+            <objects>
+                <viewController storyboardIdentifier="ArticleViewController" id="xrT-oe-cyx" customClass="ArticleViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xha-w1-ABc"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ys2-m7-HDy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Y7E-Ef-HC0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J9y-qs-ZBo">
+                                <rect key="frame" x="0.0" y="540" width="600" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conservative: 85%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FCn-5l-z9K">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="FCn-5l-z9K" secondAttribute="trailing" id="EZD-M6-0ss"/>
+                                    <constraint firstAttribute="height" constant="60" id="KYB-Df-Day"/>
+                                    <constraint firstItem="FCn-5l-z9K" firstAttribute="leading" secondItem="J9y-qs-ZBo" secondAttribute="leading" id="QEe-sM-805"/>
+                                    <constraint firstAttribute="bottom" secondItem="FCn-5l-z9K" secondAttribute="bottom" id="R3n-Jy-7bD"/>
+                                    <constraint firstItem="FCn-5l-z9K" firstAttribute="top" secondItem="J9y-qs-ZBo" secondAttribute="top" id="oIv-ZP-Jyc"/>
+                                </constraints>
+                            </view>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IoY-EU-XzS">
+                                <rect key="frame" x="0.0" y="60" width="600" height="480"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="IoY-EU-XzS" secondAttribute="trailing" constant="-20" id="DLE-93-7np"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="IoY-EU-XzS" secondAttribute="trailing" constant="-20" id="Gab-H3-6Jf"/>
+                            <constraint firstItem="IoY-EU-XzS" firstAttribute="leading" secondItem="Y7E-Ef-HC0" secondAttribute="leadingMargin" constant="-20" id="Jqp-9X-FsU"/>
+                            <constraint firstItem="Ys2-m7-HDy" firstAttribute="top" secondItem="IoY-EU-XzS" secondAttribute="bottom" id="KD7-Xf-iuk"/>
+                            <constraint firstItem="J9y-qs-ZBo" firstAttribute="leading" secondItem="Y7E-Ef-HC0" secondAttribute="leadingMargin" constant="-20" id="OIU-5r-Fj6"/>
+                            <constraint firstItem="Ys2-m7-HDy" firstAttribute="top" secondItem="J9y-qs-ZBo" secondAttribute="bottom" id="Plu-uS-Ns2"/>
+                            <constraint firstItem="IoY-EU-XzS" firstAttribute="top" secondItem="Y7E-Ef-HC0" secondAttribute="topMargin" constant="60" id="QDU-Si-2rE"/>
+                            <constraint firstItem="IoY-EU-XzS" firstAttribute="top" secondItem="xha-w1-ABc" secondAttribute="bottom" id="cxw-Gz-UNv"/>
+                            <constraint firstItem="J9y-qs-ZBo" firstAttribute="top" secondItem="IoY-EU-XzS" secondAttribute="bottom" id="f94-u4-qxN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="J9y-qs-ZBo" secondAttribute="trailing" constant="-20" id="nGl-al-o1E"/>
+                            <constraint firstItem="J9y-qs-ZBo" firstAttribute="top" secondItem="IoY-EU-XzS" secondAttribute="bottom" id="nd6-yn-Hd1"/>
+                            <constraint firstItem="IoY-EU-XzS" firstAttribute="leading" secondItem="Y7E-Ef-HC0" secondAttribute="leadingMargin" constant="-20" id="pM5-IA-ryN"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="DLE-93-7np"/>
+                                <exclude reference="Jqp-9X-FsU"/>
+                                <exclude reference="cxw-Gz-UNv"/>
+                                <exclude reference="nd6-yn-Hd1"/>
+                                <exclude reference="KD7-Xf-iuk"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="IoY-EU-XzS" id="7Qm-q5-hsg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1aT-b4-AkH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3244" y="-1284"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="dJl-QA-C3e">

@@ -14,5 +14,6 @@
 @property (strong, nonatomic) NSString *headline;
 @property (strong, nonatomic) NSString *imageUrl;
 @property (strong, nonatomic) NSString *htmlSource;
+@property (strong, nonatomic) NSString *text;
 
 @end

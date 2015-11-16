@@ -188,6 +188,7 @@
     return _progressView;
 }
 
+
 #pragma mark - Toolbar
 
 - (void)updateToolbarItems {
@@ -288,6 +289,12 @@
         float progress = self.progressView.hidden ? 0 : self.webView.estimatedProgress;
         [self.progressView setProgress:progress animated:YES];
     }
+}
+
+#pragma mark - AnalysisView
+
+-(void)appendAnalysisView {
+    
 }
 
 #pragma mark - WKNavigation delegate

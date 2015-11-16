@@ -11,6 +11,7 @@
 #import "HomeNewsCell.h"
 #import "AFNetworking.h"
 #import "Article.h"
+#import "ArticleViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <AFWebViewController/AFWebViewController.h>
 
@@ -31,7 +32,6 @@
     [[SDWebImageDownloader sharedDownloader] setMaxConcurrentDownloads:6];
     [self breakingNews:manager intoArray:self.articleObjects];
     
-    
     // Collection View Layout
     KSGallerySlidingLayout *layout = [[KSGallerySlidingLayout alloc] initWithDelegate:self];
     
@@ -42,8 +42,6 @@
     self.collectionView.collectionViewLayout = layout;
     [self.collectionView registerNib:[UINib nibWithNibName:@"HomeNewsCell" bundle:nil] forCellWithReuseIdentifier:@"HomeNewsCell"];
     //
-    
-    
 }
 
 -(void)breakingNews:(AFHTTPRequestOperationManager *)manager intoArray:(NSMutableArray *)articleObjects{
@@ -79,8 +77,6 @@
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
         NSLog(@"FAILED.");
     }];
-    
-    
 }
 
 -(void)extractImages:(AFHTTPRequestOperationManager *)manager fromURLInObject:(Article *)articleObject{
@@ -94,10 +90,10 @@
              NSDictionary *images = [data[@"images"] firstObject];
              
              
-             NSString *html = data[@"html"];
+             NSString *text = data[@"text"];
              NSString *imageUrl = images[@"url"];
              
-             articleObject.htmlSource = html;
+             articleObject.text = text;
              
              if (imageUrl) {
                  articleObject.imageUrl = imageUrl;
@@ -108,8 +104,6 @@
          failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
              NSLog(@"Failed.");
          }];
-    
-    
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -134,10 +128,13 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
-    //Creates webview controller
-    AFWebViewController *webViewController = [AFWebViewController webViewControllerWithAddress:self.articleObjects[indexPath.row].url];
-    webViewController.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:webViewController animated:YES];
+    ArticleViewController* detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ArticleViewController"];
+    
+    detailViewController.url = self.articleObjects[indexPath.row].url;
+    
+    detailViewController.hidesBottomBarWhenPushed = YES;
+    
+    [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
 #pragma mark - KSGallerySlidingLayoutLayoutDelegate
