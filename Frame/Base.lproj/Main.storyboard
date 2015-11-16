@@ -63,26 +63,6 @@
             </objects>
             <point key="canvasLocation" x="2584" y="-1284"/>
         </scene>
-        <!--Article View Controller-->
-        <scene sceneID="IHx-lz-Ffc">
-            <objects>
-                <viewController storyboardIdentifier="ArticleViewController" id="xjs-ko-rjr" customClass="ArticleViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Obn-zI-dnI"/>
-                        <viewControllerLayoutGuide type="bottom" id="KOU-Zh-FOw"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="4lV-6W-qhF">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="HIr-Zz-yBw"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="unJ-CV-LxD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3226" y="-1284"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="dJl-QA-C3e">
             <objects>

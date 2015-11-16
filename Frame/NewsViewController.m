@@ -11,8 +11,8 @@
 #import "HomeNewsCell.h"
 #import "AFNetworking.h"
 #import "Article.h"
-#import "ArticleViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <AFWebViewController/AFWebViewController.h>
 
 @interface NewsViewController () <KSGallerySlidingLayoutLayoutDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -24,11 +24,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     self.articleObjects = [[NSMutableArray alloc] init];
+    
     [[SDWebImageDownloader sharedDownloader] setMaxConcurrentDownloads:6];
     [self breakingNews:manager intoArray:self.articleObjects];
     
+    
+    // Collection View Layout
     KSGallerySlidingLayout *layout = [[KSGallerySlidingLayout alloc] initWithDelegate:self];
     
     layout.itemSize = CGSizeMake(CGRectGetWidth(self.collectionView.frame), HomeNewsCellCollapsedHeight);
@@ -37,14 +41,17 @@
     
     self.collectionView.collectionViewLayout = layout;
     [self.collectionView registerNib:[UINib nibWithNibName:@"HomeNewsCell" bundle:nil] forCellWithReuseIdentifier:@"HomeNewsCell"];
-    
+    //
     
     
 }
 
 -(void)breakingNews:(AFHTTPRequestOperationManager *)manager intoArray:(NSMutableArray *)articleObjects{
+    
+    //Clears old article objects; will be replaced with newest articles
     [self.articleObjects removeAllObjects];
-    [manager GET:@"https://www.reddit.com/r/worldnews/new.json" parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+    
+    [manager GET:@"https://www.reddit.com/r/worldnews.json" parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         
         NSDictionary *data = responseObject[@"data"];
         NSArray *submission = data[@"children"];
@@ -62,6 +69,7 @@
             
         }
         
+        // Loops through each article object, grabs the URL, and downloads the picture for their article
         for (int i = 0; i < [self.articleObjects count]; i++) {
             [self extractImages:manager fromURLInObject:self.articleObjects[i]];
         }
@@ -90,7 +98,6 @@
              NSString *imageUrl = images[@"url"];
              
              articleObject.htmlSource = html;
-
              
              if (imageUrl) {
                  articleObject.imageUrl = imageUrl;
@@ -113,28 +120,24 @@
     
     HomeNewsCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HomeNewsCell" forIndexPath:indexPath];
     
-     Article *articleObject = self.articleObjects[indexPath.row];
+    Article *articleObject = self.articleObjects[indexPath.row];
     
-        cell.lTitle.text = articleObject.headline;
-        cell.lSubTitle.text = articleObject.url;
+    cell.lTitle.text = articleObject.headline;
+    cell.lSubTitle.text = articleObject.url;
     
     [cell.imageView sd_setImageWithURL:[NSURL URLWithString:articleObject.imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         cell.imageView.image = image;
     }];
-        
+    
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    ArticleViewController* detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ArticleViewController"];
-    
-    NSString *url = self.articleObjects[indexPath.row].url;
-    
-    detailViewController.url = url;
-    
-    detailViewController.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:detailViewController animated:YES];
+
+    //Creates webview controller
+    AFWebViewController *webViewController = [AFWebViewController webViewControllerWithAddress:self.articleObjects[indexPath.row].url];
+    webViewController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:webViewController animated:YES];
 }
 
 #pragma mark - KSGallerySlidingLayoutLayoutDelegate
@@ -154,11 +157,13 @@
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
+/*
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 
 @end

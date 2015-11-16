@@ -11,7 +11,6 @@
 		5030C2611BF92CC300D3E3DB /* HomeNewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5030C2601BF92CC300D3E3DB /* HomeNewsCell.xib */; };
 		5030C2641BF92CFE00D3E3DB /* HomeNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5030C2631BF92CFE00D3E3DB /* HomeNewsCell.m */; };
 		5030C2681BF92FFA00D3E3DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5030C2661BF92FFA00D3E3DB /* Main.storyboard */; };
-		5030C2771BFA633A00D3E3DB /* ArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5030C2761BFA633A00D3E3DB /* ArticleViewController.m */; };
 		5079DC241BED7D32009AAD8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5079DC231BED7D32009AAD8F /* main.m */; };
 		5079DC271BED7D32009AAD8F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5079DC261BED7D32009AAD8F /* AppDelegate.m */; };
 		5079DC2F1BED7D32009AAD8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5079DC2E1BED7D32009AAD8F /* Assets.xcassets */; };
@@ -27,8 +26,6 @@
 		5030C2621BF92CFE00D3E3DB /* HomeNewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeNewsCell.h; sourceTree = "<group>"; };
 		5030C2631BF92CFE00D3E3DB /* HomeNewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeNewsCell.m; sourceTree = "<group>"; };
 		5030C2671BF92FFA00D3E3DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		5030C2751BFA633A00D3E3DB /* ArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleViewController.h; sourceTree = "<group>"; };
-		5030C2761BFA633A00D3E3DB /* ArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleViewController.m; sourceTree = "<group>"; };
 		5079DC1F1BED7D32009AAD8F /* Frame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Frame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5079DC231BED7D32009AAD8F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5079DC251BED7D32009AAD8F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -89,8 +86,6 @@
 			isa = PBXGroup;
 			children = (
 				5079DC251BED7D32009AAD8F /* AppDelegate.h */,
-				5030C2751BFA633A00D3E3DB /* ArticleViewController.h */,
-				5030C2761BFA633A00D3E3DB /* ArticleViewController.m */,
 				5079DC261BED7D32009AAD8F /* AppDelegate.m */,
 				5030C2661BF92FFA00D3E3DB /* Main.storyboard */,
 				50EE22101BF67C6A0027B7B4 /* Article.h */,
@@ -241,7 +236,6 @@
 				5079DC271BED7D32009AAD8F /* AppDelegate.m in Sources */,
 				5079DC241BED7D32009AAD8F /* main.m in Sources */,
 				5030C25C1BF92ACA00D3E3DB /* NewsViewController.m in Sources */,
-				5030C2771BFA633A00D3E3DB /* ArticleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
