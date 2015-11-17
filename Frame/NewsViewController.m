@@ -25,7 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+        
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     self.articleObjects = [[NSMutableArray alloc] init];
     

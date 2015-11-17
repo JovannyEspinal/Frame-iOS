@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <ChameleonFramework/Chameleon.h>
 
 @interface AppDelegate ()
 
@@ -17,6 +18,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [Chameleon setGlobalThemeUsingPrimaryColor:[UIColor flatYellowColorDark] withContentStyle:UIContentStyleLight];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor flatBlackColorDark]];
+    [[UITabBar appearance] setBarTintColor:[UIColor flatBlackColorDark]];
+    [[UITabBar appearance] setTintColor:[UIColor flatWhiteColor]];
+
+
+    
+       
     return YES;
 }
 

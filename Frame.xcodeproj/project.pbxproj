@@ -102,8 +102,7 @@
 			children = (
 				5079DC251BED7D32009AAD8F /* AppDelegate.h */,
 				5079DC261BED7D32009AAD8F /* AppDelegate.m */,
-				5030C27B1BFA971800D3E3DB /* AnalysisViewController.h */,
-				5030C27C1BFA971800D3E3DB /* AnalysisViewController.m */,
+				89BADE761BFBCE79002F31FC /* Analysis */,
 				5030C2661BF92FFA00D3E3DB /* Main.storyboard */,
 				5030C27E1BFB749400D3E3DB /* Model */,
 				5030C2781BFA807200D3E3DB /* ArticleViewController.h */,
@@ -123,6 +122,15 @@
 				5079DC231BED7D32009AAD8F /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		89BADE761BFBCE79002F31FC /* Analysis */ = {
+			isa = PBXGroup;
+			children = (
+				5030C27B1BFA971800D3E3DB /* AnalysisViewController.h */,
+				5030C27C1BFA971800D3E3DB /* AnalysisViewController.m */,
+			);
+			name = Analysis;
 			sourceTree = "<group>";
 		};
 		B29F95BEDAEDA40BAD817CB9 /* Frameworks */ = {

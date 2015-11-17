@@ -24,6 +24,9 @@ PODS:
     - ARChromeActivity (~> 1.0.4)
     - TUSafariActivity (~> 1.0.4)
   - ARChromeActivity (1.0.5)
+  - ChameleonFramework (2.0.4):
+    - ChameleonFramework/Default (= 2.0.4)
+  - ChameleonFramework/Default (2.0.4)
   - KSGallerySlidingCollectionView (0.0.1)
   - LQIndicoAPI (0.0.1):
     - LQIndicoAPI/AFNetworking (= 0.0.1)
@@ -46,6 +49,7 @@ PODS:
 
 DEPENDENCIES:
   - AFWebViewController (~> 1.0)
+  - ChameleonFramework
   - KSGallerySlidingCollectionView
   - LQIndicoAPI
   - PNChart
@@ -56,6 +60,7 @@ SPEC CHECKSUMS:
   AFNetworking: 7f317038a9710cabfa43ec56396b307b45df72ab
   AFWebViewController: 58d2679d4ad060b845da0d8e44f922c3ab28a44a
   ARChromeActivity: 821c7849b566f49583987468733a896fee35aa4d
+  ChameleonFramework: 5abe69b1f2a6cc79c3c435fcd9d3d855748225ee
   KSGallerySlidingCollectionView: 5bb49a24dad3642bb8659212b39a36e6fae80b87
   LQIndicoAPI: c83fdc66467118d262cb649aebb905ab8d8fb14b
   PNChart: c1755716bbd45386d2035b2bf2ce73e6d3f8cb22
