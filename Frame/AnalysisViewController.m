@@ -10,6 +10,7 @@
 #import "LQNetworkManager.h"
 #import <AFNetworking/AFNetworking.h>
 #import "PNChart.h"
+#import <ChameleonFramework/Chameleon.h>
 
 
 @interface AnalysisViewController ()
@@ -26,16 +27,17 @@
     self.sentimentLabel.text = self.articleObject.sentimentAnalysis;
     self.subjectivityLabel.text = self.articleObject.subjectivityAnalysis;
     
-    NSArray *items = @[[PNPieChartDataItem dataItemWithValue:self.articleObject.liberal color:PNRed description:@"Liberal"],
-                       [PNPieChartDataItem dataItemWithValue:self.articleObject.green color:PNGreen description:@"Green"],
-                       [PNPieChartDataItem dataItemWithValue:self.articleObject.conservative color:PNBlue description:@"Conservative"],
-                       [PNPieChartDataItem dataItemWithValue:self.articleObject.libertarian color:PNYellow description:@"Libertarian"]
+    NSArray *items = @[[PNPieChartDataItem dataItemWithValue:self.articleObject.liberal color:FlatRed description:@"Liberal"],
+                       [PNPieChartDataItem dataItemWithValue:self.articleObject.green color:FlatGreen description:@"Green"],
+                       [PNPieChartDataItem dataItemWithValue:self.articleObject.conservative color:FlatSkyBlue description:@"Conservative"],
+                       [PNPieChartDataItem dataItemWithValue:self.articleObject.libertarian color:FlatYellow description:@"Libertarian"]
                        ];
     
     self.pieChart = [[PNPieChart alloc] initWithFrame:CGRectMake(SCREEN_WIDTH /2.0 - 100, 240, 240.0, 240.0) items:items];
     self.pieChart.center = self.view.center;
     self.pieChart.descriptionTextColor = [UIColor whiteColor];
-    self.pieChart.descriptionTextFont  = [UIFont fontWithName:@"Avenir-Medium" size:11.0];
+    self.pieChart.descriptionTextFont  = [UIFont fontWithName:@"Avenir" size:11.0];
+    self.pieChart.descriptionTextFont = [UIFont boldSystemFontOfSize:12.0f];
     self.pieChart.descriptionTextShadowColor = [UIColor clearColor];
     self.pieChart.showAbsoluteValues = NO;
     self.pieChart.showOnlyValues = NO;
@@ -43,7 +45,9 @@
     
     
     self.pieChart.legendStyle = PNLegendItemStyleStacked;
+    self.pieChart.legendFont = [UIFont fontWithName:@"Avenir" size:12.0f];
     self.pieChart.legendFont = [UIFont boldSystemFontOfSize:12.0f];
+    self.pieChart.legendFontColor = [UIColor flatWhiteColor];
     
     UIView *legend = [self.pieChart getLegendWithMaxWidth:200];
     [legend setFrame:CGRectMake(150, 470, legend.frame.size.width, legend.frame.size.height)];
