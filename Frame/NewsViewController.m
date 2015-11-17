@@ -130,7 +130,7 @@
 
     ArticleViewController* detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ArticleViewController"];
     
-    detailViewController.url = self.articleObjects[indexPath.row].url;
+    detailViewController.articleObject = self.articleObjects[indexPath.row];
     
     detailViewController.hidesBottomBarWhenPushed = YES;
     

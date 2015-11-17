@@ -70,6 +70,15 @@
 			name = CollectionView;
 			sourceTree = "<group>";
 		};
+		5030C27E1BFB749400D3E3DB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				50EE22101BF67C6A0027B7B4 /* Article.h */,
+				50EE22111BF67C6A0027B7B4 /* Article.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		5079DC161BED7D31009AAD8F = {
 			isa = PBXGroup;
 			children = (
@@ -92,12 +101,11 @@
 			isa = PBXGroup;
 			children = (
 				5079DC251BED7D32009AAD8F /* AppDelegate.h */,
+				5079DC261BED7D32009AAD8F /* AppDelegate.m */,
 				5030C27B1BFA971800D3E3DB /* AnalysisViewController.h */,
 				5030C27C1BFA971800D3E3DB /* AnalysisViewController.m */,
-				5079DC261BED7D32009AAD8F /* AppDelegate.m */,
 				5030C2661BF92FFA00D3E3DB /* Main.storyboard */,
-				50EE22101BF67C6A0027B7B4 /* Article.h */,
-				50EE22111BF67C6A0027B7B4 /* Article.m */,
+				5030C27E1BFB749400D3E3DB /* Model */,
 				5030C2781BFA807200D3E3DB /* ArticleViewController.h */,
 				5030C2791BFA807200D3E3DB /* ArticleViewController.m */,
 				5030C2651BF92D2400D3E3DB /* CollectionView */,

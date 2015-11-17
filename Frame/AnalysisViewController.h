@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Article.h"
 
 @interface AnalysisViewController : UIViewController
+
+@property (strong, nonatomic) Article *articleObject;
 
 @end

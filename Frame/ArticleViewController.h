@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
+#import "Article.h"
 
 @interface ArticleViewController : UIViewController
+@property (nonatomic, weak) Article *articleObject;
 @property (nonatomic, strong) NSString *url;
 
 @end

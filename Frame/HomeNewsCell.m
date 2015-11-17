@@ -9,7 +9,7 @@
 #import "HomeNewsCell.h"
 
 const CGFloat HomeNewsCellFeatureHeight = 280;
-const CGFloat HomeNewsCellCollapsedHeight = 140;
+const CGFloat HomeNewsCellCollapsedHeight = 100;
 
 const CGFloat HomeNewsCellCollapsedImageCoverAlpha = 0.6f;
 const CGFloat HomeNewsCellFeatureImageCoverAlpha = 0.4f;

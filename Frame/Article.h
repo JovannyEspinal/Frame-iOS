@@ -15,5 +15,11 @@
 @property (strong, nonatomic) NSString *imageUrl;
 @property (strong, nonatomic) NSString *htmlSource;
 @property (strong, nonatomic) NSString *text;
+@property (strong, nonatomic) NSString *sentimentAnalysis;
+@property (strong, nonatomic) NSString *subjectivityAnalysis;
+@property (nonatomic) float conservative;
+@property (nonatomic) float green;
+@property (nonatomic) float liberal;
+@property (nonatomic) float libertarian;
 
 @end
