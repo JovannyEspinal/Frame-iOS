@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
     </dependencies>
     <scenes>
         <!--News View Controller-->
@@ -18,8 +19,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xZk-VI-jL0">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xZk-VI-jL0">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <animations/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2on-c6-Yip">
                                     <size key="itemSize" width="50" height="50"/>
@@ -85,7 +86,200 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7qn-BY-eba" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2582" y="-545"/>
+            <point key="canvasLocation" x="2584" y="-565"/>
+        </scene>
+        <!--News Search View Controller-->
+        <scene sceneID="59x-5p-VzQ">
+            <objects>
+                <viewController id="kNc-62-IS2" customClass="NewsSearchViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Sog-Nh-ge6"/>
+                        <viewControllerLayoutGuide type="bottom" id="JNG-7E-lL8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fCs-U5-D4C">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwN-XV-16c">
+                                <rect key="frame" x="277" y="172" width="46" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="searchTrendingTerm:" destination="kNc-62-IS2" eventType="touchUpInside" id="C2h-cb-wdC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ux0-l5-xQv">
+                                <rect key="frame" x="277" y="210" width="46" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="searchTrendingTerm:" destination="kNc-62-IS2" eventType="touchUpInside" id="RgB-F7-SGk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vzD-OK-Ee6">
+                                <rect key="frame" x="277" y="248" width="46" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="searchTrendingTerm:" destination="kNc-62-IS2" eventType="touchUpInside" id="te7-zQ-grs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HyA-Jd-sXx">
+                                <rect key="frame" x="277" y="286" width="46" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="searchTrendingTerm:" destination="kNc-62-IS2" eventType="touchUpInside" id="91y-rG-jEB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AE9-KH-Uwj">
+                                <rect key="frame" x="277" y="324" width="46" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="searchTrendingTerm:" destination="kNc-62-IS2" eventType="touchUpInside" id="uZN-Vd-78g"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmF-qP-rGy">
+                                <rect key="frame" x="277" y="362" width="46" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="searchTrendingTerm:" destination="kNc-62-IS2" eventType="touchUpInside" id="Fyh-U7-yAG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2w8-Bc-5MW">
+                                <rect key="frame" x="277" y="400" width="46" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="searchTrendingTerm:" destination="kNc-62-IS2" eventType="touchUpInside" id="bhO-zH-3fE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ho1-5i-Z8q">
+                                <rect key="frame" x="277" y="438" width="46" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="searchTrendingTerm:" destination="kNc-62-IS2" eventType="touchUpInside" id="NwT-3p-e6c"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jMp-An-FgF">
+                                <rect key="frame" x="277" y="476" width="46" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="searchTrendingTerm:" destination="kNc-62-IS2" eventType="touchUpInside" id="NL0-JB-DVn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MWL-Uz-Toz">
+                                <rect key="frame" x="277" y="514.5" width="46" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="searchTrendingTerm:" destination="kNc-62-IS2" eventType="touchUpInside" id="otf-XL-ryJ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trending Terms" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kty-wN-ENv">
+                                <rect key="frame" x="240" y="144" width="119.5" height="20.5"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="Cp8-H6-FDa"/>
+                                    <constraint firstAttribute="height" constant="21" id="u7p-ms-P8t"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Cp8-H6-FDa"/>
+                                        <exclude reference="u7p-ms-P8t"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AE9-KH-Uwj" firstAttribute="centerX" secondItem="fCs-U5-D4C" secondAttribute="centerX" id="17m-Z6-7qA"/>
+                            <constraint firstItem="HyA-Jd-sXx" firstAttribute="top" secondItem="vzD-OK-Ee6" secondAttribute="bottom" constant="8" id="32n-C6-g3f"/>
+                            <constraint firstItem="xwN-XV-16c" firstAttribute="top" secondItem="Sog-Nh-ge6" secondAttribute="bottom" constant="79" id="4au-41-cg6"/>
+                            <constraint firstItem="xwN-XV-16c" firstAttribute="top" secondItem="Kty-wN-ENv" secondAttribute="bottom" constant="8" id="ARZ-9b-MBW"/>
+                            <constraint firstItem="jMp-An-FgF" firstAttribute="top" secondItem="Ho1-5i-Z8q" secondAttribute="bottom" constant="8" id="EWc-EL-a8w"/>
+                            <constraint firstItem="MWL-Uz-Toz" firstAttribute="centerX" secondItem="fCs-U5-D4C" secondAttribute="centerX" id="Eou-yr-7xL"/>
+                            <constraint firstItem="Kty-wN-ENv" firstAttribute="top" secondItem="Sog-Nh-ge6" secondAttribute="bottom" constant="80" id="FPT-Jz-wQX"/>
+                            <constraint firstItem="2w8-Bc-5MW" firstAttribute="top" secondItem="zmF-qP-rGy" secondAttribute="bottom" constant="8" id="Hnn-WS-Mb2"/>
+                            <constraint firstItem="MWL-Uz-Toz" firstAttribute="top" secondItem="jMp-An-FgF" secondAttribute="bottom" constant="8" id="JAi-hs-D43"/>
+                            <constraint firstItem="AE9-KH-Uwj" firstAttribute="top" secondItem="HyA-Jd-sXx" secondAttribute="bottom" constant="8" id="NE7-BS-MqF"/>
+                            <constraint firstItem="Ho1-5i-Z8q" firstAttribute="centerX" secondItem="fCs-U5-D4C" secondAttribute="centerX" id="Off-HR-4Vm"/>
+                            <constraint firstItem="vzD-OK-Ee6" firstAttribute="top" secondItem="ux0-l5-xQv" secondAttribute="bottom" constant="8" id="P8v-Kn-JuN"/>
+                            <constraint firstItem="vzD-OK-Ee6" firstAttribute="centerX" secondItem="fCs-U5-D4C" secondAttribute="centerX" id="T6H-uT-9uN"/>
+                            <constraint firstItem="zmF-qP-rGy" firstAttribute="top" secondItem="AE9-KH-Uwj" secondAttribute="bottom" constant="8" id="bj0-Ub-iFW"/>
+                            <constraint firstItem="HyA-Jd-sXx" firstAttribute="centerX" secondItem="fCs-U5-D4C" secondAttribute="centerX" id="cJw-5s-ucP"/>
+                            <constraint firstItem="ux0-l5-xQv" firstAttribute="centerX" secondItem="fCs-U5-D4C" secondAttribute="centerX" id="d5p-KL-jMV"/>
+                            <constraint firstItem="jMp-An-FgF" firstAttribute="centerX" secondItem="fCs-U5-D4C" secondAttribute="centerX" id="gba-eC-uaM"/>
+                            <constraint firstItem="Kty-wN-ENv" firstAttribute="centerX" secondItem="fCs-U5-D4C" secondAttribute="centerX" id="kYe-B5-saW"/>
+                            <constraint firstItem="xwN-XV-16c" firstAttribute="centerX" secondItem="fCs-U5-D4C" secondAttribute="centerX" id="mOm-N3-77X"/>
+                            <constraint firstItem="2w8-Bc-5MW" firstAttribute="centerX" secondItem="fCs-U5-D4C" secondAttribute="centerX" id="oKG-gW-Imh"/>
+                            <constraint firstItem="JNG-7E-lL8" firstAttribute="top" secondItem="MWL-Uz-Toz" secondAttribute="bottom" constant="36" id="q3I-JL-KkW"/>
+                            <constraint firstItem="zmF-qP-rGy" firstAttribute="centerX" secondItem="fCs-U5-D4C" secondAttribute="centerX" id="waD-v9-lZL"/>
+                            <constraint firstItem="Ho1-5i-Z8q" firstAttribute="top" secondItem="2w8-Bc-5MW" secondAttribute="bottom" constant="8" id="yWL-0r-ReW"/>
+                            <constraint firstItem="ux0-l5-xQv" firstAttribute="top" secondItem="xwN-XV-16c" secondAttribute="bottom" constant="8" id="z94-Gg-va9"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="4au-41-cg6"/>
+                                <exclude reference="q3I-JL-KkW"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="t7d-vo-4Ct">
+                        <nil key="title"/>
+                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" id="b1v-g3-uyb">
+                            <rect key="frame" x="20" y="7" width="560" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                        </textField>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchTextField" destination="b1v-g3-uyb" id="j4T-dG-Nlg"/>
+                        <outletCollection property="trendingTermButton" destination="xwN-XV-16c" id="pwT-qV-qTs"/>
+                        <outletCollection property="trendingTermButton" destination="ux0-l5-xQv" id="pS3-wI-NGI"/>
+                        <outletCollection property="trendingTermButton" destination="vzD-OK-Ee6" id="1gj-Qj-Xzh"/>
+                        <outletCollection property="trendingTermButton" destination="HyA-Jd-sXx" id="ud7-1s-WUe"/>
+                        <outletCollection property="trendingTermButton" destination="AE9-KH-Uwj" id="RQO-J8-oBK"/>
+                        <outletCollection property="trendingTermButton" destination="zmF-qP-rGy" id="4Bs-t2-oDk"/>
+                        <outletCollection property="trendingTermButton" destination="2w8-Bc-5MW" id="WOL-rk-eha"/>
+                        <outletCollection property="trendingTermButton" destination="Ho1-5i-Z8q" id="0Oc-Hv-OfA"/>
+                        <outletCollection property="trendingTermButton" destination="jMp-An-FgF" id="NMK-nv-dFV"/>
+                        <outletCollection property="trendingTermButton" destination="MWL-Uz-Toz" id="ikE-eC-xl0"/>
+                        <segue destination="jg8-C0-MXK" kind="show" identifier="DisplaySearchResults" id="Cau-rv-N4Q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XJ8-l1-fwp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2584" y="131"/>
+        </scene>
+        <!--Search Results View Controller-->
+        <scene sceneID="tYf-5X-oqI">
+            <objects>
+                <viewController id="jg8-C0-MXK" customClass="SearchResultsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jAZ-HV-5oV"/>
+                        <viewControllerLayoutGuide type="bottom" id="u6C-9r-bTA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fJz-H6-PlQ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TLy-cc-B78" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3349" y="131"/>
         </scene>
         <!--Article View Controller-->
         <scene sceneID="HjX-ei-yay">
@@ -108,7 +302,10 @@
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                         <state key="normal" title="Analyze"/>
                                         <connections>
-                                            <segue destination="pGN-dh-PGf" kind="presentation" identifier="Analysis Modal" id="Acx-Fj-vKO"/>
+                                            <segue destination="pGN-dh-PGf" kind="presentation" identifier="Analysis Modal" id="Acx-Fj-vKO">
+                                                <segue key="commit" inheritsFrom="parent" id="Qjj-cb-pLb"/>
+                                                <segue key="preview" inheritsFrom="commit" id="dej-7s-zEG"/>
+                                            </segue>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -269,10 +466,10 @@
             </objects>
             <point key="canvasLocation" x="3974" y="-1284"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Paper Tab Bar Controller-->
         <scene sceneID="dJl-QA-C3e">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="rrR-9N-I0O" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="rrR-9N-I0O" customClass="BFPaperTabBarController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="XEC-HN-076">
@@ -283,17 +480,18 @@
                     <connections>
                         <segue destination="7fW-75-vbG" kind="relationship" relationship="viewControllers" id="SNg-SE-iiO"/>
                         <segue destination="Wl4-Py-uM9" kind="relationship" relationship="viewControllers" id="Irw-sC-g4o"/>
+                        <segue destination="QtV-ev-ljV" kind="relationship" relationship="viewControllers" id="Ode-I5-vrG"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QfC-NT-Tzy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="960" y="-1284"/>
         </scene>
-        <!--Feed-->
+        <!--Trending News-->
         <scene sceneID="J5X-M7-Pbe">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7fW-75-vbG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" id="kRA-OI-cjX"/>
+                    <tabBarItem key="tabBarItem" title="Trending News" id="kRA-OI-cjX"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="x9N-uF-zbq">
@@ -329,5 +527,26 @@
             </objects>
             <point key="canvasLocation" x="1772" y="-565"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="PHJ-xa-ynO">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9WY-qj-Jtm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="QtV-ev-ljV" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="ea4-hW-XMO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FQ2-0y-GIk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="kNc-62-IS2" kind="relationship" relationship="rootViewController" id="WF8-js-jC6"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1772" y="131"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Acx-Fj-vKO"/>
+    </inferredMetricsTieBreakers>
 </document>

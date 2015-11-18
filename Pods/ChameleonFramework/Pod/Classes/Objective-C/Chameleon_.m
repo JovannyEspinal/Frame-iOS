@@ -253,12 +253,12 @@
         }
     }
     
-    [[UIButton appearance] setTintColor:contentColor];
-    [[UIButton appearance] setBackgroundColor:primaryColor];
+//    [[UIButton appearance] setTintColor:contentColor];
+//    [[UIButton appearance] setBackgroundColor:primaryColor];
     
     
-    [[UIButton appearanceWhenContainedIn:[UISearchBar class], nil] setTintColor:contentColor];
-    [[UIButton appearanceWhenContainedIn:[UISearchBar class], nil] setBackgroundColor:ClearColor];
+//    [[UIButton appearanceWhenContainedIn:[UISearchBar class], nil] setTintColor:contentColor];
+//    [[UIButton appearanceWhenContainedIn:[UISearchBar class], nil] setBackgroundColor:ClearColor];
     
     [[UIButton appearanceWhenContainedIn:[UINavigationBar class], nil] setTintColor:contentColor];
     [[UIButton appearanceWhenContainedIn:[UINavigationBar class], nil] setBackgroundColor:ClearColor];
@@ -522,10 +522,10 @@
         }
     }
     
-    [[UISearchBar appearance] setBarTintColor:primaryColor];
-    [[UISearchBar appearance] setBackgroundColor:primaryColor];
-    [[UISearchBar appearance] setTintColor:contentColor];
-    [[UISearchBar appearance] setBackgroundImage:[UIImage new] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+//    [[UISearchBar appearance] setBarTintColor:primaryColor];
+//    [[UISearchBar appearance] setBackgroundColor:primaryColor];
+//    [[UISearchBar appearance] setTintColor:contentColor];
+//    [[UISearchBar appearance] setBackgroundImage:[UIImage new] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
 }
 
 #pragma mark - UISegmentedControl

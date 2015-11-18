@@ -23,7 +23,10 @@ PODS:
   - AFWebViewController (1.2):
     - ARChromeActivity (~> 1.0.4)
     - TUSafariActivity (~> 1.0.4)
+  - APLSearchBar (0.0.1)
   - ARChromeActivity (1.0.5)
+  - BFPaperTabBarController (2.1.11):
+    - UIColor+BFPaperColors
   - ChameleonFramework (2.0.4):
     - ChameleonFramework/Default (= 2.0.4)
   - ChameleonFramework/Default (2.0.4)
@@ -44,11 +47,14 @@ PODS:
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
   - TUSafariActivity (1.0.4)
+  - UIColor+BFPaperColors (1.7.2)
   - UICountingLabel (1.2.0)
   - Unirest (1.1.4)
 
 DEPENDENCIES:
   - AFWebViewController (~> 1.0)
+  - APLSearchBar
+  - BFPaperTabBarController
   - ChameleonFramework
   - KSGallerySlidingCollectionView
   - LQIndicoAPI
@@ -59,13 +65,16 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 7f317038a9710cabfa43ec56396b307b45df72ab
   AFWebViewController: 58d2679d4ad060b845da0d8e44f922c3ab28a44a
+  APLSearchBar: 7bf1576a0858d15203b4a9ced5c2cfe7a165dc16
   ARChromeActivity: 821c7849b566f49583987468733a896fee35aa4d
+  BFPaperTabBarController: 197befdaa258e3790664be49f7c979e38264d355
   ChameleonFramework: 5abe69b1f2a6cc79c3c435fcd9d3d855748225ee
   KSGallerySlidingCollectionView: 5bb49a24dad3642bb8659212b39a36e6fae80b87
   LQIndicoAPI: c83fdc66467118d262cb649aebb905ab8d8fb14b
   PNChart: c1755716bbd45386d2035b2bf2ce73e6d3f8cb22
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   TUSafariActivity: afc55a00965377939107ce4fdc7f951f62454546
+  UIColor+BFPaperColors: 03101fe6c10ed00c6daae7c26553f1de41500853
   UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
   Unirest: 5e4d93eaf32463bf619a4ecd3bbc8c32acf21eac
 

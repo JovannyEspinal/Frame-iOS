@@ -23,94 +23,89 @@
 
 @implementation NewsViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-        
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     self.articleObjects = [[NSMutableArray alloc] init];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     [[SDWebImageDownloader sharedDownloader] setMaxConcurrentDownloads:6];
-    [self breakingNews:manager intoArray:self.articleObjects];
     
-    // Collection View Layout
+    void(^setArticleArray)(NSMutableArray *);
+    
+    setArticleArray = ^(NSMutableArray *array){
+        self.articleObjects = array;
+        [self.collectionView reloadData];
+    };
+    
+    [self breakingNews:manager addsArticle:setArticleArray];
+    [self LayoutCollectionView];
+}
+
+-(void)breakingNews:(AFHTTPRequestOperationManager *)manager
+        addsArticle:(void(^)(NSMutableArray *))callback
+{
+    //Clears old article objects; will be replaced with newest articles
+    [self.articleObjects removeAllObjects];
+    
+    //Creates an array to hold articles from API
+    NSMutableArray *articlesFromAPI = [[NSMutableArray alloc] init];
+    
+    NSString *farooAPIKey = @"&key=gIiv-Go-f3KJmywMTRIKExouf@s_";
+    NSString *farooQuery = @"";
+    
+    NSString *farooURL = [NSString stringWithFormat:@"http://www.faroo.com/api?q=%@&start=1&length=10&l=en&src=news&i=true&f=json%@", farooQuery, farooAPIKey];
+    
+    [manager GET:farooURL
+      parameters:nil
+         success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+             
+             NSArray *results = responseObject[@"results"];
+             
+             for (NSDictionary *articleData in results){
+                 NSString *title = articleData[@"title"];
+                 NSString *articleUrl = articleData[@"url"];
+                 NSString *articleImageUrl = articleData[@"iurl"];
+                 
+                 if (articleUrl) {
+                     Article *articleObject = [[Article alloc] init];
+                     articleObject.headline = title;
+                     articleObject.url = articleUrl;
+                     articleObject.imageUrl = articleImageUrl;
+                     
+                     [articlesFromAPI addObject:articleObject];
+                 }
+             }
+             callback(articlesFromAPI);
+         }
+         failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+             NSLog(@"%@", error);
+         }];
+    
+}
+
+#pragma MARK - UICollectionView Methods
+
+-(void)LayoutCollectionView
+{
     KSGallerySlidingLayout *layout = [[KSGallerySlidingLayout alloc] initWithDelegate:self];
     
     layout.itemSize = CGSizeMake(CGRectGetWidth(self.collectionView.frame), HomeNewsCellCollapsedHeight);
     
     self.collectionView.collectionViewLayout = layout;
     
-    self.collectionView.collectionViewLayout = layout;
     [self.collectionView registerNib:[UINib nibWithNibName:@"HomeNewsCell" bundle:nil] forCellWithReuseIdentifier:@"HomeNewsCell"];
-    //
 }
 
--(void)breakingNews:(AFHTTPRequestOperationManager *)manager intoArray:(NSMutableArray *)articleObjects{
-    
-    //Clears old article objects; will be replaced with newest articles
-    [self.articleObjects removeAllObjects];
-    
-    [manager GET:@"https://www.reddit.com/r/worldnews.json" parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-        
-        NSDictionary *data = responseObject[@"data"];
-        NSArray *submission = data[@"children"];
-        
-        for (NSDictionary *submissionData in submission){
-            NSString *headline = submissionData[@"data"][@"title"];
-            NSString *url = submissionData[@"data"][@"url"];
-            
-            Article *articleObject = [[Article alloc] init];
-            
-            articleObject.headline = headline;
-            articleObject.url = url;
-            
-            [articleObjects addObject:articleObject];
-            
-        }
-        
-        // Loops through each article object, grabs the URL, and downloads the picture for their article
-        for (int i = 0; i < [self.articleObjects count]; i++) {
-            [self extractImages:manager fromURLInObject:self.articleObjects[i]];
-        }
-        
-        [self.collectionView reloadData];
-        
-    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
-        NSLog(@"FAILED.");
-    }];
-}
-
--(void)extractImages:(AFHTTPRequestOperationManager *)manager fromURLInObject:(Article *)articleObject{
-    
-    [manager GET:@"http://api.diffbot.com/v3/article"
-      parameters:@{@"token": @"fcbd17950b98e6d4138a9de24c642347",
-                   @"url": articleObject.url}
-         success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-             
-             NSDictionary *data = [responseObject[@"objects"] firstObject];
-             NSDictionary *images = [data[@"images"] firstObject];
-             
-             
-             NSString *text = data[@"text"];
-             NSString *imageUrl = images[@"url"];
-             
-             articleObject.text = text;
-             
-             if (imageUrl) {
-                 articleObject.imageUrl = imageUrl;
-             }
-             
-             [self.collectionView reloadData];
-         }
-         failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
-             NSLog(@"Failed.");
-         }];
-}
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+- (NSInteger)collectionView:(UICollectionView *)collectionView
+     numberOfItemsInSection:(NSInteger)section
+{
     return [self.articleObjects count];
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
     
     HomeNewsCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HomeNewsCell" forIndexPath:indexPath];
     
@@ -126,14 +121,17 @@
     return cell;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-
+- (void)collectionView:(UICollectionView *)collectionView
+didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
     ArticleViewController* detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ArticleViewController"];
     
-    detailViewController.articleObject = self.articleObjects[indexPath.row];
+    NSLog(@"%@", self.articleObjects[indexPath.row]);
     
+    detailViewController.url = self.articleObjects[indexPath.row].url;
+
     detailViewController.hidesBottomBarWhenPushed = YES;
-    
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
 

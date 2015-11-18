@@ -13,6 +13,8 @@
 		5030C2681BF92FFA00D3E3DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5030C2661BF92FFA00D3E3DB /* Main.storyboard */; };
 		5030C27A1BFA807200D3E3DB /* ArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5030C2791BFA807200D3E3DB /* ArticleViewController.m */; };
 		5030C27D1BFA971800D3E3DB /* AnalysisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5030C27C1BFA971800D3E3DB /* AnalysisViewController.m */; };
+		5030C2AB1BFD1B7E00D3E3DB /* NewsSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5030C2AA1BFD1B7E00D3E3DB /* NewsSearchViewController.m */; };
+		5030C2AE1BFD30CC00D3E3DB /* SearchResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5030C2AD1BFD30CC00D3E3DB /* SearchResultsViewController.m */; };
 		5079DC241BED7D32009AAD8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5079DC231BED7D32009AAD8F /* main.m */; };
 		5079DC271BED7D32009AAD8F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5079DC261BED7D32009AAD8F /* AppDelegate.m */; };
 		5079DC2F1BED7D32009AAD8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5079DC2E1BED7D32009AAD8F /* Assets.xcassets */; };
@@ -32,6 +34,10 @@
 		5030C2791BFA807200D3E3DB /* ArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleViewController.m; sourceTree = "<group>"; };
 		5030C27B1BFA971800D3E3DB /* AnalysisViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalysisViewController.h; sourceTree = "<group>"; };
 		5030C27C1BFA971800D3E3DB /* AnalysisViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalysisViewController.m; sourceTree = "<group>"; };
+		5030C2A91BFD1B7E00D3E3DB /* NewsSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsSearchViewController.h; sourceTree = "<group>"; };
+		5030C2AA1BFD1B7E00D3E3DB /* NewsSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsSearchViewController.m; sourceTree = "<group>"; };
+		5030C2AC1BFD30CC00D3E3DB /* SearchResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultsViewController.h; sourceTree = "<group>"; };
+		5030C2AD1BFD30CC00D3E3DB /* SearchResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultsViewController.m; sourceTree = "<group>"; };
 		5079DC1F1BED7D32009AAD8F /* Frame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Frame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5079DC231BED7D32009AAD8F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5079DC251BED7D32009AAD8F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -58,7 +64,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5030C2651BF92D2400D3E3DB /* CollectionView */ = {
+		5030C2651BF92D2400D3E3DB /* TrendingNewsCollectionView */ = {
 			isa = PBXGroup;
 			children = (
 				5030C25A1BF92ACA00D3E3DB /* NewsViewController.h */,
@@ -67,7 +73,7 @@
 				5030C2621BF92CFE00D3E3DB /* HomeNewsCell.h */,
 				5030C2631BF92CFE00D3E3DB /* HomeNewsCell.m */,
 			);
-			name = CollectionView;
+			name = TrendingNewsCollectionView;
 			sourceTree = "<group>";
 		};
 		5030C27E1BFB749400D3E3DB /* Model */ = {
@@ -77,6 +83,21 @@
 				50EE22111BF67C6A0027B7B4 /* Article.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		5030C2A51BFD084600D3E3DB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5030C2651BF92D2400D3E3DB /* TrendingNewsCollectionView */,
+				89BADE761BFBCE79002F31FC /* Analysis */,
+				5030C2781BFA807200D3E3DB /* ArticleViewController.h */,
+				5030C2791BFA807200D3E3DB /* ArticleViewController.m */,
+				5030C2A91BFD1B7E00D3E3DB /* NewsSearchViewController.h */,
+				5030C2AA1BFD1B7E00D3E3DB /* NewsSearchViewController.m */,
+				5030C2AC1BFD30CC00D3E3DB /* SearchResultsViewController.h */,
+				5030C2AD1BFD30CC00D3E3DB /* SearchResultsViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		5079DC161BED7D31009AAD8F = {
@@ -100,14 +121,9 @@
 		5079DC211BED7D32009AAD8F /* Frame */ = {
 			isa = PBXGroup;
 			children = (
-				5079DC251BED7D32009AAD8F /* AppDelegate.h */,
-				5079DC261BED7D32009AAD8F /* AppDelegate.m */,
-				89BADE761BFBCE79002F31FC /* Analysis */,
-				5030C2661BF92FFA00D3E3DB /* Main.storyboard */,
 				5030C27E1BFB749400D3E3DB /* Model */,
-				5030C2781BFA807200D3E3DB /* ArticleViewController.h */,
-				5030C2791BFA807200D3E3DB /* ArticleViewController.m */,
-				5030C2651BF92D2400D3E3DB /* CollectionView */,
+				5030C2A51BFD084600D3E3DB /* Controllers */,
+				5030C2661BF92FFA00D3E3DB /* Main.storyboard */,
 				5079DC2E1BED7D32009AAD8F /* Assets.xcassets */,
 				5079DC301BED7D32009AAD8F /* LaunchScreen.storyboard */,
 				5079DC331BED7D32009AAD8F /* Info.plist */,
@@ -119,6 +135,8 @@
 		5079DC221BED7D32009AAD8F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5079DC251BED7D32009AAD8F /* AppDelegate.h */,
+				5079DC261BED7D32009AAD8F /* AppDelegate.m */,
 				5079DC231BED7D32009AAD8F /* main.m */,
 			);
 			name = "Supporting Files";
@@ -257,10 +275,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5030C2AE1BFD30CC00D3E3DB /* SearchResultsViewController.m in Sources */,
 				5030C2641BF92CFE00D3E3DB /* HomeNewsCell.m in Sources */,
 				50EE22121BF67C6A0027B7B4 /* Article.m in Sources */,
 				5079DC271BED7D32009AAD8F /* AppDelegate.m in Sources */,
 				5079DC241BED7D32009AAD8F /* main.m in Sources */,
+				5030C2AB1BFD1B7E00D3E3DB /* NewsSearchViewController.m in Sources */,
 				5030C25C1BF92ACA00D3E3DB /* NewsViewController.m in Sources */,
 				5030C27D1BFA971800D3E3DB /* AnalysisViewController.m in Sources */,
 				5030C27A1BFA807200D3E3DB /* ArticleViewController.m in Sources */,

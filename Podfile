@@ -5,3 +5,5 @@ pod 'KSGallerySlidingCollectionView'
 pod 'AFWebViewController', '~> 1.0'
 pod 'PNChart'
 pod 'ChameleonFramework'
+pod "APLSearchBar"
+pod 'BFPaperTabBarController'
