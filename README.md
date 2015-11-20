@@ -22,5 +22,23 @@ Baseline Features:
   *  Bonus features: Users will be able to upload user-created news content
 
 ## Execution
-Work in progress.
+Version 1 (due Tuesday, November 17)
+* Aggregate news and display feed (Due 14th, Saturday)
+* Analysis of article
+
+Version 2 (due Tuesday, November 24)
+* Allow users to search for news topics
+* Create a user that can save articles, and see their aggregated analysis
+* Display tone and subjectivity in the collection cell
+
+Version 3 (due Tuesday, December 1)
+* Create action extension
+* Save articles from outside of the app
+* Article chaining
+
+Version 4 / Final (due Tuesday, December 8)
+* Multiple users on the backend
+* Saving chained articles
+
+Bonus: analyzing political articles only and visualizing with graph, and adding that to user profile
 
