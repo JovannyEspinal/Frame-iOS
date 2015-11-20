@@ -39,6 +39,8 @@ Version 3 (due Tuesday, December 1)
 Version 4 / Final (due Tuesday, December 8)
 * Multiple users on the backend
 * Saving chained articles
+* User can see which article topics are most visited
 
-Bonus: analyzing political articles only and visualizing with graph, and adding that to user profile
+Bonus:
+* Analyzing political articles only and visualizing with graph, and adding that to user profile
 
