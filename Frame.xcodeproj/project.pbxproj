@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5018E2631C00E26800F02538 /* TTUITableViewZoomController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5018E2621C00E26800F02538 /* TTUITableViewZoomController.m */; };
+		5018E2671C00E45900F02538 /* NewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5018E2651C00E45900F02538 /* NewsTableViewCell.m */; };
 		5030C25C1BF92ACA00D3E3DB /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5030C25B1BF92ACA00D3E3DB /* NewsViewController.m */; };
-		5030C2611BF92CC300D3E3DB /* HomeNewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5030C2601BF92CC300D3E3DB /* HomeNewsCell.xib */; };
-		5030C2641BF92CFE00D3E3DB /* HomeNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5030C2631BF92CFE00D3E3DB /* HomeNewsCell.m */; };
 		5030C2681BF92FFA00D3E3DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5030C2661BF92FFA00D3E3DB /* Main.storyboard */; };
 		5030C27A1BFA807200D3E3DB /* ArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5030C2791BFA807200D3E3DB /* ArticleViewController.m */; };
 		5030C27D1BFA971800D3E3DB /* AnalysisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5030C27C1BFA971800D3E3DB /* AnalysisViewController.m */; };
@@ -30,11 +30,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5018E2611C00E26800F02538 /* TTUITableViewZoomController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTUITableViewZoomController.h; sourceTree = "<group>"; };
+		5018E2621C00E26800F02538 /* TTUITableViewZoomController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTUITableViewZoomController.m; sourceTree = "<group>"; };
+		5018E2641C00E45900F02538 /* NewsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTableViewCell.h; sourceTree = "<group>"; };
+		5018E2651C00E45900F02538 /* NewsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTableViewCell.m; sourceTree = "<group>"; };
 		5030C25A1BF92ACA00D3E3DB /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
 		5030C25B1BF92ACA00D3E3DB /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
-		5030C2601BF92CC300D3E3DB /* HomeNewsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeNewsCell.xib; sourceTree = "<group>"; };
-		5030C2621BF92CFE00D3E3DB /* HomeNewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeNewsCell.h; sourceTree = "<group>"; };
-		5030C2631BF92CFE00D3E3DB /* HomeNewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeNewsCell.m; sourceTree = "<group>"; };
 		5030C2671BF92FFA00D3E3DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5030C2781BFA807200D3E3DB /* ArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleViewController.h; sourceTree = "<group>"; };
 		5030C2791BFA807200D3E3DB /* ArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleViewController.m; sourceTree = "<group>"; };
@@ -82,16 +83,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5030C2651BF92D2400D3E3DB /* TrendingNewsCollectionView */ = {
+		5030C2651BF92D2400D3E3DB /* TrendingNewsTableView */ = {
 			isa = PBXGroup;
 			children = (
 				5030C25A1BF92ACA00D3E3DB /* NewsViewController.h */,
 				5030C25B1BF92ACA00D3E3DB /* NewsViewController.m */,
-				5030C2601BF92CC300D3E3DB /* HomeNewsCell.xib */,
-				5030C2621BF92CFE00D3E3DB /* HomeNewsCell.h */,
-				5030C2631BF92CFE00D3E3DB /* HomeNewsCell.m */,
+				5018E2641C00E45900F02538 /* NewsTableViewCell.h */,
+				5018E2651C00E45900F02538 /* NewsTableViewCell.m */,
 			);
-			name = TrendingNewsCollectionView;
+			name = TrendingNewsTableView;
 			sourceTree = "<group>";
 		};
 		5030C27E1BFB749400D3E3DB /* Model */ = {
@@ -106,7 +106,7 @@
 		5030C2A51BFD084600D3E3DB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5030C2651BF92D2400D3E3DB /* TrendingNewsCollectionView */,
+				5030C2651BF92D2400D3E3DB /* TrendingNewsTableView */,
 				89BADE761BFBCE79002F31FC /* Analysis */,
 				5030C2781BFA807200D3E3DB /* ArticleViewController.h */,
 				5030C2791BFA807200D3E3DB /* ArticleViewController.m */,
@@ -156,6 +156,8 @@
 			children = (
 				5079DC251BED7D32009AAD8F /* AppDelegate.h */,
 				5079DC261BED7D32009AAD8F /* AppDelegate.m */,
+				5018E2611C00E26800F02538 /* TTUITableViewZoomController.h */,
+				5018E2621C00E26800F02538 /* TTUITableViewZoomController.m */,
 				5079DC231BED7D32009AAD8F /* main.m */,
 			);
 			name = "Supporting Files";
@@ -269,7 +271,6 @@
 			files = (
 				5079DC321BED7D32009AAD8F /* LaunchScreen.storyboard in Resources */,
 				5079DC2F1BED7D32009AAD8F /* Assets.xcassets in Resources */,
-				5030C2611BF92CC300D3E3DB /* HomeNewsCell.xib in Resources */,
 				5030C2681BF92FFA00D3E3DB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,7 +331,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5030C2AE1BFD30CC00D3E3DB /* SearchResultsViewController.m in Sources */,
-				5030C2641BF92CFE00D3E3DB /* HomeNewsCell.m in Sources */,
 				AB884DDF1C00CB6800A85496 /* DetailReadArticlesViewController.m in Sources */,
 				50EE22121BF67C6A0027B7B4 /* Article.m in Sources */,
 				5079DC271BED7D32009AAD8F /* AppDelegate.m in Sources */,
@@ -339,10 +339,12 @@
 				AB0529031C00089A00FC4D42 /* AggregatedAnalysis.m in Sources */,
 				5030C2AB1BFD1B7E00D3E3DB /* NewsSearchViewController.m in Sources */,
 				AB0529091C00224B00FC4D42 /* SavedArticleManager.m in Sources */,
+				5018E2631C00E26800F02538 /* TTUITableViewZoomController.m in Sources */,
 				AB0529061C0008BC00FC4D42 /* User.m in Sources */,
 				5030C25C1BF92ACA00D3E3DB /* NewsViewController.m in Sources */,
 				5030C27D1BFA971800D3E3DB /* AnalysisViewController.m in Sources */,
 				AB05290C1C00288F00FC4D42 /* ReadArticlesTableViewCell.m in Sources */,
+				5018E2671C00E45900F02538 /* NewsTableViewCell.m in Sources */,
 				5030C27A1BFA807200D3E3DB /* ArticleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

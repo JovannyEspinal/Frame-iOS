@@ -7,8 +7,7 @@
 //
 
 #import "NewsViewController.h"
-#import "KSGallerySlidingLayout.h"
-#import "HomeNewsCell.h"
+#import "NewsTableViewCell.h"
 #import "AFNetworking.h"
 #import "Article.h"
 #import "ArticleViewController.h"
@@ -17,8 +16,7 @@
 
 #import "SavedArticleManager.h"
 
-@interface NewsViewController () <KSGallerySlidingLayoutLayoutDelegate>
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@interface NewsViewController () 
 @property (strong, nonatomic) NSMutableArray<Article *> *articleObjects;
 
 @end
@@ -37,11 +35,11 @@
     
     setArticleArray = ^(NSMutableArray *array){
         self.articleObjects = array;
-        [self.collectionView reloadData];
+        [self.tableView reloadData];
     };
     
     [self breakingNews:manager addsArticle:setArticleArray];
-    [self LayoutCollectionView];
+    [self LayoutTableView];
 }
 
 -(void)breakingNews:(AFHTTPRequestOperationManager *)manager
@@ -86,79 +84,57 @@
     
 }
 
-#pragma MARK - UICollectionView Methods
+#pragma MARK - UITableView Methods
 
--(void)LayoutCollectionView
+-(void)LayoutTableView
 {
-    KSGallerySlidingLayout *layout = [[KSGallerySlidingLayout alloc] initWithDelegate:self];
-    
-    layout.itemSize = CGSizeMake(CGRectGetWidth(self.collectionView.frame), HomeNewsCellCollapsedHeight);
-    
-    self.collectionView.collectionViewLayout = layout;
-    
-    [self.collectionView registerNib:[UINib nibWithNibName:@"HomeNewsCell" bundle:nil] forCellWithReuseIdentifier:@"HomeNewsCell"];
+    self.cellZoomInitialAlpha = [NSNumber numberWithFloat:0.1]; 
+    self.cellZoomAnimationDuration = [NSNumber numberWithFloat:0.3];
+    self.cellZoomXScaleFactor = [NSNumber numberWithFloat:1.3];
+    self.cellZoomYScaleFactor = [NSNumber numberWithFloat:1.3];
+    self.cellZoomXOffset = [NSNumber numberWithFloat:-75];
+    self.cellZoomYOffset = [NSNumber numberWithFloat:75];
+
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView
-     numberOfItemsInSection:(NSInteger)section
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [self.articleObjects count];
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
-                  cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    HomeNewsCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HomeNewsCell" forIndexPath:indexPath];
+    NewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewsCell" forIndexPath:indexPath];
     
     Article *articleObject = self.articleObjects[indexPath.row];
     
     
-    cell.lTitle.text = articleObject.headline;
-    cell.lSubTitle.text = articleObject.url;
+    cell.headline.text = articleObject.headline;
     
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:articleObject.imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        cell.imageView.image = image;
-        
-        
-   
+    [cell.articleImage sd_setImageWithURL:[NSURL URLWithString:articleObject.imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        cell.articleImage.image = image;
     }];
     
     return cell;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView
-didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.row == 0) {
-        ArticleViewController* detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ArticleViewController"];
-        
-        NSLog(@"%@", self.articleObjects[indexPath.row]);
-        
-        detailViewController.url = self.articleObjects[indexPath.row].url;
-        
-        //add the object to the Singleton Classes User properties array
-        [SavedArticleManager.sharedManager.myAccount.savedArticleArray addObject:self.articleObjects[indexPath.row]];
-        
-        detailViewController.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:detailViewController animated:YES];
-    }
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    ArticleViewController* detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ArticleViewController"];
     
+    NSLog(@"%@", self.articleObjects[indexPath.row]);
+    
+    detailViewController.url = self.articleObjects[indexPath.row].url;
+    
+    //add the object to the Singleton Classes User properties array
+    [SavedArticleManager.sharedManager.myAccount.savedArticleArray addObject:self.articleObjects[indexPath.row]];
+    
+    detailViewController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
-#pragma mark - KSGallerySlidingLayoutLayoutDelegate
-
-- (CGFloat)heightForFeatureCell
-{
-    //    return RPSlidingCellFeatureHeight;
-    return HomeNewsCellFeatureHeight;
-}
-
-- (CGFloat)heightForCollapsedCell
-{
-    //    return RPSlidingCellCollapsedHeight;
-    return HomeNewsCellCollapsedHeight;
-}
 
 
 #pragma mark - Navigation
