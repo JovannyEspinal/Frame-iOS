@@ -21,6 +21,11 @@
 		5079DC321BED7D32009AAD8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5079DC301BED7D32009AAD8F /* LaunchScreen.storyboard */; };
 		50EE22121BF67C6A0027B7B4 /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = 50EE22111BF67C6A0027B7B4 /* Article.m */; };
 		7A61CD67CE97508AD6DEE8FE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F15528B6B0E0224C6E7E9EC /* libPods.a */; };
+		AB0528FF1C00070800FC4D42 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0528FE1C00070800FC4D42 /* UserProfileViewController.m */; };
+		AB0529031C00089A00FC4D42 /* AggregatedAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0529021C00089A00FC4D42 /* AggregatedAnalysis.m */; };
+		AB0529061C0008BC00FC4D42 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0529051C0008BC00FC4D42 /* User.m */; };
+		AB0529091C00224B00FC4D42 /* SavedArticleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0529081C00224B00FC4D42 /* SavedArticleManager.m */; };
+		AB05290C1C00288F00FC4D42 /* ReadArticlesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB05290B1C00288F00FC4D42 /* ReadArticlesTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +54,16 @@
 		50EE22111BF67C6A0027B7B4 /* Article.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Article.m; sourceTree = "<group>"; };
 		8F495C2BA51DA9F25CAA5D75 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		9F15528B6B0E0224C6E7E9EC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB0528FD1C00070800FC4D42 /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
+		AB0528FE1C00070800FC4D42 /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
+		AB0529011C00089A00FC4D42 /* AggregatedAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AggregatedAnalysis.h; sourceTree = "<group>"; };
+		AB0529021C00089A00FC4D42 /* AggregatedAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AggregatedAnalysis.m; sourceTree = "<group>"; };
+		AB0529041C0008BC00FC4D42 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		AB0529051C0008BC00FC4D42 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		AB0529071C00224B00FC4D42 /* SavedArticleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedArticleManager.h; sourceTree = "<group>"; };
+		AB0529081C00224B00FC4D42 /* SavedArticleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedArticleManager.m; sourceTree = "<group>"; };
+		AB05290A1C00288F00FC4D42 /* ReadArticlesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadArticlesTableViewCell.h; sourceTree = "<group>"; };
+		AB05290B1C00288F00FC4D42 /* ReadArticlesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadArticlesTableViewCell.m; sourceTree = "<group>"; };
 		F047351E0C4F1884A29A8967 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,6 +111,7 @@
 				5030C2AA1BFD1B7E00D3E3DB /* NewsSearchViewController.m */,
 				5030C2AC1BFD30CC00D3E3DB /* SearchResultsViewController.h */,
 				5030C2AD1BFD30CC00D3E3DB /* SearchResultsViewController.m */,
+				AB0529001C00071900FC4D42 /* User(s) */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -151,6 +167,23 @@
 			name = Analysis;
 			sourceTree = "<group>";
 		};
+		AB0529001C00071900FC4D42 /* User(s) */ = {
+			isa = PBXGroup;
+			children = (
+				AB0529041C0008BC00FC4D42 /* User.h */,
+				AB0529051C0008BC00FC4D42 /* User.m */,
+				AB0529011C00089A00FC4D42 /* AggregatedAnalysis.h */,
+				AB0529021C00089A00FC4D42 /* AggregatedAnalysis.m */,
+				AB0529071C00224B00FC4D42 /* SavedArticleManager.h */,
+				AB0529081C00224B00FC4D42 /* SavedArticleManager.m */,
+				AB0528FD1C00070800FC4D42 /* UserProfileViewController.h */,
+				AB0528FE1C00070800FC4D42 /* UserProfileViewController.m */,
+				AB05290A1C00288F00FC4D42 /* ReadArticlesTableViewCell.h */,
+				AB05290B1C00288F00FC4D42 /* ReadArticlesTableViewCell.m */,
+			);
+			name = "User(s)";
+			sourceTree = "<group>";
+		};
 		B29F95BEDAEDA40BAD817CB9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +213,7 @@
 				5079DC1C1BED7D31009AAD8F /* Frameworks */,
 				5079DC1D1BED7D31009AAD8F /* Resources */,
 				B0A132945451FB461C70EC2A /* Copy Pods Resources */,
+				7F29123136A3BE88F789E0AB /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -253,6 +287,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		7F29123136A3BE88F789E0AB /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B0A132945451FB461C70EC2A /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -280,9 +329,14 @@
 				50EE22121BF67C6A0027B7B4 /* Article.m in Sources */,
 				5079DC271BED7D32009AAD8F /* AppDelegate.m in Sources */,
 				5079DC241BED7D32009AAD8F /* main.m in Sources */,
+				AB0528FF1C00070800FC4D42 /* UserProfileViewController.m in Sources */,
+				AB0529031C00089A00FC4D42 /* AggregatedAnalysis.m in Sources */,
 				5030C2AB1BFD1B7E00D3E3DB /* NewsSearchViewController.m in Sources */,
+				AB0529091C00224B00FC4D42 /* SavedArticleManager.m in Sources */,
+				AB0529061C0008BC00FC4D42 /* User.m in Sources */,
 				5030C25C1BF92ACA00D3E3DB /* NewsViewController.m in Sources */,
 				5030C27D1BFA971800D3E3DB /* AnalysisViewController.m in Sources */,
+				AB05290C1C00288F00FC4D42 /* ReadArticlesTableViewCell.m in Sources */,
 				5030C27A1BFA807200D3E3DB /* ArticleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
