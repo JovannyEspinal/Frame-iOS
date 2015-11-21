@@ -18,8 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.readArticlesOnProfile = [[NSMutableArray alloc] init];
-  self.readArticlesOnProfile = [SavedArticleManager.myAccount.savedArticlesArray mutableCopy];
+     [SavedArticleManager sharedManager].myAccount.savedArticleArray;
     
 }
 
@@ -43,7 +42,7 @@
  - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReadArticleIdentifier" forIndexPath:indexPath];
   
-    // cell.textLabel.text isEqualToString:SavedArticleManager.myA
+     cell.textLabel.text =[[SavedArticleManager sharedManager].myAccount.savedArticleArray[indexPath.row] headline];
      
  return cell;
  }

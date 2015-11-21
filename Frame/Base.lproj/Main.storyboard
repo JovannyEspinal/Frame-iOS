@@ -91,6 +91,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="OH5-Sl-7eQ" kind="show" id="Pzg-Lh-GJE"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -284,6 +287,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XJ8-l1-fwp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2584" y="131"/>
+        </scene>
+        <!--Detail Read Articles View Controller-->
+        <scene sceneID="QLF-3J-iZ6">
+            <objects>
+                <viewController id="OH5-Sl-7eQ" customClass="DetailReadArticlesViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hG9-fZ-TG7"/>
+                        <viewControllerLayoutGuide type="bottom" id="lhm-8A-fbs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eF6-IN-DIs">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bzp-E9-P2u">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Bzp-E9-P2u" firstAttribute="top" secondItem="hG9-fZ-TG7" secondAttribute="bottom" id="FhC-z7-Pbd"/>
+                            <constraint firstItem="lhm-8A-fbs" firstAttribute="top" secondItem="Bzp-E9-P2u" secondAttribute="bottom" id="cop-bt-cam"/>
+                            <constraint firstAttribute="trailing" secondItem="Bzp-E9-P2u" secondAttribute="trailing" id="keu-Rp-BL1"/>
+                            <constraint firstItem="Bzp-E9-P2u" firstAttribute="leading" secondItem="eF6-IN-DIs" secondAttribute="leading" id="wif-DY-VNQ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6rY-JV-QxZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3427" y="-565"/>
         </scene>
         <!--Search Results View Controller-->
         <scene sceneID="tYf-5X-oqI">

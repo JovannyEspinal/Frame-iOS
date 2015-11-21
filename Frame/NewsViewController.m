@@ -15,6 +15,8 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <AFWebViewController/AFWebViewController.h>
 
+#import "SavedArticleManager.h"
+
 @interface NewsViewController () <KSGallerySlidingLayoutLayoutDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) NSMutableArray<Article *> *articleObjects;
@@ -111,11 +113,15 @@
     
     Article *articleObject = self.articleObjects[indexPath.row];
     
+    
     cell.lTitle.text = articleObject.headline;
     cell.lSubTitle.text = articleObject.url;
     
     [cell.imageView sd_setImageWithURL:[NSURL URLWithString:articleObject.imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         cell.imageView.image = image;
+        
+        
+   
     }];
     
     return cell;
@@ -130,6 +136,9 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
         NSLog(@"%@", self.articleObjects[indexPath.row]);
         
         detailViewController.url = self.articleObjects[indexPath.row].url;
+        
+        //add the object to the Singleton Classes User properties array
+        [SavedArticleManager.sharedManager.myAccount.savedArticleArray addObject:self.articleObjects[indexPath.row]];
         
         detailViewController.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:detailViewController animated:YES];

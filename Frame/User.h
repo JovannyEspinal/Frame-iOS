@@ -9,11 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "AggregatedAnalysis.h"
 #import  <UIKit/UIKit.h>
+#import "Article.h"
 
 @interface User : NSObject
 
 @property (nonatomic, strong) AggregatedAnalysis* usersTotalBias;
 @property (nonatomic, strong) UIImage* profilePic;
-@property (nonatomic, strong) NSMutableArray* savedArticleArray;
+@property (nonatomic, strong) NSMutableArray<Article *> *savedArticleArray;
 
 @end
