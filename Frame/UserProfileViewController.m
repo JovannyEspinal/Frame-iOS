@@ -7,7 +7,6 @@
 //
 
 #import "UserProfileViewController.h"
-#import "Article.h"
 #import "SavedArticleManager.h"
 
 @interface UserProfileViewController ()
@@ -20,7 +19,7 @@
     [super viewDidLoad];
     
     self.readArticlesOnProfile = [[NSMutableArray alloc] init];
- //   self.readArticlesOnProfile = [SavedArticleManager.myAccount.savedArticlesArray mutableCopy];
+  self.readArticlesOnProfile = [SavedArticleManager.myAccount.savedArticlesArray mutableCopy];
     
 }
 
