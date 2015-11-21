@@ -124,15 +124,17 @@
 - (void)collectionView:(UICollectionView *)collectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row == 0) {
+        ArticleViewController* detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ArticleViewController"];
+        
+        NSLog(@"%@", self.articleObjects[indexPath.row]);
+        
+        detailViewController.url = self.articleObjects[indexPath.row].url;
+        
+        detailViewController.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:detailViewController animated:YES];
+    }
     
-    ArticleViewController* detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ArticleViewController"];
-    
-    NSLog(@"%@", self.articleObjects[indexPath.row]);
-    
-    detailViewController.url = self.articleObjects[indexPath.row].url;
-
-    detailViewController.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
 #pragma mark - KSGallerySlidingLayoutLayoutDelegate
