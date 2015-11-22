@@ -22,6 +22,7 @@
 		50E83FD31C0219D100B3FD5E /* ArticleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50E83FD11C0219D100B3FD5E /* ArticleTableViewCell.xib */; };
 		50EE22121BF67C6A0027B7B4 /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = 50EE22111BF67C6A0027B7B4 /* Article.m */; };
 		7A61CD67CE97508AD6DEE8FE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F15528B6B0E0224C6E7E9EC /* libPods.a */; };
+		89CF8A5D1C0231DD00922F2F /* Rockwell.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 89CF8A5C1C0231DD00922F2F /* Rockwell.ttf */; };
 		AB0528FF1C00070800FC4D42 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0528FE1C00070800FC4D42 /* UserProfileViewController.m */; };
 		AB0529031C00089A00FC4D42 /* AggregatedAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0529021C00089A00FC4D42 /* AggregatedAnalysis.m */; };
 		AB0529061C0008BC00FC4D42 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0529051C0008BC00FC4D42 /* User.m */; };
@@ -57,6 +58,7 @@
 		50E83FD11C0219D100B3FD5E /* ArticleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleTableViewCell.xib; sourceTree = "<group>"; };
 		50EE22101BF67C6A0027B7B4 /* Article.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Article.h; sourceTree = "<group>"; };
 		50EE22111BF67C6A0027B7B4 /* Article.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Article.m; sourceTree = "<group>"; };
+		89CF8A5C1C0231DD00922F2F /* Rockwell.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Rockwell.ttf; sourceTree = "<group>"; };
 		8F495C2BA51DA9F25CAA5D75 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		9F15528B6B0E0224C6E7E9EC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB0528FD1C00070800FC4D42 /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				5018E2611C00E26800F02538 /* TTUITableViewZoomController.h */,
 				5018E2621C00E26800F02538 /* TTUITableViewZoomController.m */,
 				5079DC231BED7D32009AAD8F /* main.m */,
+				89CF8A5C1C0231DD00922F2F /* Rockwell.ttf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50E83FD31C0219D100B3FD5E /* ArticleTableViewCell.xib in Resources */,
+				89CF8A5D1C0231DD00922F2F /* Rockwell.ttf in Resources */,
 				5079DC321BED7D32009AAD8F /* LaunchScreen.storyboard in Resources */,
 				5079DC2F1BED7D32009AAD8F /* Assets.xcassets in Resources */,
 				5030C2681BF92FFA00D3E3DB /* Main.storyboard in Resources */,
