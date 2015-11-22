@@ -8,17 +8,26 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "DirectionalTone.h"
 
 @interface Article : NSObject
 @property (strong, nonatomic) NSString *url;
 @property (strong, nonatomic) NSString *headline;
 @property (strong, nonatomic) NSString *imageUrl;
 @property (strong, nonatomic) NSString *text;
+
+
 @property (strong, nonatomic) NSString *sentimentAnalysis;
 @property (strong, nonatomic) NSString *subjectivityAnalysis;
+
+
 @property (nonatomic) float conservative;
 @property (nonatomic) float green;
 @property (nonatomic) float liberal;
 @property (nonatomic) float libertarian;
+
+
+@property (nonatomic) DirectionalTone* articlesDirectionalTone;
+
 
 @end
