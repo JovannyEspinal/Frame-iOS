@@ -100,6 +100,10 @@ CGFloat const bfPaperTabBarController_tapCircleDiameterDefault = -2.f;
     // Insert the animations view and invisible touch view:
     [self.tabBar insertSubview:self.animationsView atIndex:0];
     [self.view addSubview:self.invisibleTouchView];
+    
+    
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Avenir" size:12.0f], NSFontAttributeName, nil] forState:UIControlStateNormal];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
