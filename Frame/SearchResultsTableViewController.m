@@ -25,6 +25,10 @@
     self.searchResultObjects = [[NSMutableArray alloc] init];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
+    
+    
+    self.navigationController.navigationBar.topItem.title = @"Search Results";
+    
     [[SDWebImageDownloader sharedDownloader] setMaxConcurrentDownloads:6];
     
     //    self.tableView.estimatedRowHeight = 202.0;

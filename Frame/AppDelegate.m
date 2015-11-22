@@ -20,8 +20,8 @@
     // Override point for customization after application launch.
     
     [Chameleon setGlobalThemeUsingPrimaryColor:[UIColor flatYellowColorDark] withContentStyle:UIContentStyleLight];
-    [[UINavigationBar appearance] setBarTintColor:[UIColor flatBlackColorDark]];
-    [[UITabBar appearance] setBarTintColor:[UIColor flatBlackColorDark]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor blackColor]];
+    [[UITabBar appearance] setBarTintColor:[UIColor blackColor]];
     [[UITabBar appearance] setTintColor:[UIColor flatWhiteColor]];
 
 

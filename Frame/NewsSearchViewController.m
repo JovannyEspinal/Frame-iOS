@@ -24,6 +24,9 @@
     [super viewDidLoad];
     self.searchTextField.delegate = self;
     
+    
+    self.navigationController.navigationBar.topItem.title = @"Search";
+    
     void(^setTrendingArray)(NSArray *);
     setTrendingArray = ^(NSArray *array){
         self.trending = [NSMutableArray arrayWithArray: array];

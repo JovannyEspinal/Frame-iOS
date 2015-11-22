@@ -20,6 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    self.navigationController.navigationBar.topItem.title = @"Profile";
+    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 }
