@@ -8,7 +8,7 @@
 
 #import "NewsSearchViewController.h"
 #import <AFNetworking/AFNetworking.h>
-#import "SearchResultsViewController.h"
+#import "SearchResultsTableViewController.h"
 #import "APLSearchBar.h"
 
 @interface NewsSearchViewController ()  <UITextFieldDelegate>
@@ -88,7 +88,7 @@
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
      [super prepareForSegue:segue sender:sender];
 
-     SearchResultsViewController *svc = [segue destinationViewController];
+     SearchResultsTableViewController *svc = [segue destinationViewController];
      svc.searchQuery = self.searchTextField.text;
 
  }
