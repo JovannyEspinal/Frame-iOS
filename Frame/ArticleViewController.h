@@ -13,4 +13,9 @@
 @interface ArticleViewController : UIViewController
 @property (nonatomic, strong) NSString *url;
 
+
+-(void)directionalToneAPI; 
+
+
+
 @end
