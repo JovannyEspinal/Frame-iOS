@@ -72,94 +72,104 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwN-XV-16c">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwN-XV-16c">
                                 <rect key="frame" x="277" y="172" width="46" height="30"/>
                                 <animations/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="searchTrendingTerm:" destination="kNc-62-IS2" eventType="touchUpInside" id="C2h-cb-wdC"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ux0-l5-xQv">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ux0-l5-xQv">
                                 <rect key="frame" x="277" y="210" width="46" height="30"/>
                                 <animations/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="searchTrendingTerm:" destination="kNc-62-IS2" eventType="touchUpInside" id="RgB-F7-SGk"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vzD-OK-Ee6">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vzD-OK-Ee6">
                                 <rect key="frame" x="277" y="248" width="46" height="30"/>
                                 <animations/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="searchTrendingTerm:" destination="kNc-62-IS2" eventType="touchUpInside" id="te7-zQ-grs"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HyA-Jd-sXx">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HyA-Jd-sXx">
                                 <rect key="frame" x="277" y="286" width="46" height="30"/>
                                 <animations/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="searchTrendingTerm:" destination="kNc-62-IS2" eventType="touchUpInside" id="91y-rG-jEB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AE9-KH-Uwj">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AE9-KH-Uwj">
                                 <rect key="frame" x="277" y="324" width="46" height="30"/>
                                 <animations/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="searchTrendingTerm:" destination="kNc-62-IS2" eventType="touchUpInside" id="uZN-Vd-78g"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmF-qP-rGy">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmF-qP-rGy">
                                 <rect key="frame" x="277" y="362" width="46" height="30"/>
                                 <animations/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="searchTrendingTerm:" destination="kNc-62-IS2" eventType="touchUpInside" id="Fyh-U7-yAG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2w8-Bc-5MW">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2w8-Bc-5MW">
                                 <rect key="frame" x="277" y="400" width="46" height="30"/>
                                 <animations/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="searchTrendingTerm:" destination="kNc-62-IS2" eventType="touchUpInside" id="bhO-zH-3fE"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ho1-5i-Z8q">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ho1-5i-Z8q">
                                 <rect key="frame" x="277" y="438" width="46" height="30"/>
                                 <animations/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="searchTrendingTerm:" destination="kNc-62-IS2" eventType="touchUpInside" id="NwT-3p-e6c"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jMp-An-FgF">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jMp-An-FgF">
                                 <rect key="frame" x="277" y="476" width="46" height="30"/>
                                 <animations/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="searchTrendingTerm:" destination="kNc-62-IS2" eventType="touchUpInside" id="NL0-JB-DVn"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MWL-Uz-Toz">
-                                <rect key="frame" x="277" y="515" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MWL-Uz-Toz">
+                                <rect key="frame" x="277" y="514" width="46" height="30"/>
                                 <animations/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="searchTrendingTerm:" destination="kNc-62-IS2" eventType="touchUpInside" id="otf-XL-ryJ"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trending Terms" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kty-wN-ENv">
-                                <rect key="frame" x="240" y="144" width="120" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Trending Terms" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kty-wN-ENv">
+                                <rect key="frame" x="240" y="144" width="119.5" height="20.5"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="Cp8-H6-FDa"/>
                                     <constraint firstAttribute="height" constant="21" id="u7p-ms-P8t"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
@@ -169,6 +179,14 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b1v-g3-uyb">
+                                <rect key="frame" x="20" y="84" width="560" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                            </textField>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -176,7 +194,10 @@
                             <constraint firstItem="AE9-KH-Uwj" firstAttribute="centerX" secondItem="fCs-U5-D4C" secondAttribute="centerX" id="17m-Z6-7qA"/>
                             <constraint firstItem="HyA-Jd-sXx" firstAttribute="top" secondItem="vzD-OK-Ee6" secondAttribute="bottom" constant="8" id="32n-C6-g3f"/>
                             <constraint firstItem="xwN-XV-16c" firstAttribute="top" secondItem="Sog-Nh-ge6" secondAttribute="bottom" constant="79" id="4au-41-cg6"/>
+                            <constraint firstItem="b1v-g3-uyb" firstAttribute="leading" secondItem="fCs-U5-D4C" secondAttribute="leading" constant="20" id="5A9-Ix-gqM"/>
+                            <constraint firstItem="b1v-g3-uyb" firstAttribute="top" secondItem="Sog-Nh-ge6" secondAttribute="bottom" constant="20" id="5vx-UD-B5u"/>
                             <constraint firstItem="xwN-XV-16c" firstAttribute="top" secondItem="Kty-wN-ENv" secondAttribute="bottom" constant="8" id="ARZ-9b-MBW"/>
+                            <constraint firstAttribute="trailing" secondItem="b1v-g3-uyb" secondAttribute="trailing" constant="20" id="EGP-ls-nkb"/>
                             <constraint firstItem="jMp-An-FgF" firstAttribute="top" secondItem="Ho1-5i-Z8q" secondAttribute="bottom" constant="8" id="EWc-EL-a8w"/>
                             <constraint firstItem="MWL-Uz-Toz" firstAttribute="centerX" secondItem="fCs-U5-D4C" secondAttribute="centerX" id="Eou-yr-7xL"/>
                             <constraint firstItem="Kty-wN-ENv" firstAttribute="top" secondItem="Sog-Nh-ge6" secondAttribute="bottom" constant="80" id="FPT-Jz-wQX"/>
@@ -207,13 +228,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="t7d-vo-4Ct">
                         <nil key="title"/>
-                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" id="b1v-g3-uyb">
-                            <rect key="frame" x="20" y="7" width="560" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <animations/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" returnKeyType="search"/>
-                        </textField>
                     </navigationItem>
                     <connections>
                         <outlet property="searchTextField" destination="b1v-g3-uyb" id="j4T-dG-Nlg"/>
@@ -316,6 +330,7 @@
                                     <animations/>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -542,10 +557,14 @@
                     <tabBarItem key="tabBarItem" title="Trending News" id="kRA-OI-cjX"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="x9N-uF-zbq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="x9N-uF-zbq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="RockwellBold" family="Rockwell-Bold" pointSize="20"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
