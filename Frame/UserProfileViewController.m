@@ -8,8 +8,10 @@
 
 #import "UserProfileViewController.h"
 #import "SavedArticleManager.h"
+#import "ReadArticlesTableViewCell.h"
 
 @interface UserProfileViewController ()
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -18,8 +20,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-     [SavedArticleManager sharedManager].myAccount.savedArticleArray;
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
+    [self.tableView reloadData];
 }
 
 
@@ -35,17 +43,19 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return [SavedArticleManager sharedManager].myAccount.savedArticleArray.count;
 }
 
 
- - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
- UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReadArticleIdentifier" forIndexPath:indexPath];
-  
-     cell.textLabel.text =[[SavedArticleManager sharedManager].myAccount.savedArticleArray[indexPath.row] headline];
-     
- return cell;
- }
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    ReadArticlesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReadArticleIdentifier" forIndexPath:indexPath];
+    
+    Article *article = [SavedArticleManager sharedManager].myAccount.savedArticleArray[indexPath.row];
+    cell.textLabel.text = article.headline;
+    
+    return cell;
+}
 
 
 /*
