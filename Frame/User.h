@@ -17,4 +17,10 @@
 @property (nonatomic, strong) UIImage* profilePic;
 @property (nonatomic, strong) NSMutableArray<Article *> *savedArticleArray;
 
+
+
+//Signup so we can differentiate users on Parse
+@property (nonatomic) NSString* userName;
+@property (nonatomic) NSString* password;
+
 @end

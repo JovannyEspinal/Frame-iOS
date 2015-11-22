@@ -27,6 +27,7 @@
 		AB0529091C00224B00FC4D42 /* SavedArticleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0529081C00224B00FC4D42 /* SavedArticleManager.m */; };
 		AB05290C1C00288F00FC4D42 /* ReadArticlesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB05290B1C00288F00FC4D42 /* ReadArticlesTableViewCell.m */; };
 		AB884DDF1C00CB6800A85496 /* DetailReadArticlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB884DDE1C00CB6800A85496 /* DetailReadArticlesViewController.m */; };
+		AB884E071C02132600A85496 /* DirectionalTone.m in Sources */ = {isa = PBXBuildFile; fileRef = AB884E061C02132600A85496 /* DirectionalTone.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,8 @@
 		AB05290B1C00288F00FC4D42 /* ReadArticlesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadArticlesTableViewCell.m; sourceTree = "<group>"; };
 		AB884DDD1C00CB6800A85496 /* DetailReadArticlesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailReadArticlesViewController.h; sourceTree = "<group>"; };
 		AB884DDE1C00CB6800A85496 /* DetailReadArticlesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailReadArticlesViewController.m; sourceTree = "<group>"; };
+		AB884E051C02132600A85496 /* DirectionalTone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionalTone.h; sourceTree = "<group>"; };
+		AB884E061C02132600A85496 /* DirectionalTone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionalTone.m; sourceTree = "<group>"; };
 		F047351E0C4F1884A29A8967 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,6 +102,8 @@
 			children = (
 				50EE22101BF67C6A0027B7B4 /* Article.h */,
 				50EE22111BF67C6A0027B7B4 /* Article.m */,
+				AB884E051C02132600A85496 /* DirectionalTone.h */,
+				AB884E061C02132600A85496 /* DirectionalTone.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -342,6 +347,7 @@
 				5018E2631C00E26800F02538 /* TTUITableViewZoomController.m in Sources */,
 				AB0529061C0008BC00FC4D42 /* User.m in Sources */,
 				5030C25C1BF92ACA00D3E3DB /* NewsViewController.m in Sources */,
+				AB884E071C02132600A85496 /* DirectionalTone.m in Sources */,
 				5030C27D1BFA971800D3E3DB /* AnalysisViewController.m in Sources */,
 				AB05290C1C00288F00FC4D42 /* ReadArticlesTableViewCell.m in Sources */,
 				5018E2671C00E45900F02538 /* NewsTableViewCell.m in Sources */,
