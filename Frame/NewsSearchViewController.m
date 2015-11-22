@@ -30,7 +30,6 @@
         [self updateUI];
     };
     
-    
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
     [self trendingTerms:manager addsArticle:setTrendingArray];
     
