@@ -21,7 +21,7 @@
 If you did not meet your goals, how will this affect the progression of the product? What will you do differently to meet your goals this week?
 
   *  Team Member #1 (Jovanny)
-    * Goals/Responsibilities Last Week:
+    * Goals/Responsibilities Last Week: Implementation of Search Function, Implementation of APIs, API research
         * Did you meet your goals/responsibilities last week? Why or why not?
     * Goals/Responsibilities This Week:
   *  Team Member #2 (Bereket)
