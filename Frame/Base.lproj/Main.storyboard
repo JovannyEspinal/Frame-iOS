@@ -52,6 +52,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="af8-26-UlU"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <connections>
+                        <outlet property="tableView" destination="xRJ-CJ-jv7" id="5gA-lD-bFX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7qn-BY-eba" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
