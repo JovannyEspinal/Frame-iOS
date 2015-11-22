@@ -58,7 +58,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7qn-BY-eba" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2584" y="-565"/>
+            <point key="canvasLocation" x="2536" y="-757"/>
         </scene>
         <!--News Search View Controller-->
         <scene sceneID="59x-5p-VzQ">
@@ -246,7 +246,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XJ8-l1-fwp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2573" y="252"/>
+            <point key="canvasLocation" x="2541" y="-36"/>
         </scene>
         <!--Search Results Table View Controller-->
         <scene sceneID="FRW-3O-MCW">
@@ -277,7 +277,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WyM-jd-3zl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3277" y="252"/>
+            <point key="canvasLocation" x="3273" y="-36"/>
         </scene>
         <!--Detail Read Articles View Controller-->
         <scene sceneID="QLF-3J-iZ6">
@@ -309,7 +309,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6rY-JV-QxZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3427" y="-565"/>
+            <point key="canvasLocation" x="3264" y="-749"/>
         </scene>
         <!--News View Controller-->
         <scene sceneID="6kj-lr-uPB">
@@ -342,7 +342,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vFc-3g-ad1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2584" y="-1284"/>
+            <point key="canvasLocation" x="2548" y="-1488"/>
         </scene>
         <!--Article View Controller-->
         <scene sceneID="HjX-ei-yay">
@@ -421,7 +421,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1aT-b4-AkH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3244" y="-1284"/>
+            <point key="canvasLocation" x="3264" y="-1488"/>
         </scene>
         <!--Analysis View Controller-->
         <scene sceneID="Vyz-pn-Lqp">
@@ -527,7 +527,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UaU-dF-pPK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3974" y="-1284"/>
+            <point key="canvasLocation" x="3978" y="-1488"/>
         </scene>
         <!--Paper Tab Bar Controller-->
         <scene sceneID="dJl-QA-C3e">
@@ -548,13 +548,13 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QfC-NT-Tzy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="960" y="-1284"/>
+            <point key="canvasLocation" x="980" y="-584"/>
         </scene>
-        <!--Trending News-->
+        <!--News-->
         <scene sceneID="J5X-M7-Pbe">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7fW-75-vbG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Trending News" id="kRA-OI-cjX"/>
+                    <tabBarItem key="tabBarItem" title="News" image="news12-1" id="kRA-OI-cjX"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="x9N-uF-zbq">
@@ -573,7 +573,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7G7-Su-jpo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1772" y="-1284"/>
+            <point key="canvasLocation" x="1772" y="-1488"/>
         </scene>
         <!--Profile-->
         <scene sceneID="F62-II-uCl">
@@ -592,7 +592,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z5o-uF-XKT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1772" y="-565"/>
+            <point key="canvasLocation" x="1772" y="-757"/>
         </scene>
         <!--Item-->
         <scene sceneID="PHJ-xa-ynO">
@@ -610,9 +610,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9WY-qj-Jtm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1772" y="252"/>
+            <point key="canvasLocation" x="1780" y="-36"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="news12-1" width="30" height="30"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Acx-Fj-vKO"/>
     </inferredMetricsTieBreakers>
