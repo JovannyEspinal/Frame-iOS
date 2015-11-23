@@ -7,3 +7,4 @@ pod 'PNChart'
 pod 'ChameleonFramework'
 pod "APLSearchBar"
 pod 'BFPaperTabBarController'
+pod 'MGSwipeTableCell'

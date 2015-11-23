@@ -13,6 +13,7 @@
 #import "ArticleViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <AFWebViewController/AFWebViewController.h>
+#import "AnalysisViewController.h"
 
 #import "SavedArticleManager.h"
 
@@ -135,6 +136,15 @@
         cell.articleImage.image = image;
     }];
     
+    cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"Analysis" backgroundColor:[UIColor blackColor] callback:^BOOL(MGSwipeTableCell *sender) {
+        NSLog(@"%@", cell.headline.text);
+        [self performSegueWithIdentifier:@"AnalysisSegue" sender:self];
+        
+        return true;
+    }]];
+    
+    cell.leftSwipeSettings.transition = MGSwipeTransitionBorder;
+    
     return cell;
 }
 
@@ -156,13 +166,20 @@
 
 #pragma mark - Navigation
 
-/*
+
  // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
+     
+     if ([segue.identifier isEqualToString:@"AnalysisSegue"]) {
+         NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+         
+         AnalysisViewController *avc = [segue destinationViewController];
+         avc.articleObject = self.articleObjects[path.row];
+     }
+     
+     
  }
- */
+
 
 
 @end

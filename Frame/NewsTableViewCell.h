@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MGSwipeTableCell/MGSwipeTableCell.h>
 
-@interface NewsTableViewCell : UITableViewCell
+@interface NewsTableViewCell : MGSwipeTableCell
 
 @property (weak, nonatomic) IBOutlet UILabel *headline;
 @property (weak, nonatomic) IBOutlet UIImageView *articleImage;

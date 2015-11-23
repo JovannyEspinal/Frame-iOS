@@ -41,6 +41,7 @@ PODS:
     - AFNetworking/Security
     - AFNetworking/Serialization
     - AFNetworking/UIKit
+  - MGSwipeTableCell (1.5.3)
   - PNChart (0.8.7):
     - UICountingLabel (~> 1.2.0)
   - SDWebImage (3.7.3):
@@ -58,6 +59,7 @@ DEPENDENCIES:
   - ChameleonFramework
   - KSGallerySlidingCollectionView
   - LQIndicoAPI
+  - MGSwipeTableCell
   - PNChart
   - SDWebImage (~> 3.7)
   - Unirest
@@ -71,6 +73,7 @@ SPEC CHECKSUMS:
   ChameleonFramework: 5abe69b1f2a6cc79c3c435fcd9d3d855748225ee
   KSGallerySlidingCollectionView: 5bb49a24dad3642bb8659212b39a36e6fae80b87
   LQIndicoAPI: c83fdc66467118d262cb649aebb905ab8d8fb14b
+  MGSwipeTableCell: 5ae3b9a15efda26b201adc8676b24040febe6ff6
   PNChart: c1755716bbd45386d2035b2bf2ce73e6d3f8cb22
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   TUSafariActivity: afc55a00965377939107ce4fdc7f951f62454546
@@ -78,4 +81,4 @@ SPEC CHECKSUMS:
   UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
   Unirest: 5e4d93eaf32463bf619a4ecd3bbc8c32acf21eac
 
-COCOAPODS: 0.39.0
+COCOAPODS: 0.38.2
