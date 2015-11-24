@@ -131,8 +131,10 @@
               if ([typeOfAnalysisForDatumBox isEqualToString:@"Sentiment"]) {
                   self.detailArticle.sentimentAnalysis = data;
                   NSLog(@"%@", self.detailArticle.sentimentAnalysis);
-              } else if ([typeOfAnalysisForDatumBox isEqualToString:@"Subjectivity"]){
+              }
+               if ([typeOfAnalysisForDatumBox isEqualToString:@"Subjectivity"]){
                   self.detailArticle.subjectivityAnalysis = data;
+                  NSLog(@"%@", self.detailArticle.subjectivityAnalysis);
               }
               
           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
