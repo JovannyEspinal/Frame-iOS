@@ -14,7 +14,6 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <AFWebViewController/AFWebViewController.h>
 #import "AnalysisViewController.h"
-
 #import "SavedArticleManager.h"
 
 @interface NewsViewController () 
@@ -55,6 +54,7 @@
     [self LayoutTableView];
     [self.tableView registerNib:[UINib nibWithNibName:@"ArticleTableViewCell" bundle:nil] forCellReuseIdentifier:@"NewsCell"];
 }
+
 
 -(void)breakingNews:(AFHTTPRequestOperationManager *)manager
         addsArticle:(void(^)(NSMutableArray *))callback

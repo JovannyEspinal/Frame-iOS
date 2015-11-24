@@ -175,10 +175,10 @@
     }
     
     else if ([self.detailArticle.sentimentAnalysis isEqualToString: @"neutral"]) {
-        SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNegativeToneCount =  SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNeutralToneCount +1;
-        
-        NSLog(@"Neutral tone count:, %ld", (long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNeutralToneCount);
+        SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNegativeToneCount =  SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNeutralToneCount + 1;
         NSLog(@"%@", self.detailArticle.sentimentAnalysis);
+        NSLog(@"Neutral tone count:, %ld", (long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNeutralToneCount);
+        
 
 
     }
@@ -197,14 +197,13 @@
     
     
     if ([self.detailArticle.subjectivityAnalysis isEqualToString:@"objective"]) {
-        SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount =                        SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount +1;
+        SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount = SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount +1;
         
         NSLog(@"Total objectivity count:, %ld",(long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount);
     }
     else if ([self.detailArticle.subjectivityAnalysis isEqualToString:@"subjective"]){
         
-        SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount =                        SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalsubjectiveArticleCount +1;
-        
+        SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount = SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalsubjectiveArticleCount +1;
         
         NSLog(@"Total subjectivity count:, %ld",(long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalsubjectiveArticleCount);
         NSLog(@"%@", self.detailArticle.subjectivityAnalysis);
@@ -230,11 +229,6 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    if ([segue.identifier isEqualToString:@"Analysis Modal"]) {
-        AnalysisViewController *avc = segue.destinationViewController;
-        avc.articleObject = self.detailArticle;
-    }
     
 }
 

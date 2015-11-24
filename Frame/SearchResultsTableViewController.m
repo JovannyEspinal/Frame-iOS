@@ -10,6 +10,8 @@
 #import "NewsTableViewCell.h"
 #import <AFNetworking/AFNetworking.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "SearchArticleViewController.h"
+#import "SavedArticleManager.h"
 #import "Article.h"
 
 @interface SearchResultsTableViewController ()
@@ -128,7 +130,29 @@
         cell.articleImage.image = image;
     }];
     
+    cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"Analysis" backgroundColor:[UIColor blackColor] callback:^BOOL(MGSwipeTableCell *sender) {
+        NSLog(@"%@", cell.headline.text);
+        [self performSegueWithIdentifier:@"AnalysisSegue" sender:self];
+        
+        return true;
+    }]];
+    
+    cell.leftSwipeSettings.transition = MGSwipeTransitionBorder;
+    
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    SearchArticleViewController* detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SearchArticleViewController"];
+    
+    NSLog(@"%@", self.searchResultObjects[indexPath.row]);
+    
+    detailViewController.searchResult = self.searchResultObjects[indexPath.row];
+    //add the object to the Singleton Classes User properties array
+    [SavedArticleManager.sharedManager.myAccount.savedArticleArray addObject:self.searchResultObjects[indexPath.row]];
+    detailViewController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:detailViewController animated:YES];
+
 }
 /*
 // Override to support conditional editing of the table view.

@@ -33,6 +33,7 @@
     if (self) {
 //        self.savedArticleArray = [[NSMutableArray alloc] init];
         self.myAccount= [[User alloc] init];
+        self.myAccount.usersTotalBias = [[AggregatedAnalysis alloc] init];
         self.myAccount.savedArticleArray = [[NSMutableArray alloc] init];
 
         //Version one aggregator for user bias
@@ -43,7 +44,7 @@
         self.myAccount.usersTotalBias.totalLibertarianCount=0;
         
             // objectivity/subjectivity aggregator
-        self.myAccount.usersTotalBias.totalsubjectiveArticleCount =0;
+        self.myAccount.usersTotalBias.totalsubjectiveArticleCount = 0;
         self.myAccount.usersTotalBias.totalObjectiveArticleCount = 0;
         
             // positivity/negativity/neutrality aggregator
