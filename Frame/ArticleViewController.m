@@ -44,34 +44,34 @@
     
     
     
-    //Sets API for Indico API
-    [[LQNetworkManager sharedManager] setApiKey:@"9b41f9a9dec46968939722b005f52be4"];
-    
-    //Insert text into political analysis.
-       [[LQNetworkManager sharedManager] politicalAnalysis:self.detailArticle.text completionHandler:^(NSDictionary *result, NSError *error) {
-           
-           NSDictionary *politicalAnalysis = result[@"results"];
-
-           NSString *conservativeStringValue = politicalAnalysis[@"Conservative"];
-           float conservative = [conservativeStringValue floatValue] * 100;
-           
-           NSString *greenStringValue = politicalAnalysis[@"Green"];
-           float green = [greenStringValue floatValue] * 100;
-           
-           NSString *liberalStringValue = politicalAnalysis[@"Liberal"];
-           float liberal = [liberalStringValue floatValue] * 100;
-           
-           NSString *libertarianStringValue = politicalAnalysis[@"Libertarian"];
-           float libertarian = [libertarianStringValue floatValue] * 100;
-           
-           self.detailArticle.conservative = conservative;
-           self.detailArticle.green = green;
-           self.detailArticle.liberal = liberal;
-           self.detailArticle.libertarian = libertarian;
-           
-           NSLog(@"%f", self.detailArticle.libertarian);
-       }];
-    
+//    //Sets API for Indico API
+//    [[LQNetworkManager sharedManager] setApiKey:@"9b41f9a9dec46968939722b005f52be4"];
+//    
+//    //Insert text into political analysis.
+//       [[LQNetworkManager sharedManager] politicalAnalysis:self.detailArticle.text completionHandler:^(NSDictionary *result, NSError *error) {
+//           
+//           NSDictionary *politicalAnalysis = result[@"results"];
+//
+//           NSString *conservativeStringValue = politicalAnalysis[@"Conservative"];
+//           float conservative = [conservativeStringValue floatValue] * 100;
+//           
+//           NSString *greenStringValue = politicalAnalysis[@"Green"];
+//           float green = [greenStringValue floatValue] * 100;
+//           
+//           NSString *liberalStringValue = politicalAnalysis[@"Liberal"];
+//           float liberal = [liberalStringValue floatValue] * 100;
+//           
+//           NSString *libertarianStringValue = politicalAnalysis[@"Libertarian"];
+//           float libertarian = [libertarianStringValue floatValue] * 100;
+//           
+//           self.detailArticle.conservative = conservative;
+//           self.detailArticle.green = green;
+//           self.detailArticle.liberal = liberal;
+//           self.detailArticle.libertarian = libertarian;
+//           
+//           NSLog(@"%f", self.detailArticle.libertarian);
+//       }];
+//    
     
     
     
