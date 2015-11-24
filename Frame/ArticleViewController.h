@@ -12,8 +12,11 @@
 
 @interface ArticleViewController : UIViewController
 @property (nonatomic, strong) Article *detailArticle;
+@property (nonatomic, strong) NSString* data;
 
 
+-(void)totalTone;
+-(void)totalSubjectivity;
 //-(void)directionalToneAPI;
 
 

@@ -29,6 +29,7 @@
 		AB0529091C00224B00FC4D42 /* SavedArticleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0529081C00224B00FC4D42 /* SavedArticleManager.m */; };
 		AB05290C1C00288F00FC4D42 /* ReadArticlesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB05290B1C00288F00FC4D42 /* ReadArticlesTableViewCell.m */; };
 		AB60339D1C04146A00E9D727 /* AggregatedAnalysisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB60339C1C04146900E9D727 /* AggregatedAnalysisViewController.m */; };
+		AB675E1D1C04D6AA000ADB02 /* refactoringFile in Resources */ = {isa = PBXBuildFile; fileRef = AB675E1C1C04D6AA000ADB02 /* refactoringFile */; };
 		AB884DDF1C00CB6800A85496 /* DetailReadArticlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB884DDE1C00CB6800A85496 /* DetailReadArticlesViewController.m */; };
 		AB884E071C02132600A85496 /* DirectionalTone.m in Sources */ = {isa = PBXBuildFile; fileRef = AB884E061C02132600A85496 /* DirectionalTone.m */; };
 /* End PBXBuildFile section */
@@ -74,6 +75,7 @@
 		AB05290B1C00288F00FC4D42 /* ReadArticlesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadArticlesTableViewCell.m; sourceTree = "<group>"; };
 		AB60339B1C04146900E9D727 /* AggregatedAnalysisViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AggregatedAnalysisViewController.h; sourceTree = "<group>"; };
 		AB60339C1C04146900E9D727 /* AggregatedAnalysisViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AggregatedAnalysisViewController.m; sourceTree = "<group>"; };
+		AB675E1C1C04D6AA000ADB02 /* refactoringFile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = refactoringFile; sourceTree = "<group>"; };
 		AB884DDD1C00CB6800A85496 /* DetailReadArticlesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailReadArticlesViewController.h; sourceTree = "<group>"; };
 		AB884DDE1C00CB6800A85496 /* DetailReadArticlesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailReadArticlesViewController.m; sourceTree = "<group>"; };
 		AB884E051C02132600A85496 /* DirectionalTone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionalTone.h; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				89BADE761BFBCE79002F31FC /* Analysis */,
 				5030C2781BFA807200D3E3DB /* ArticleViewController.h */,
 				5030C2791BFA807200D3E3DB /* ArticleViewController.m */,
+				AB675E1C1C04D6AA000ADB02 /* refactoringFile */,
 				5030C2A91BFD1B7E00D3E3DB /* NewsSearchViewController.h */,
 				5030C2AA1BFD1B7E00D3E3DB /* NewsSearchViewController.m */,
 				50E83FCA1C0218C500B3FD5E /* SearchResultsTableViewController.h */,
@@ -287,6 +290,7 @@
 				50E83FD31C0219D100B3FD5E /* ArticleTableViewCell.xib in Resources */,
 				89CF8A5D1C0231DD00922F2F /* Rockwell.ttf in Resources */,
 				5079DC321BED7D32009AAD8F /* LaunchScreen.storyboard in Resources */,
+				AB675E1D1C04D6AA000ADB02 /* refactoringFile in Resources */,
 				5079DC2F1BED7D32009AAD8F /* Assets.xcassets in Resources */,
 				5030C2681BF92FFA00D3E3DB /* Main.storyboard in Resources */,
 			);

@@ -127,63 +127,20 @@
                     @"text": textToAnalyze}
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               
-              NSString *data = responseObject[@"output"][@"result"];
+               self.data = responseObject[@"output"][@"result"];
               
               if ([typeOfAnalysisForDatumBox isEqualToString:@"Sentiment"]) {
-                  self.detailArticle.sentimentAnalysis = data;
-                     SavedArticleManager.sharedManager.myAccount.savedArticleArray.lastObject.sentimentAnalysis = self.detailArticle.sentimentAnalysis;
-                  
-                  
-                  if ([self.detailArticle.sentimentAnalysis isEqualToString: @"positive"]) {
-                      SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalPositiveToneCount =  SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalPositiveToneCount +1;
-                      NSLog(@"Positive Tone Count:, %ld",(long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalPositiveToneCount);
-                  }
-                  
-                  else if ([self.detailArticle.sentimentAnalysis isEqualToString: @"negative"]) {
-                      SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNegativeToneCount =  SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNegativeToneCount +1;
-                      NSLog(@"Negative Tone Count:, %ld", (long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNegativeToneCount);
-                      
-                  }
-                  
-                  else if ([self.detailArticle.sentimentAnalysis isEqualToString: @"neutral"]) {
-                      SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNegativeToneCount =  SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNeutralToneCount +1;
-                      
-                      NSLog(@"Neutral tone count:, %ld", (long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNeutralToneCount);
-                      
-                      
-                  }
-                  
+                self.detailArticle.sentimentAnalysis = self.data;
+                SavedArticleManager.sharedManager.myAccount.savedArticleArray.lastObject.sentimentAnalysis = self.detailArticle.sentimentAnalysis;
+                  [self totalTone];
               }
-                      //adding to the counts of the subjectivity/objectivity aggregator---------------------
 
             if ([typeOfAnalysisForDatumBox isEqualToString:@"Subjectivity"]){
-                          self.detailArticle.subjectivityAnalysis = data;
+                          self.detailArticle.subjectivityAnalysis = self.data;
                           
                           SavedArticleManager.sharedManager.myAccount.savedArticleArray.lastObject.sentimentAnalysis = self.detailArticle.sentimentAnalysis;
-                          
-                          if ([self.detailArticle.subjectivityAnalysis isEqualToString:@"objective"]) {
-                              SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount =                        SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount +1;
-                              
-                              NSLog(@"Total objectivity count:, %ld",(long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount);
-                          }
-                          else if ([self.detailArticle.subjectivityAnalysis isEqualToString:@"subjective"]){
-                              
-                              SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount =                        SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalsubjectiveArticleCount +1;
-                              
-                              
-                              NSLog(@"Total subjectivity count:, %ld",(long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalsubjectiveArticleCount);
-                          }
-
-
                 
-
-                      
-              
-              
-              
-              
-
-                   
+                          [self totalSubjectivity];
                    
                   NSLog(@"%@", self.detailArticle.subjectivityAnalysis);
                   NSLog(@"%@", self.detailArticle.sentimentAnalysis);
@@ -195,6 +152,48 @@
     
 }
 
+-(void)totalTone{
+    
+    if ([self.detailArticle.sentimentAnalysis isEqualToString: @"positive"]) {
+        SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalPositiveToneCount =  SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalPositiveToneCount +1;
+        NSLog(@"Positive Tone Count:, %ld",(long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalPositiveToneCount);
+    }
+    
+    else if ([self.detailArticle.sentimentAnalysis isEqualToString: @"negative"]) {
+        SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNegativeToneCount =  SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNegativeToneCount +1;
+        NSLog(@"Negative Tone Count:, %ld", (long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNegativeToneCount);
+        
+    }
+    
+    else if ([self.detailArticle.sentimentAnalysis isEqualToString: @"neutral"]) {
+        SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNegativeToneCount =  SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNeutralToneCount +1;
+        
+        NSLog(@"Neutral tone count:, %ld", (long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNeutralToneCount);
+        
+        
+    }
+
+}
+
+
+-(void)totalSubjectivity{
+    
+    
+    if ([self.detailArticle.subjectivityAnalysis isEqualToString:@"objective"]) {
+        SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount =                        SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount +1;
+        
+        NSLog(@"Total objectivity count:, %ld",(long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount);
+    }
+    else if ([self.detailArticle.subjectivityAnalysis isEqualToString:@"subjective"]){
+        
+        SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount =                        SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalsubjectiveArticleCount +1;
+        
+        
+        NSLog(@"Total subjectivity count:, %ld",(long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalsubjectiveArticleCount);
+    }
+
+    
+}
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {

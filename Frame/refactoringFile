@@ -1,0 +1,49 @@
+- (void)analysis:(NSString *)typeOfAnalysisForDatumBox onText:(NSString *)textToAnalyze withManager:(AFHTTPRequestOperationManager *)manager{
+
+NSString *urlString = [NSString stringWithFormat:@"http://api.datumbox.com/1.0/%@Analysis.json", typeOfAnalysisForDatumBox];
+
+[manager POST:urlString
+parameters:@{@"api_key": @"8fe3f49401d945d0ca257445a6b1abef",
+@"text": textToAnalyze}
+success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+self.data = responseObject[@"output"][@"result"];
+
+if ([typeOfAnalysisForDatumBox isEqualToString:@"Sentiment"]) {
+self.detailArticle.sentimentAnalysis = self.data;
+SavedArticleManager.sharedManager.myAccount.savedArticleArray.lastObject.sentimentAnalysis = self.detailArticle.sentimentAnalysis;
+
+[self aggregateSentiment];
+}
+//adding to the counts of the subjectivity/objectivity aggregator---------------------
+
+if ([typeOfAnalysisForDatumBox isEqualToString:@"Subjectivity"]){
+self.detailArticle.subjectivityAnalysis = self.data;
+
+SavedArticleManager.sharedManager.myAccount.savedArticleArray.lastObject.sentimentAnalysis = self.detailArticle.sentimentAnalysis;
+
+[self aggregateTone];
+
+NSLog(@"Total subjectivity count:, %ld",(long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalsubjectiveArticleCount);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+NSLog(@"%@", self.detailArticle.subjectivityAnalysis);
+NSLog(@"%@", self.detailArticle.sentimentAnalysis);
+}
+
+} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+NSLog(@"Error: %@", error);
+}];
+
+}
