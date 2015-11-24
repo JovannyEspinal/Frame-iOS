@@ -34,7 +34,23 @@
 //        self.savedArticleArray = [[NSMutableArray alloc] init];
         self.myAccount= [[User alloc] init];
         self.myAccount.savedArticleArray = [[NSMutableArray alloc] init];
+
+        //Version one aggregator for user bias
+            // political aggregator
+        self.myAccount.usersTotalBias.totalConservativeCount = 0;
+        self.myAccount.usersTotalBias.totalLiberalCount = 0;
+        self.myAccount.usersTotalBias.totalGreenCOUNT = 0;
+        self.myAccount.usersTotalBias.totalLibertarianCount=0;
         
+            // objectivity/subjectivity aggregator
+        self.myAccount.usersTotalBias.totalsubjectiveArticleCount =0;
+        self.myAccount.usersTotalBias.totalObjectiveArticleCount = 0;
+        
+            // positivity/negativity/neutrality aggregator
+        self.myAccount.usersTotalBias.totalPositiveToneCount = 0;
+        self.myAccount.usersTotalBias.totalNegativeToneCount = 0;
+        self.myAccount.usersTotalBias.totalNeutralToneCount  = 0;
+
     }
     return self;
 }

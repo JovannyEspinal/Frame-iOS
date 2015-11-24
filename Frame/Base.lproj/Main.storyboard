@@ -311,6 +311,88 @@
             </objects>
             <point key="canvasLocation" x="3264" y="-749"/>
         </scene>
+        <!--Aggregated Analysis View Controller-->
+        <scene sceneID="Ek8-AC-2OF">
+            <objects>
+                <viewController id="aGl-vm-heN" customClass="AggregatedAnalysisViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9y3-h2-h8t"/>
+                        <viewControllerLayoutGuide type="bottom" id="6EJ-6L-hjv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1Ar-b8-qcH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mLK-RQ-19T">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pGv-9i-LGb">
+                                        <rect key="frame" x="0.0" y="500" width="600" height="80"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6pd-Hs-cph">
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
+                                                <state key="normal" title="DISMISS"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="6pd-Hs-cph" firstAttribute="leading" secondItem="pGv-9i-LGb" secondAttribute="leading" id="B9Q-j5-Xup"/>
+                                            <constraint firstAttribute="bottom" secondItem="6pd-Hs-cph" secondAttribute="bottom" id="DeB-E5-HjU"/>
+                                            <constraint firstItem="6pd-Hs-cph" firstAttribute="top" secondItem="pGv-9i-LGb" secondAttribute="top" id="FLo-XP-Sp3"/>
+                                            <constraint firstAttribute="trailing" secondItem="6pd-Hs-cph" secondAttribute="trailing" id="gam-3k-pEO"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Subjectivity Count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGx-Sd-LPt">
+                                        <rect key="frame" x="429" y="115" width="140" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tone Count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IO0-sG-8Vs">
+                                        <rect key="frame" x="295" y="115" width="89" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="pGv-9i-LGb" firstAttribute="leading" secondItem="mLK-RQ-19T" secondAttribute="leading" constant="20" symbolic="YES" id="38s-PL-JJr"/>
+                                    <constraint firstItem="pGv-9i-LGb" firstAttribute="leading" secondItem="mLK-RQ-19T" secondAttribute="leading" id="7l6-RF-Gbk"/>
+                                    <constraint firstAttribute="bottom" secondItem="pGv-9i-LGb" secondAttribute="bottom" id="QhW-4E-a0A"/>
+                                    <constraint firstAttribute="bottom" secondItem="pGv-9i-LGb" secondAttribute="bottom" id="TJf-BS-hGj"/>
+                                    <constraint firstItem="pGv-9i-LGb" firstAttribute="top" secondItem="mLK-RQ-19T" secondAttribute="top" multiplier="4" id="cOv-tS-brJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="pGv-9i-LGb" secondAttribute="trailing" id="hzc-0A-WtS"/>
+                                    <constraint firstItem="pGv-9i-LGb" firstAttribute="top" secondItem="mLK-RQ-19T" secondAttribute="top" constant="500" id="pcD-2T-JOe"/>
+                                    <constraint firstAttribute="trailing" secondItem="pGv-9i-LGb" secondAttribute="trailing" id="yL6-21-RXj"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="38s-PL-JJr"/>
+                                        <exclude reference="TJf-BS-hGj"/>
+                                        <exclude reference="cOv-tS-brJ"/>
+                                        <exclude reference="yL6-21-RXj"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mLK-RQ-19T" firstAttribute="leading" secondItem="1Ar-b8-qcH" secondAttribute="leading" id="Q3R-Bs-oXN"/>
+                            <constraint firstAttribute="trailing" secondItem="mLK-RQ-19T" secondAttribute="trailing" id="ctf-YV-B2J"/>
+                            <constraint firstItem="6EJ-6L-hjv" firstAttribute="top" secondItem="mLK-RQ-19T" secondAttribute="bottom" id="gyf-00-0OC"/>
+                            <constraint firstItem="mLK-RQ-19T" firstAttribute="top" secondItem="9y3-h2-h8t" secondAttribute="bottom" id="jcs-PH-KRw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="SubjectivityCountLabel" destination="GGx-Sd-LPt" id="dHC-UL-Gxg"/>
+                        <outlet property="toneCountLabel" destination="IO0-sG-8Vs" id="M08-My-lGh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uks-Z7-azW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3996" y="-804"/>
+        </scene>
         <!--News View Controller-->
         <scene sceneID="6kj-lr-uPB">
             <objects>

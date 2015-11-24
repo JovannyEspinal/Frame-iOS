@@ -13,9 +13,10 @@
 
 
 @property (nonatomic) NSInteger  totalObjectiveArticleCount;
-@property (nonatomic) NSInteger  subjectiveArticleCount;
+@property (nonatomic) NSInteger  totalsubjectiveArticleCount;
 @property (nonatomic) NSInteger  totalPositiveToneCount;
 @property (nonatomic) NSInteger  totalNegativeToneCount;
+@property (nonatomic) NSInteger  totalNeutralToneCount;
 
 
 

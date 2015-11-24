@@ -11,6 +11,7 @@
 #import "LQNetworkManager.h"
 #import <AFNetworking/AFNetworking.h>
 #import "NewsViewController.h"
+#import "SavedArticleManager.h"
 
 @interface ArticleViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
@@ -130,10 +131,58 @@
               
               if ([typeOfAnalysisForDatumBox isEqualToString:@"Sentiment"]) {
                   self.detailArticle.sentimentAnalysis = data;
+                     SavedArticleManager.sharedManager.myAccount.savedArticleArray.lastObject.sentimentAnalysis = self.detailArticle.sentimentAnalysis;
+                  
+                  
+                  if ([self.detailArticle.sentimentAnalysis isEqualToString: @"positive"]) {
+                      SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalPositiveToneCount =  SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalPositiveToneCount +1;
+                      NSLog(@"Positive Tone Count:, %ld",(long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalPositiveToneCount);
+                  }
+                  
+                  else if ([self.detailArticle.sentimentAnalysis isEqualToString: @"negative"]) {
+                      SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNegativeToneCount =  SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNegativeToneCount +1;
+                      NSLog(@"Negative Tone Count:, %ld", (long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNegativeToneCount);
+                      
+                  }
+                  
+                  else if ([self.detailArticle.sentimentAnalysis isEqualToString: @"neutral"]) {
+                      SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNegativeToneCount =  SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNeutralToneCount +1;
+                      
+                      NSLog(@"Neutral tone count:, %ld", (long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNeutralToneCount);
+                      
+                      
+                  }
+
+                  
+                  
+                  
                   NSLog(@"%@", self.detailArticle.sentimentAnalysis);
               }
+              
+              
+              
                if ([typeOfAnalysisForDatumBox isEqualToString:@"Subjectivity"]){
                   self.detailArticle.subjectivityAnalysis = data;
+                   
+                   SavedArticleManager.sharedManager.myAccount.savedArticleArray.lastObject.sentimentAnalysis = self.detailArticle.sentimentAnalysis;
+                   
+                   //adding to the counts of the subjectivity/objectivity aggregator----------------------
+                   
+                   if ([self.detailArticle.subjectivityAnalysis isEqualToString:@"objective"]) {
+                       SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount =                        SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount +1;
+                       
+                               NSLog(@"Total objectivity count:, %ld",(long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount);
+                   }
+                   
+                   else if ([self.detailArticle.subjectivityAnalysis isEqualToString:@"subjective"]){
+                       
+                       SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount =                        SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalsubjectiveArticleCount +1;
+                       
+                       
+                       NSLog(@"Total subjectivity count:, %ld",(long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalsubjectiveArticleCount);
+                   }
+                   
+                   
                   NSLog(@"%@", self.detailArticle.subjectivityAnalysis);
               }
               
