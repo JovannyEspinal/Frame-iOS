@@ -14,7 +14,7 @@
 @property (nonatomic, strong) Article *detailArticle;
 
 
--(void)directionalToneAPI; 
+//-(void)directionalToneAPI;
 
 
 @end
