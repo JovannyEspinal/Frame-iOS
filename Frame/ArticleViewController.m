@@ -142,9 +142,10 @@
                 
                           [self totalSubjectivity];
                    
-                  NSLog(@"%@", self.detailArticle.subjectivityAnalysis);
-                  NSLog(@"%@", self.detailArticle.sentimentAnalysis);
-              }
+                               }
+              NSLog(@"%@", self.detailArticle.subjectivityAnalysis);
+              NSLog(@"%@", self.detailArticle.sentimentAnalysis);
+
               
           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"Error: %@", error);
