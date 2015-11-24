@@ -34,7 +34,7 @@
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSError* error = nil;
-    self.detailArticle.text = [NSString stringWithContentsOfURL:self.detailArticle.url encoding:nil error:error];
+    self.detailArticle.text = [NSString stringWithContentsOfURL:self.detailArticle.url encoding:nil error: &error];
     
     NSString *encodedArticleText = [self.detailArticle.text stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
     
