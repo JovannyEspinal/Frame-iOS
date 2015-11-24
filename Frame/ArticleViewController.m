@@ -155,32 +155,32 @@
 
                   
                   
-                  
+                  if ([typeOfAnalysisForDatumBox isEqualToString:@"Subjectivity"]){
+                      self.detailArticle.subjectivityAnalysis = data;
+                      
+                      SavedArticleManager.sharedManager.myAccount.savedArticleArray.lastObject.sentimentAnalysis = self.detailArticle.sentimentAnalysis;
+                      
+                      //adding to the counts of the subjectivity/objectivity aggregator----------------------
+                      
+                      if ([self.detailArticle.subjectivityAnalysis isEqualToString:@"objective"]) {
+                          SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount =                        SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount +1;
+                          
+                          NSLog(@"Total objectivity count:, %ld",(long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount);
+                      }
+                      
+                      else if ([self.detailArticle.subjectivityAnalysis isEqualToString:@"subjective"]){
+                          
+                          SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount =                        SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalsubjectiveArticleCount +1;
+                          
+                          
+                          NSLog(@"Total subjectivity count:, %ld",(long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalsubjectiveArticleCount);
+                      }
                   NSLog(@"%@", self.detailArticle.sentimentAnalysis);
               }
               
               
               
-               if ([typeOfAnalysisForDatumBox isEqualToString:@"Subjectivity"]){
-                  self.detailArticle.subjectivityAnalysis = data;
-                   
-                   SavedArticleManager.sharedManager.myAccount.savedArticleArray.lastObject.sentimentAnalysis = self.detailArticle.sentimentAnalysis;
-                   
-                   //adding to the counts of the subjectivity/objectivity aggregator----------------------
-                   
-                   if ([self.detailArticle.subjectivityAnalysis isEqualToString:@"objective"]) {
-                       SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount =                        SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount +1;
-                       
-                               NSLog(@"Total objectivity count:, %ld",(long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount);
-                   }
-                   
-                   else if ([self.detailArticle.subjectivityAnalysis isEqualToString:@"subjective"]){
-                       
-                       SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount =                        SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalsubjectiveArticleCount +1;
-                       
-                       
-                       NSLog(@"Total subjectivity count:, %ld",(long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalsubjectiveArticleCount);
-                   }
+
                    
                    
                   NSLog(@"%@", self.detailArticle.subjectivityAnalysis);
