@@ -11,11 +11,10 @@
 #import "Article.h"
 
 @interface ArticleViewController : UIViewController
-@property (nonatomic, strong) NSString *url;
+@property (nonatomic, strong) Article *detailArticle;
 
 
 -(void)directionalToneAPI; 
-
 
 
 @end

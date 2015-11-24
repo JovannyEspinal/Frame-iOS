@@ -153,11 +153,9 @@
     
     NSLog(@"%@", self.articleObjects[indexPath.row]);
     
-    detailViewController.url = self.articleObjects[indexPath.row].url;
-    
+    detailViewController.detailArticle = self.articleObjects[indexPath.row];
     //add the object to the Singleton Classes User properties array
     [SavedArticleManager.sharedManager.myAccount.savedArticleArray addObject:self.articleObjects[indexPath.row]];
-    
     detailViewController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailViewController animated:YES];
 }

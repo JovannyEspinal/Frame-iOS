@@ -12,10 +12,10 @@
 @interface AggregatedAnalysis : NSObject
 
 
-@property (strong, nonatomic) NSString *totalObjectiveArticleCount;
-@property (strong, nonatomic) NSString *subjectiveArticleCount;
-@property (strong, nonatomic) NSString *totalPositiveToneCount;
-@property (strong, nonatomic) NSString *totalNegativeToneCount;
+@property (nonatomic) NSInteger  totalObjectiveArticleCount;
+@property (nonatomic) NSInteger  subjectiveArticleCount;
+@property (nonatomic) NSInteger  totalPositiveToneCount;
+@property (nonatomic) NSInteger  totalNegativeToneCount;
 
 
 

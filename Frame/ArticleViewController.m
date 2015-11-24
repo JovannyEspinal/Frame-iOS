@@ -24,7 +24,7 @@
     
     
     // Loads webview with url
-    NSURL *url = [NSURL URLWithString:self.url];
+    NSURL *url = [NSURL URLWithString:self.detailArticle.url];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
     
     [self.webView loadRequest:urlRequest];
@@ -82,18 +82,16 @@
 
 -(void)directionalToneAPI   {
     
-    NSString* textToAnalyze;
-    NSString* APIKey = [NSString stringWithFormat:@"bdde6d0c11719557a37f27a1070b23990b11fc47"];
+ //   NSString* textToAnalyze;
+  //  NSString* APIKey = [NSString stringWithFormat:@"bdde6d0c11719557a37f27a1070b23990b11fc47"];
     NSString* alchemyURL = @"https://gateway-a.watsonplatform.net/calls/url/URLGetRelations";
-   
-  //  NSURL* alchemyURL = [NSURL URLWithString:url];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     
     [manager GET:alchemyURL
       parameters: @{@"apikey" : @"bdde6d0c11719557a37f27a1070b23990b11fc47",
-                    @"url"    : self.url,
+                    @"url"    : self.detailArticle.url,
                     @"outputMode" : @"json",
                     @"sentiment"  : @"1"
                     }
@@ -108,10 +106,10 @@
              NSLog(@"boo");
          }];
 
-
-
-
 }
+
+
+
 
 //- (void)analysis:(NSString *)typeOfAnalysisForDatumBox onText:(NSString *)textToAnalyze withManager:(AFHTTPRequestOperationManager *)manager{
 //    
