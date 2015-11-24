@@ -176,12 +176,12 @@
     
     else if ([self.detailArticle.sentimentAnalysis isEqualToString: @"neutral"]) {
         SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNegativeToneCount =  SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNeutralToneCount + 1;
-        NSLog(@"%@", self.detailArticle.sentimentAnalysis);
         NSLog(@"Neutral tone count:, %ld", (long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNeutralToneCount);
-        
-
 
     }
+
+   
+    NSLog(@"%@", self.detailArticle.sentimentAnalysis);
 
 }
 //-----------------------------------------------------------------------------------------------------------------------------------------------
@@ -191,6 +191,7 @@
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------
+
 //method checks the subjectivity value and adds it to the count of the respective property on the Aggregated Analysis
 
 -(void)totalSubjectivity{
@@ -200,12 +201,19 @@
         SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount = SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount +1;
         
         NSLog(@"Total objectivity count:, %ld",(long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount);
+        NSLog(@"Total subjectivity count:, %ld",(long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalsubjectiveArticleCount);
+
+        NSLog(@"%@", self.detailArticle.subjectivityAnalysis);
     }
-    else if ([self.detailArticle.subjectivityAnalysis isEqualToString:@"subjective"]){
+    
+    
+    if ([self.detailArticle.subjectivityAnalysis isEqualToString:@"subjective"]){
         
-        SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount = SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalsubjectiveArticleCount +1;
+        SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalsubjectiveArticleCount = SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalsubjectiveArticleCount +1;
         
         NSLog(@"Total subjectivity count:, %ld",(long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalsubjectiveArticleCount);
+        NSLog(@"Total objectivity count:, %ld",(long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount);
+
         NSLog(@"%@", self.detailArticle.subjectivityAnalysis);
 
     }
@@ -214,6 +222,9 @@
 
 
 
+//-------------------------------------------------------
+    
+    
 //-----------------------------------------------------------------------------------------------------------------------------------------------
 
     
