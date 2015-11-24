@@ -118,6 +118,9 @@
 //
 
 
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+
+//Method does the API Call and calls the methods that then add up the values for the Aggregated Analysis
 - (void)analysis:(NSString *)typeOfAnalysisForDatumBox onText:(NSString *)textToAnalyze withManager:(AFHTTPRequestOperationManager *)manager{
     
     NSString *urlString = [NSString stringWithFormat:@"http://api.datumbox.com/1.0/%@Analysis.json", typeOfAnalysisForDatumBox];
@@ -143,8 +146,6 @@
                           [self totalSubjectivity];
                    
                                }
-              NSLog(@"%@", self.detailArticle.subjectivityAnalysis);
-              NSLog(@"%@", self.detailArticle.sentimentAnalysis);
 
               
           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -152,7 +153,14 @@
           }];
     
 }
+//-----------------------------------------------------------------------------------------------------------------------------------------------
 
+
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+
+//method checks the tone value and adds it to the count of the respective property on the Aggregated Analysis
 -(void)totalTone{
     
     if ([self.detailArticle.sentimentAnalysis isEqualToString: @"positive"]) {
@@ -170,12 +178,20 @@
         SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNegativeToneCount =  SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNeutralToneCount +1;
         
         NSLog(@"Neutral tone count:, %ld", (long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNeutralToneCount);
-        
-        
+        NSLog(@"%@", self.detailArticle.sentimentAnalysis);
+
+
     }
 
 }
+//-----------------------------------------------------------------------------------------------------------------------------------------------
 
+
+
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+//method checks the subjectivity value and adds it to the count of the respective property on the Aggregated Analysis
 
 -(void)totalSubjectivity{
     
@@ -191,7 +207,15 @@
         
         
         NSLog(@"Total subjectivity count:, %ld",(long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalsubjectiveArticleCount);
+        NSLog(@"%@", self.detailArticle.subjectivityAnalysis);
+
     }
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------
 
     
 }
@@ -205,14 +229,14 @@
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    
-//    if ([segue.identifier isEqualToString:@"Analysis Modal"]) {
-//        AnalysisViewController *avc = segue.destinationViewController;
-////        avc.articleObject = self.articleObject;
-//    }
-//    
-//}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:@"Analysis Modal"]) {
+        AnalysisViewController *avc = segue.destinationViewController;
+        avc.articleObject = self.detailArticle;
+    }
+    
+}
 
 
 @end
