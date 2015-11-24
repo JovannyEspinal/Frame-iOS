@@ -152,31 +152,33 @@
                       
                       
                   }
-
                   
-                  
-                  if ([typeOfAnalysisForDatumBox isEqualToString:@"Subjectivity"]){
-                      self.detailArticle.subjectivityAnalysis = data;
-                      
-                      SavedArticleManager.sharedManager.myAccount.savedArticleArray.lastObject.sentimentAnalysis = self.detailArticle.sentimentAnalysis;
-                      
-                      //adding to the counts of the subjectivity/objectivity aggregator----------------------
-                      
-                      if ([self.detailArticle.subjectivityAnalysis isEqualToString:@"objective"]) {
-                          SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount =                        SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount +1;
-                          
-                          NSLog(@"Total objectivity count:, %ld",(long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount);
-                      }
-                      
-                      else if ([self.detailArticle.subjectivityAnalysis isEqualToString:@"subjective"]){
-                          
-                          SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount =                        SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalsubjectiveArticleCount +1;
-                          
-                          
-                          NSLog(@"Total subjectivity count:, %ld",(long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalsubjectiveArticleCount);
-                      }
-                  NSLog(@"%@", self.detailArticle.sentimentAnalysis);
               }
+                      //adding to the counts of the subjectivity/objectivity aggregator---------------------
+
+            if ([typeOfAnalysisForDatumBox isEqualToString:@"Subjectivity"]){
+                          self.detailArticle.subjectivityAnalysis = data;
+                          
+                          SavedArticleManager.sharedManager.myAccount.savedArticleArray.lastObject.sentimentAnalysis = self.detailArticle.sentimentAnalysis;
+                          
+                          if ([self.detailArticle.subjectivityAnalysis isEqualToString:@"objective"]) {
+                              SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount =                        SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount +1;
+                              
+                              NSLog(@"Total objectivity count:, %ld",(long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount);
+                          }
+                          else if ([self.detailArticle.subjectivityAnalysis isEqualToString:@"subjective"]){
+                              
+                              SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount =                        SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalsubjectiveArticleCount +1;
+                              
+                              
+                              NSLog(@"Total subjectivity count:, %ld",(long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalsubjectiveArticleCount);
+                          }
+
+
+                
+
+                      
+              
               
               
               
@@ -184,6 +186,7 @@
                    
                    
                   NSLog(@"%@", self.detailArticle.subjectivityAnalysis);
+                  NSLog(@"%@", self.detailArticle.sentimentAnalysis);
               }
               
           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -202,14 +205,14 @@
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    if ([segue.identifier isEqualToString:@"Analysis Modal"]) {
-        AnalysisViewController *avc = segue.destinationViewController;
-//        avc.articleObject = self.articleObject;
-    }
-    
-}
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    
+//    if ([segue.identifier isEqualToString:@"Analysis Modal"]) {
+//        AnalysisViewController *avc = segue.destinationViewController;
+////        avc.articleObject = self.articleObject;
+//    }
+//    
+//}
 
 
 @end
