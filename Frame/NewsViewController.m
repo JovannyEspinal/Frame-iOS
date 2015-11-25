@@ -53,8 +53,14 @@
     [self breakingNews:manager addsArticle:setArticleArray];
     [self LayoutTableView];
     [self.tableView registerNib:[UINib nibWithNibName:@"ArticleTableViewCell" bundle:nil] forCellReuseIdentifier:@"NewsCell"];
+    
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+
+}
 
 -(void)breakingNews:(AFHTTPRequestOperationManager *)manager
         addsArticle:(void(^)(NSMutableArray *))callback
@@ -138,7 +144,13 @@
     
     cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"Analysis" backgroundColor:[UIColor blackColor] callback:^BOOL(MGSwipeTableCell *sender) {
         NSLog(@"%@", cell.headline.text);
-        [self performSegueWithIdentifier:@"AnalysisSegue" sender:self];
+        
+        AnalysisViewController *avc = [self.storyboard instantiateViewControllerWithIdentifier:@"AnalysisViewController"];
+        avc.articleObject = self.articleObjects[indexPath.row];
+        
+        [self presentViewController:avc animated:YES completion:nil];
+        
+//        [self performSegueWithIdentifier:@"AnalysisSegue" sender:self];
         
         return true;
     }]];
@@ -159,24 +171,6 @@
     detailViewController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
-
-
-
-#pragma mark - Navigation
-
-
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-     
-     if ([segue.identifier isEqualToString:@"AnalysisSegue"]) {
-         NSIndexPath *path = [self.tableView indexPathForSelectedRow];
-         
-         AnalysisViewController *avc = [segue destinationViewController];
-         avc.articleObject = self.articleObjects[path.row];
-     }
-     
-     
- }
 
 
 

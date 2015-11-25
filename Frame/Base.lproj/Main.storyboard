@@ -541,7 +541,7 @@
         <!--Analysis View Controller-->
         <scene sceneID="Vyz-pn-Lqp">
             <objects>
-                <viewController id="pGN-dh-PGf" customClass="AnalysisViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AnalysisViewController" id="pGN-dh-PGf" customClass="AnalysisViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YyA-Ls-tvF"/>
                         <viewControllerLayoutGuide type="bottom" id="SLk-zN-QbY"/>

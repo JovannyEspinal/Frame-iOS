@@ -25,6 +25,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
     NSURL *url = [NSURL URLWithString:self.articleObject.url];
     
     NSError* error = nil;
@@ -65,7 +71,7 @@
         [self.view addSubview:legend];
         
         [self.view addSubview:self.pieChart];
-
+        
     };
     
     
@@ -74,9 +80,8 @@
     [[LQNetworkManager sharedManager] setApiKey:@"9b41f9a9dec46968939722b005f52be4"];
     
     [self politicalAnalysis:self.articleObject analysis:politicalAnalysisBlock];
+    
 
-    
-    
 }
 
 -(void)politicalAnalysis:(Article *)articleObject
@@ -104,7 +109,7 @@
         articleObject.libertarian = libertarian;
         
         callback(articleObject);
-        NSLog(@"%f", self.articleObject.libertarian);
+        NSLog(@"%f", articleObject.libertarian);
     }];
     
 }
