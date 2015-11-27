@@ -9,6 +9,8 @@
 #import "UserProfileViewController.h"
 #import "SavedArticleManager.h"
 #import "ReadArticlesTableViewCell.h"
+#import "NewsTableViewCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface UserProfileViewController ()
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -23,8 +25,10 @@
     
     self.navigationController.navigationBar.topItem.title = @"Profile";
     
+    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    [self.tableView registerNib:[UINib nibWithNibName:@"ArticleTableViewCell" bundle:nil] forCellReuseIdentifier:@"ReadArticleIdentifier"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -52,12 +56,21 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    ReadArticlesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReadArticleIdentifier" forIndexPath:indexPath];
+    NewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReadArticleIdentifier" forIndexPath:indexPath];
     
     Article *article = [SavedArticleManager sharedManager].myAccount.savedArticleArray[indexPath.row];
     cell.textLabel.text = article.headline;
     
+    [cell.articleImage sd_setImageWithURL:[NSURL URLWithString:article.imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        cell.articleImage.image = image;
+    }];
+
+    
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 202.0;
 }
 
 

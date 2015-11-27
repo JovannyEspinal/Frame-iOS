@@ -51,6 +51,7 @@ PODS:
   - UIColor+BFPaperColors (1.7.2)
   - UICountingLabel (1.2.0)
   - Unirest (1.1.4)
+  - WeightedWordCloud (0.1.0)
 
 DEPENDENCIES:
   - AFWebViewController (~> 1.0)
@@ -63,6 +64,7 @@ DEPENDENCIES:
   - PNChart
   - SDWebImage (~> 3.7)
   - Unirest
+  - WeightedWordCloud (= 0.1.0)
 
 SPEC CHECKSUMS:
   AFNetworking: 7f317038a9710cabfa43ec56396b307b45df72ab
@@ -80,5 +82,6 @@ SPEC CHECKSUMS:
   UIColor+BFPaperColors: 03101fe6c10ed00c6daae7c26553f1de41500853
   UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
   Unirest: 5e4d93eaf32463bf619a4ecd3bbc8c32acf21eac
+  WeightedWordCloud: 74fbd3b6ee0bbdad88e5ea5f6ffbf561cc9ca74c
 
 COCOAPODS: 0.38.2

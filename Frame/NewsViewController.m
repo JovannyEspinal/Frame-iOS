@@ -150,8 +150,6 @@
         
         [self presentViewController:avc animated:YES completion:nil];
         
-//        [self performSegueWithIdentifier:@"AnalysisSegue" sender:self];
-        
         return true;
     }]];
     

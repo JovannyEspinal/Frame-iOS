@@ -12,11 +12,16 @@
 #import "PNChart.h"
 #import "LQNetworkManager.h"
 #import <ChameleonFramework/Chameleon.h>
+#import <WeightedWordCloud/HITWeightedWordCloud.h>
 
 
 @interface AnalysisViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *sentimentLabel;
 @property (weak, nonatomic) IBOutlet UILabel *subjectivityLabel;
+@property (nonatomic) NSMutableDictionary *wordCloudData;
+@property (strong, nonatomic) IBOutlet UIImageView *wordCloudImage;
+@property (nonatomic) HITWeightedWordCloud *wordCLoud;
+
 @property (nonatomic) PNPieChart *pieChart;
 @end
 
@@ -24,6 +29,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.wordCloudData = [[NSMutableDictionary alloc] init];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    void(^setWordCloud)(NSMutableDictionary *);
+    
+    setWordCloud = ^(NSMutableDictionary *wordCloudDictionary){
+        self.wordCLoud = [[HITWeightedWordCloud alloc] initWithSize:CGSizeMake(CGRectGetWidth(self.view.bounds), 200)];
+        self.wordCLoud.textColor = [UIColor whiteColor];
+        self.wordCLoud.scale = [[UIScreen mainScreen] scale];
+        
+        [self.wordCloudImage setImage:[self.wordCLoud imageWithWords:wordCloudDictionary]];
+    };
+    
+    [self loadWordCloud:manager intoArray:setWordCloud];
+    
     
     
 }
@@ -45,17 +67,16 @@
         NSArray *items = @[[PNPieChartDataItem dataItemWithValue:articleObject.liberal color:FlatRed description:@"Liberal"],
                            [PNPieChartDataItem dataItemWithValue:articleObject.green color:FlatGreen description:@"Green"],
                            [PNPieChartDataItem dataItemWithValue:articleObject.conservative color:FlatSkyBlue description:@"Conservative"],
-                           [PNPieChartDataItem dataItemWithValue:articleObject.libertarian color:FlatYellow description:@"Libertarian"]
+                           [PNPieChartDataItem dataItemWithValue:articleObject.libertarian color:FlatYellow description:@"Libertarian"],
                            ];
         
-        self.pieChart = [[PNPieChart alloc] initWithFrame:CGRectMake(SCREEN_WIDTH /2.0 - 100, 240, 240.0, 240.0) items:items];
-        self.pieChart.center = self.view.center;
+        self.pieChart = [[PNPieChart alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2.0 + 60, 380, 120.0, 120.0) items:items];
         self.pieChart.descriptionTextColor = [UIColor whiteColor];
         self.pieChart.descriptionTextFont  = [UIFont fontWithName:@"Avenir" size:11.0];
         self.pieChart.descriptionTextFont = [UIFont boldSystemFontOfSize:12.0f];
         self.pieChart.descriptionTextShadowColor = [UIColor clearColor];
         self.pieChart.showAbsoluteValues = NO;
-        self.pieChart.showOnlyValues = NO;
+        self.pieChart.showOnlyValues = YES;
         [self.pieChart strokeChart];
         
         
@@ -65,7 +86,7 @@
         self.pieChart.legendFontColor = [UIColor flatWhiteColor];
         
         UIView *legend = [self.pieChart getLegendWithMaxWidth:200];
-        [legend setFrame:CGRectMake(150, 470, legend.frame.size.width, legend.frame.size.height)];
+        [legend setFrame:CGRectMake(265, 510, legend.frame.size.width, legend.frame.size.height)];
         
         
         [self.view addSubview:legend];
@@ -73,7 +94,6 @@
         [self.view addSubview:self.pieChart];
         
     };
-    
     
     
     //Sets API for Indico API
@@ -113,6 +133,44 @@
     }];
     
 }
+
+- (void)loadWordCloud:(AFHTTPRequestOperationManager *)manager
+            intoArray:(void(^)(NSMutableDictionary *))callback{
+    
+    NSString* alchemyURL = @"https://gateway-a.watsonplatform.net/calls/url/URLGetRankedKeywords";
+    
+    [manager GET:alchemyURL
+      parameters: @{@"apikey" : @"bdde6d0c11719557a37f27a1070b23990b11fc47",
+                    @"url"    : self.articleObject.url,
+                    @"outputMode" : @"json",
+                    @"sentiment"  : @"1"
+                    }
+     
+     
+         success:^(AFHTTPRequestOperation *operation, id responseObject){
+             
+             NSArray *keywords = responseObject[@"keywords"];
+             NSLog(@"%@", keywords);
+             
+             for (NSDictionary *object in keywords) {
+                 NSString *keyword = object[@"text"];
+                 NSString *relevance = object[@"relevance"];
+                 double relevanceDouble = [relevance doubleValue] * 1000.00;
+                 NSNumber *relevanceNumber = [NSNumber numberWithDouble:relevanceDouble];
+                 
+                 [self.wordCloudData setObject:relevanceNumber forKey:keyword];
+                 
+             }
+             callback(self.wordCloudData);
+             NSLog(@"%@", self.wordCloudData);
+         }
+     
+         failure:^(AFHTTPRequestOperation *operation, NSError* error){
+             NSLog(@"%@", error);
+             NSLog(@"boo");
+         }];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

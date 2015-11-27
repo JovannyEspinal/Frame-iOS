@@ -8,3 +8,4 @@ pod 'ChameleonFramework'
 pod "APLSearchBar"
 pod 'BFPaperTabBarController'
 pod 'MGSwipeTableCell'
+pod 'WeightedWordCloud', '0.1.0'
