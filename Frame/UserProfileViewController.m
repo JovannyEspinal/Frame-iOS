@@ -15,12 +15,16 @@
 #import "DetailReadArticlesViewController.h"
 #import <KOPopupView/KOPopupView.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
-
+#import <AFNetworking/AFNetworking.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <KOPopupView/KOPopupView.h>
 
 
 
 @interface UserProfileViewController ()
 
+@property (nonatomic, strong) KOPopupView *popup;
+@property (nonatomic, strong) UIView* aggregateAnalysisView;
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
@@ -65,9 +69,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReadArticleIdentifier" forIndexPath:indexPath];
     
-  //  cell.delegate = self;
+    //Cell below inherits from MGSwipeTableCell
+    NewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReadArticleIdentifier" forIndexPath:indexPath];
     
     Article *article = [SavedArticleManager sharedManager].myAccount.savedArticleArray[indexPath.row];
     cell.textLabel.text = article.headline;
@@ -76,9 +80,17 @@
 //        cell.articleImage.image = image;
 //    }];
 
+    
+    
+    
+    //initialize Pocket and FB buttons with MGSWipe Cocoapod Class
     cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"Pocket" backgroundColor:[UIColor redColor]],
                           [MGSwipeButton buttonWithTitle:@"Share" backgroundColor:[UIColor lightGrayColor]]];
+   
     
+    //------------------------------------------------------------------------------------------------------
+    //call back block to analyze articles below
+
     cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"Analysis" backgroundColor:[UIColor blackColor] callback:^BOOL(MGSwipeTableCell *sender) {
         //NSLog(@"%@", cell.headline.text);
         
@@ -89,44 +101,100 @@
         
         return true;
     }]];
-
+ 
+    
+    //------------------------------------------------------------------------------------------------------
+    //call back block to save to Pocket below
+    
+    [MGSwipeButton buttonWithTitle:@"Pocket" backgroundColor:[UIColor lightGrayColor] callback:^BOOL(MGSwipeTableCell *sender) {
+        
+        [self callPocketAPI:article.url];
+        
+        return true;
+    }];
+  
+    
+    //------------------------------------------------------------------------------------------------------
+    //call back block to share articles on Facebook below
+    
+    [MGSwipeButton buttonWithTitle:@"Share" backgroundColor:[UIColor lightGrayColor] callback:^BOOL(MGSwipeTableCell *sender) {
+        
+        [self callFacebookShareAPI:article.url];
+        
+        return true;
+    }];
     
     cell.rightSwipeSettings.transition = MGSwipeTransitionBorder;
     return cell;
 }
 
+    
+    
 
-//-(BOOL) swipeTableCell:(MGSwipeTableCell*) cell tappedButtonAtIndex:(NSInteger) index direction:(MGSwipeDirection)direction fromExpansion:(BOOL) fromExpansion{
-//    
-//    //delegate method for which button is tapped
-//    
-//    
-//    if(PocketButtonTapped){
-//        
-//        call Pocket API
-//    }
-//    
-//    else if (ShareButtonTapped){
-//        call fb API
-//    }
-//    
-//    
-//    
-//    return true;
-//}
-//
-//
-//
-//
-//-(void)callFBShareAPI{
-//    
-//    
-//}
-//
-//
-//-(void)CallPocketShareAPI{
-//    
-//}
+
+
+
+-(void)callPocketAPI:(NSString *)articleURL{
+    
+    
+       NSString* textToAnalyze;
+       NSString* APIKey = [NSString stringWithFormat:@"48589-8599c7f45f7317f60c1964bf"];
+       NSString* pocketURL = @"https://getpocket.com/v3/add";
+    
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    
+        [manager GET:pocketURL
+          parameters: @{@"APIKey" : @"bdde6d0c11719557a37f27a1070b23990b11fc47",
+                        @"url"    :  articleURL,
+                        @"outputMode" : @"json",
+                    
+                        }
+    
+    
+             success:^(AFHTTPRequestOperation *operation, id responseObject){
+                 NSLog(@"%@",[responseObject description]);
+             }
+    
+             failure:^(AFHTTPRequestOperation *operation, NSError* error){
+                 NSLog(@"%@", error);
+                 NSLog(@"boo");
+             }];
+
+    
+}
+
+
+
+
+
+
+
+
+-(void)callFacebookShareAPI:(NSString *)articleURL {
+    
+    
+    
+    
+    
+    
+}
+
+- (IBAction)biasViewButtonTapped:(id)sender {
+    
+    if(!self.popup)
+        self.popup = [KOPopupView popupView];
+    [self.popup.handleView addSubview:self.aggregateAnalysisView];
+    self.aggregateAnalysisView.center = CGPointMake(self.popup.handleView.frame.size.width/1.5,
+                                        self.popup.handleView.frame.size.height/1.5);
+    [self.popup show];
+    
+}
+
+
+
+
+
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 //    return 202.0;
 //}

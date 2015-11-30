@@ -31,9 +31,12 @@
 {
     self = [super init];
     if (self) {
-//        self.savedArticleArray = [[NSMutableArray alloc] init];
+        
+        //user class
         self.myAccount= [[User alloc] init];
+        //users agreggated bias
         self.myAccount.usersTotalBias = [[AggregatedAnalysis alloc] init];
+        //array that stores article objects
         self.myAccount.savedArticleArray = [[NSMutableArray alloc] init];
 
         //Version one aggregator for user bias

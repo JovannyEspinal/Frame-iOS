@@ -17,7 +17,7 @@
 @property (nonatomic) NSInteger  totalPositiveToneCount;
 @property (nonatomic) NSInteger  totalNegativeToneCount;
 @property (nonatomic) NSInteger  totalNeutralToneCount;
-
+@property (nonatomic) NSInteger   sumOfAllTones;
 
 
 

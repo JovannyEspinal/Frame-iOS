@@ -48,6 +48,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bX1-i6-Pwe">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="160"/>
                                                 <state key="normal" title="See My Bias! "/>
+                                                <connections>
+                                                    <action selector="biasViewButtonTapped:" destination="dYW-9F-0bY" eventType="touchUpInside" id="8eW-54-yyA"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>

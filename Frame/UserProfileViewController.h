@@ -18,4 +18,11 @@ UITableViewDataSource>
 @property (strong, nonatomic) NSMutableArray* readArticlesOnProfile;
 @property (strong, nonatomic) NSMutableArray* bookmarkedArticles;
 
+
+-(void)callPocketAPI:(NSString*)articleURL;
+-(void)callFacebookShareAPI:(NSString*)articleURL;
+
+- (IBAction)biasViewButtonTapped:(id)sender;
+
+
 @end
