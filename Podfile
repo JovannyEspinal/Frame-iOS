@@ -9,3 +9,6 @@ pod "APLSearchBar"
 pod 'BFPaperTabBarController'
 pod 'MGSwipeTableCell'
 pod 'WeightedWordCloud', '0.1.0'
+pod 'KOPopupView', '~> 0.1'
+pod 'FBSDKCoreKit', '~> 4.8'
+pod 'PocketAPI', '~> 1.0'

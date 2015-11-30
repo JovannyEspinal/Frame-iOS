@@ -11,8 +11,17 @@
 #import "ReadArticlesTableViewCell.h"
 #import "NewsTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "AnalysisViewController.h"
+#import "DetailReadArticlesViewController.h"
+#import <KOPopupView/KOPopupView.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+
+
+
 
 @interface UserProfileViewController ()
+
+
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -28,7 +37,7 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    [self.tableView registerNib:[UINib nibWithNibName:@"ArticleTableViewCell" bundle:nil] forCellReuseIdentifier:@"ReadArticleIdentifier"];
+//    [self.tableView registerNib:[UINib nibWithNibName:@"ArticleTableViewCell" bundle:nil] forCellReuseIdentifier:@"ReadArticleIdentifier"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -58,20 +67,69 @@
     
     NewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReadArticleIdentifier" forIndexPath:indexPath];
     
+  //  cell.delegate = self;
+    
     Article *article = [SavedArticleManager sharedManager].myAccount.savedArticleArray[indexPath.row];
     cell.textLabel.text = article.headline;
     
-    [cell.articleImage sd_setImageWithURL:[NSURL URLWithString:article.imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        cell.articleImage.image = image;
-    }];
+//    [cell.articleImage sd_setImageWithURL:[NSURL URLWithString:article.imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//        cell.articleImage.image = image;
+//    }];
+
+    cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"Pocket" backgroundColor:[UIColor redColor]],
+                          [MGSwipeButton buttonWithTitle:@"Share" backgroundColor:[UIColor lightGrayColor]]];
+    
+    cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"Analysis" backgroundColor:[UIColor blackColor] callback:^BOOL(MGSwipeTableCell *sender) {
+        //NSLog(@"%@", cell.headline.text);
+        
+        AnalysisViewController *avc = [self.storyboard instantiateViewControllerWithIdentifier:@"AnalysisViewController"];
+        avc.articleObject = article;
+        
+        [self presentViewController:avc animated:YES completion:nil];
+        
+        return true;
+    }]];
 
     
+    cell.rightSwipeSettings.transition = MGSwipeTransitionBorder;
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 202.0;
-}
+
+//-(BOOL) swipeTableCell:(MGSwipeTableCell*) cell tappedButtonAtIndex:(NSInteger) index direction:(MGSwipeDirection)direction fromExpansion:(BOOL) fromExpansion{
+//    
+//    //delegate method for which button is tapped
+//    
+//    
+//    if(PocketButtonTapped){
+//        
+//        call Pocket API
+//    }
+//    
+//    else if (ShareButtonTapped){
+//        call fb API
+//    }
+//    
+//    
+//    
+//    return true;
+//}
+//
+//
+//
+//
+//-(void)callFBShareAPI{
+//    
+//    
+//}
+//
+//
+//-(void)CallPocketShareAPI{
+//    
+//}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return 202.0;
+//}
 
 
 /*
@@ -108,15 +166,22 @@
  }
  */
 
-/*
+
+
+
  #pragma mark - Navigation
- 
+
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    
+//    
+//}
+
  // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+// - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//     
+//
+//   }
+// 
 
 
 @end

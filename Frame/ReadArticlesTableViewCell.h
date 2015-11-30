@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "SavedArticleManager.h"
 #import "UserProfileViewController.h"
-@interface ReadArticlesTableViewCell : UITableViewCell
+#import <MGSwipeTableCell/MGSwipeTableCell.h>
+
+
+@interface ReadArticlesTableViewCell : MGSwipeTableCell
 
 
 @property (nonatomic) Article* readArticle;
