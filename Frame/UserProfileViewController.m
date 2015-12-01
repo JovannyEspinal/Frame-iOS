@@ -22,6 +22,8 @@
 #import "AggregatedAnalysisView.h"
 #import <PocketAPI/PocketAPI.h>
 
+//kk
+
 
 @interface UserProfileViewController ()
 
@@ -161,16 +163,16 @@
     
     
     
-    [[PocketAPI sharedAPI] loginWithHandler: ^(PocketAPI *API, NSError *error){
-        if (error != nil)
-        {
-            NSLog(@"Yo its cool man but you messed up");
-        }
-        else
-        {
-            NSLog(@"Good job!");
-        }
-    }];
+//    [[PocketAPI sharedAPI] loginWithHandler: ^(PocketAPI *API, NSError *error){
+//        if (error != nil)
+//        {
+//            NSLog(@"Yo its cool man but you messed up");
+//        }
+//        else
+//        {
+//            NSLog(@"Good job!");
+//        }
+//    }];
     
 }
 
@@ -243,19 +245,7 @@
 
 
 
--(BOOL)application:(UIApplication *)application
-           openURL:(NSURL *)url
- sourceApplication:(NSString *)sourceApplication
-        annotation:(id)annotation{
-    
-    if([[PocketAPI sharedAPI] handleOpenURL:url]){
-        return YES;
-    }else{
-        // if you handle your own custom url-schemes, do it here
-        return NO;
-    }
-    
-}
+
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 //    return 202.0;

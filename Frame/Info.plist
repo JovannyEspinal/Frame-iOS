@@ -10,6 +10,7 @@
             <key>CFBundleURLSchemes</key>
             <array>
                 <string>pocketapp48589</string>
+                <string>pocket-oauth-v1</string>
             </array>
         </dict>
     </array>

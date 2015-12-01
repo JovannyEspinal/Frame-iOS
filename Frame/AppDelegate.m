@@ -8,13 +8,28 @@
 
 #import "AppDelegate.h"
 #import <ChameleonFramework/Chameleon.h>
-
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
 
+
+
+-(BOOL)application:(UIApplication *)application
+           openURL:(NSURL *)url
+ sourceApplication:(NSString *)sourceApplication
+        annotation:(id)annotation{
+    
+    if([[PocketAPI sharedAPI] handleOpenURL:url]){
+        return YES;
+    }else{
+        // if you handle your own custom url-schemes, do it here
+        return NO;
+    }
+    
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
