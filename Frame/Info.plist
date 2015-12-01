@@ -5,50 +5,45 @@
     <key>CFBundleURLTypes</key>
     <array>
         <dict>
+            <key>CFBundleURLName</key>
+            <string>com.readitlater</string>
             <key>CFBundleURLSchemes</key>
             <array>
-                <string>fb150984555259381</string>
+                <string>pocketapp48589</string>
             </array>
         </dict>
     </array>
-    <key>FacebookAppID</key>
-    <string>150984555259381</string>
-    <key>FacebookDisplayName</key>
-    <string>Frame</string>
-    <key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSExceptionDomains</key>
-        <dict>
-            <key>facebook.com</key>
-            <dict>
-                <key>NSIncludesSubdomains</key>
-                <true/>
-                <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
-                <false/>
-            </dict>
-            <key>fbcdn.net</key>
-            <dict>
-                <key>NSIncludesSubdomains</key>
-                <true/>
-                <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
-                <false/>
-            </dict>
-            <key>akamaihd.net</key>
-            <dict>
-                <key>NSIncludesSubdomains</key>
-                <true/>
-                <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
-                <false/>
-            </dict>
-        </dict>
-    </dict>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>fbapi</string>
-        <string>fb-messenger-api</string>
-        <string>fbauth2</string>
-        <string>fbshareextension</string>
-    </array>
+<!--	<key>CFBundleURLTypes</key>-->
+<!--	<array>-->
+<!--		<dict>-->
+<!--			<key>CFBundleURLSchemes</key>-->
+<!--			<array>-->
+<!--				<string>fb150984555259381</string>-->
+<!--				<string>frameNewsApp</string>-->
+<!--                <string>pocketapp9553</string>-->
+<!--			</array>-->
+<!--			<key>CFBundleURLName</key>-->
+<!--            <string>com.readitlater</string>-->
+<!--		</dict>-->
+<!--	</array>-->
+	<key>FacebookAppID</key>
+	<string>150984555259381</string>
+	<key>FacebookDisplayName</key>
+	<string>Frame</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSExceptionDomains</key>
+		<dict/>
+	</dict>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -69,13 +64,6 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-		<key>NSExceptionDomains</key>
-		<dict/>
-	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
