@@ -713,8 +713,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="7fW-75-vbG" kind="relationship" relationship="viewControllers" id="SNg-SE-iiO"/>
-                        <segue destination="Wl4-Py-uM9" kind="relationship" relationship="viewControllers" id="Irw-sC-g4o"/>
                         <segue destination="QtV-ev-ljV" kind="relationship" relationship="viewControllers" id="Ode-I5-vrG"/>
+                        <segue destination="Wl4-Py-uM9" kind="relationship" relationship="viewControllers" id="Irw-sC-g4o"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QfC-NT-Tzy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -750,7 +750,7 @@
         <scene sceneID="F62-II-uCl">
             <objects>
                 <navigationController id="Wl4-Py-uM9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="b5e-c4-j4F"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile-30x30" id="b5e-c4-j4F"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tfy-WX-5du">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -765,11 +765,11 @@
             </objects>
             <point key="canvasLocation" x="1772" y="-757"/>
         </scene>
-        <!--Item-->
+        <!--Search-->
         <scene sceneID="PHJ-xa-ynO">
             <objects>
                 <navigationController id="QtV-ev-ljV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="ea4-hW-XMO"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="search-icon-30x-30" id="ea4-hW-XMO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FQ2-0y-GIk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -786,6 +786,8 @@
     </scenes>
     <resources>
         <image name="news12-1" width="30" height="30"/>
+        <image name="profile-30x30" width="30" height="30"/>
+        <image name="search-icon-30x-30" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="LaN-zW-awX"/>
