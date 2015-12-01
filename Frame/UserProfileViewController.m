@@ -18,10 +18,16 @@
 #import <AFNetworking/AFNetworking.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <KOPopupView/KOPopupView.h>
+#import <PNChart/PNChart.h>
+#import "AggregatedAnalysisView.h"
+
 
 
 
 @interface UserProfileViewController ()
+
+
+@property (nonatomic) UIButton* dismissButtonTapped;
 
 @property (nonatomic, strong) KOPopupView *popup;
 @property (nonatomic, strong) UIView* aggregateAnalysisView;
@@ -35,6 +41,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    SavedArticleManager.sharedManager.myAccount.usersTotalBias.sumOfAllTones =  SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalPositiveToneCount +  SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNegativeToneCount + SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNeutralToneCount;
+  
+    SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectivityAndSubjectivity = SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalsubjectiveArticleCount + SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount;
+
+    
+    
+    self.aggregateAnalysisView  = [[KOPopupView alloc] initWithFrame:CGRectMake(0, -400, 500, 400)];
+    self.aggregateAnalysisView.backgroundColor = [UIColor redColor];
+    self.aggregateAnalysisView.alpha = 0.7;
     
     self.navigationController.navigationBar.topItem.title = @"Profile";
     
@@ -88,8 +104,8 @@
                           [MGSwipeButton buttonWithTitle:@"Share" backgroundColor:[UIColor lightGrayColor]]];
    
     
-    //------------------------------------------------------------------------------------------------------
-    //call back block to analyze articles below
+//------------------------------------------------------------------------------------------------------
+//call back block to analyze articles below
 
     cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"Analysis" backgroundColor:[UIColor blackColor] callback:^BOOL(MGSwipeTableCell *sender) {
         //NSLog(@"%@", cell.headline.text);
@@ -102,9 +118,8 @@
         return true;
     }]];
  
-    
-    //------------------------------------------------------------------------------------------------------
-    //call back block to save to Pocket below
+//------------------------------------------------------------------------------------------------------
+//call back block to save to Pocket below
     
     [MGSwipeButton buttonWithTitle:@"Pocket" backgroundColor:[UIColor lightGrayColor] callback:^BOOL(MGSwipeTableCell *sender) {
         
@@ -112,10 +127,10 @@
         
         return true;
     }];
-  
     
-    //------------------------------------------------------------------------------------------------------
-    //call back block to share articles on Facebook below
+    
+//------------------------------------------------------------------------------------------------------
+//call back block to share articles on Facebook below
     
     [MGSwipeButton buttonWithTitle:@"Share" backgroundColor:[UIColor lightGrayColor] callback:^BOOL(MGSwipeTableCell *sender) {
         
@@ -137,7 +152,6 @@
 -(void)callPocketAPI:(NSString *)articleURL{
     
     
-       NSString* textToAnalyze;
        NSString* APIKey = [NSString stringWithFormat:@"48589-8599c7f45f7317f60c1964bf"];
        NSString* pocketURL = @"https://getpocket.com/v3/add";
     
@@ -145,14 +159,14 @@
     
     
         [manager GET:pocketURL
-          parameters: @{@"APIKey" : @"bdde6d0c11719557a37f27a1070b23990b11fc47",
+          parameters: @{@"consumer_key" : APIKey,
                         @"url"    :  articleURL,
-                        @"outputMode" : @"json",
-                    
                         }
     
     
              success:^(AFHTTPRequestOperation *operation, id responseObject){
+                 
+                 
                  NSLog(@"%@",[responseObject description]);
              }
     
@@ -184,16 +198,51 @@
     
     if(!self.popup)
         self.popup = [KOPopupView popupView];
-    [self.popup.handleView addSubview:self.aggregateAnalysisView];
-    self.aggregateAnalysisView.center = CGPointMake(self.popup.handleView.frame.size.width/1.5,
-                                        self.popup.handleView.frame.size.height/1.5);
+   
+    
+    
+    NSArray *items = @[[PNPieChartDataItem dataItemWithValue:10 color:PNRed description:@"Negative"],
+                       [PNPieChartDataItem dataItemWithValue:20 color:PNBlue description:@"Positive"],
+                       [PNPieChartDataItem dataItemWithValue:40 color:PNGreen description:@"Neutral"],
+                       ];
+
+    
+    AggregatedAnalysisView* analyzedView = [[AggregatedAnalysisView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 40, self.view.frame.size.height - 40)];
+    analyzedView.backgroundColor = [UIColor blackColor];
+    
+    CGFloat width = (self.view.frame.size.width - 40) / 2.0;
+    CGSize frameSize = CGSizeMake(width, width);
+    
+    CGRect toneFrame = CGRectMake(0, analyzedView.center.y, frameSize.width, frameSize.height);
+    analyzedView.tonePieChart = [[PNPieChart alloc] initWithFrame:toneFrame items:items];
+    
+    CGRect objectiveFrame = CGRectMake(width, analyzedView.center.y, frameSize.width, frameSize.height);
+    analyzedView.objectiveSubjectivePieChart = [[PNPieChart alloc] initWithFrame:objectiveFrame items:@[items[0], items[1]]];
+    
+    
+    analyzedView.dismissViewButton = [[UIButton alloc] initWithFrame:CGRectMake(250,100,50, 50)];
+    
+    [self.popup.handleView addSubview:analyzedView];
+    self.dismissButtonTapped.titleLabel.text = @"Dismiss";
+    self.dismissButtonTapped.titleLabel.backgroundColor = [UIColor redColor];
+    
+    
+    [analyzedView addSubview:analyzedView.tonePieChart];
+    [analyzedView addSubview:analyzedView.objectiveSubjectivePieChart];
+    [analyzedView addSubview:analyzedView.dismissViewButton];
+    
+    analyzedView.center = self.popup.handleView.center;
+    analyzedView.dismissViewButton.backgroundColor = [UIColor whiteColor];
+   
+    //adds a target to (void)dismissPopup
+    [analyzedView.dismissViewButton addTarget:self action:@selector(dismissPopup) forControlEvents:UIControlEventTouchUpInside];
     [self.popup show];
     
 }
 
-
-
-
+- (void)dismissPopup {
+    [self.popup hideAnimated:YES];
+}
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 //    return 202.0;
