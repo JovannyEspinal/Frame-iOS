@@ -44,6 +44,11 @@
     [self textFieldShouldReturn:self.searchTextField];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    self.searchTextField.text = @"";
+}
 
 -(void)trendingTerms:(AFHTTPRequestOperationManager *) manager
          addsArticle:(void(^)(NSArray *))completion{
