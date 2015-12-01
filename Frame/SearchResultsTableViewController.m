@@ -13,6 +13,7 @@
 #import "SearchArticleViewController.h"
 #import "SavedArticleManager.h"
 #import "Article.h"
+#import "AnalysisViewController.h"
 
 @interface SearchResultsTableViewController ()
 @property (nonatomic) NSMutableArray *searchResultObjects;
@@ -131,9 +132,10 @@
     }];
     
     cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"Analysis" backgroundColor:[UIColor blackColor] callback:^BOOL(MGSwipeTableCell *sender) {
-        NSLog(@"%@", cell.headline.text);
-        [self performSegueWithIdentifier:@"AnalysisSegue" sender:self];
+        AnalysisViewController *avc = [self.storyboard instantiateViewControllerWithIdentifier:@"AnalysisViewController"];
+        avc.articleObject = self.searchResultObjects[indexPath.row];
         
+        [self presentViewController:avc animated:YES completion:nil];
         return true;
     }]];
     
