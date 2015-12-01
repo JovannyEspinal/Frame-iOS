@@ -8,7 +8,7 @@
 
 #import "ReadArticlesTableViewCell.h"
 
-@implementation ReadArticlesTableViewCell
+@implementation ReadArticlesTableViewCell 
 
 - (void)awakeFromNib {
     // Initialization code

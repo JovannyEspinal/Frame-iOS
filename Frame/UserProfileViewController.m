@@ -11,8 +11,27 @@
 #import "ReadArticlesTableViewCell.h"
 #import "NewsTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "AnalysisViewController.h"
+#import "DetailReadArticlesViewController.h"
+#import <KOPopupView/KOPopupView.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <AFNetworking/AFNetworking.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <KOPopupView/KOPopupView.h>
+#import <PNChart/PNChart.h>
+#import "AggregatedAnalysisView.h"
+
+
+
 
 @interface UserProfileViewController ()
+
+
+@property (nonatomic) UIButton* dismissButtonTapped;
+
+@property (nonatomic, strong) KOPopupView *popup;
+@property (nonatomic, strong) UIView* aggregateAnalysisView;
+
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -23,12 +42,22 @@
     [super viewDidLoad];
     
     
+    SavedArticleManager.sharedManager.myAccount.usersTotalBias.sumOfAllTones =  SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalPositiveToneCount +  SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNegativeToneCount + SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNeutralToneCount;
+  
+    SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectivityAndSubjectivity = SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalsubjectiveArticleCount + SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount;
+
+    
+    
+    self.aggregateAnalysisView  = [[KOPopupView alloc] initWithFrame:CGRectMake(0, -400, 500, 400)];
+    self.aggregateAnalysisView.backgroundColor = [UIColor redColor];
+    self.aggregateAnalysisView.alpha = 0.7;
+    
     self.navigationController.navigationBar.topItem.title = @"Profile";
     
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    [self.tableView registerNib:[UINib nibWithNibName:@"ArticleTableViewCell" bundle:nil] forCellReuseIdentifier:@"ReadArticleIdentifier"];
+//    [self.tableView registerNib:[UINib nibWithNibName:@"ArticleTableViewCell" bundle:nil] forCellReuseIdentifier:@"ReadArticleIdentifier"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -56,22 +85,168 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    
+    //Cell below inherits from MGSwipeTableCell
     NewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReadArticleIdentifier" forIndexPath:indexPath];
     
     Article *article = [SavedArticleManager sharedManager].myAccount.savedArticleArray[indexPath.row];
     cell.textLabel.text = article.headline;
     
-    [cell.articleImage sd_setImageWithURL:[NSURL URLWithString:article.imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        cell.articleImage.image = image;
-    }];
+//    [cell.articleImage sd_setImageWithURL:[NSURL URLWithString:article.imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//        cell.articleImage.image = image;
+//    }];
 
     
+    
+    
+    //initialize Pocket and FB buttons with MGSWipe Cocoapod Class
+    cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"Pocket" backgroundColor:[UIColor redColor]],
+                          [MGSwipeButton buttonWithTitle:@"Share" backgroundColor:[UIColor lightGrayColor]]];
+   
+    
+//------------------------------------------------------------------------------------------------------
+//call back block to analyze articles below
+
+    cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"Analysis" backgroundColor:[UIColor blackColor] callback:^BOOL(MGSwipeTableCell *sender) {
+        //NSLog(@"%@", cell.headline.text);
+        
+        AnalysisViewController *avc = [self.storyboard instantiateViewControllerWithIdentifier:@"AnalysisViewController"];
+        avc.articleObject = article;
+        
+        [self presentViewController:avc animated:YES completion:nil];
+        
+        return true;
+    }]];
+ 
+//------------------------------------------------------------------------------------------------------
+//call back block to save to Pocket below
+    
+    [MGSwipeButton buttonWithTitle:@"Pocket" backgroundColor:[UIColor lightGrayColor] callback:^BOOL(MGSwipeTableCell *sender) {
+        
+        [self callPocketAPI:article.url];
+        
+        return true;
+    }];
+    
+    
+//------------------------------------------------------------------------------------------------------
+//call back block to share articles on Facebook below
+    
+    [MGSwipeButton buttonWithTitle:@"Share" backgroundColor:[UIColor lightGrayColor] callback:^BOOL(MGSwipeTableCell *sender) {
+        
+        [self callFacebookShareAPI:article.url];
+        
+        return true;
+    }];
+    
+    cell.rightSwipeSettings.transition = MGSwipeTransitionBorder;
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 202.0;
+    
+    
+
+
+
+
+-(void)callPocketAPI:(NSString *)articleURL{
+    
+    
+       NSString* APIKey = [NSString stringWithFormat:@"48589-8599c7f45f7317f60c1964bf"];
+       NSString* pocketURL = @"https://getpocket.com/v3/add";
+    
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    
+        [manager GET:pocketURL
+          parameters: @{@"consumer_key" : APIKey,
+                        @"url"    :  articleURL,
+                        }
+    
+    
+             success:^(AFHTTPRequestOperation *operation, id responseObject){
+                 
+                 
+                 NSLog(@"%@",[responseObject description]);
+             }
+    
+             failure:^(AFHTTPRequestOperation *operation, NSError* error){
+                 NSLog(@"%@", error);
+                 NSLog(@"boo");
+             }];
+
+    
 }
+
+
+
+
+
+
+
+
+-(void)callFacebookShareAPI:(NSString *)articleURL {
+    
+    
+    
+    
+    
+    
+}
+
+- (IBAction)biasViewButtonTapped:(id)sender {
+    
+    if(!self.popup)
+        self.popup = [KOPopupView popupView];
+   
+    
+    
+    NSArray *items = @[[PNPieChartDataItem dataItemWithValue:10 color:PNRed description:@"Negative"],
+                       [PNPieChartDataItem dataItemWithValue:20 color:PNBlue description:@"Positive"],
+                       [PNPieChartDataItem dataItemWithValue:40 color:PNGreen description:@"Neutral"],
+                       ];
+
+    
+    AggregatedAnalysisView* analyzedView = [[AggregatedAnalysisView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 40, self.view.frame.size.height - 40)];
+    analyzedView.backgroundColor = [UIColor blackColor];
+    
+    CGFloat width = (self.view.frame.size.width - 40) / 2.0;
+    CGSize frameSize = CGSizeMake(width, width);
+    
+    CGRect toneFrame = CGRectMake(0, analyzedView.center.y, frameSize.width, frameSize.height);
+    analyzedView.tonePieChart = [[PNPieChart alloc] initWithFrame:toneFrame items:items];
+    
+    CGRect objectiveFrame = CGRectMake(width, analyzedView.center.y, frameSize.width, frameSize.height);
+    analyzedView.objectiveSubjectivePieChart = [[PNPieChart alloc] initWithFrame:objectiveFrame items:@[items[0], items[1]]];
+    
+    
+    analyzedView.dismissViewButton = [[UIButton alloc] initWithFrame:CGRectMake(250,100,50, 50)];
+    
+    [self.popup.handleView addSubview:analyzedView];
+    self.dismissButtonTapped.titleLabel.text = @"Dismiss";
+    self.dismissButtonTapped.titleLabel.backgroundColor = [UIColor redColor];
+    
+    
+    [analyzedView addSubview:analyzedView.tonePieChart];
+    [analyzedView addSubview:analyzedView.objectiveSubjectivePieChart];
+    [analyzedView addSubview:analyzedView.dismissViewButton];
+    
+    analyzedView.center = self.popup.handleView.center;
+    analyzedView.dismissViewButton.backgroundColor = [UIColor whiteColor];
+   
+    //adds a target to (void)dismissPopup
+    [analyzedView.dismissViewButton addTarget:self action:@selector(dismissPopup) forControlEvents:UIControlEventTouchUpInside];
+    [self.popup show];
+    
+}
+
+- (void)dismissPopup {
+    [self.popup hideAnimated:YES];
+}
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return 202.0;
+//}
 
 
 /*
@@ -108,15 +283,22 @@
  }
  */
 
-/*
+
+
+
  #pragma mark - Navigation
- 
+
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    
+//    
+//}
+
  // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+// - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//     
+//
+//   }
+// 
 
 
 @end

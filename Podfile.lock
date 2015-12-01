@@ -27,9 +27,25 @@ PODS:
   - ARChromeActivity (1.0.5)
   - BFPaperTabBarController (2.1.11):
     - UIColor+BFPaperColors
+  - Bolts (1.5.0):
+    - Bolts/AppLinks (= 1.5.0)
+    - Bolts/Tasks (= 1.5.0)
+  - Bolts/AppLinks (1.5.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.5.0)
   - ChameleonFramework (2.0.4):
     - ChameleonFramework/Default (= 2.0.4)
   - ChameleonFramework/Default (2.0.4)
+  - FBSDKCoreKit (4.8.0):
+    - Bolts (~> 1.1)
+    - FBSDKCoreKit/arc (= 4.8.0)
+    - FBSDKCoreKit/no-arc (= 4.8.0)
+  - FBSDKCoreKit/arc (4.8.0):
+    - Bolts (~> 1.1)
+  - FBSDKCoreKit/no-arc (4.8.0):
+    - Bolts (~> 1.1)
+    - FBSDKCoreKit/arc
+  - KOPopupView (0.1.0)
   - KSGallerySlidingCollectionView (0.0.1)
   - LQIndicoAPI (0.0.1):
     - LQIndicoAPI/AFNetworking (= 0.0.1)
@@ -44,6 +60,7 @@ PODS:
   - MGSwipeTableCell (1.5.3)
   - PNChart (0.8.7):
     - UICountingLabel (~> 1.2.0)
+  - PocketAPI (1.0.3)
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
@@ -58,10 +75,13 @@ DEPENDENCIES:
   - APLSearchBar
   - BFPaperTabBarController
   - ChameleonFramework
+  - FBSDKCoreKit (~> 4.8)
+  - KOPopupView (~> 0.1)
   - KSGallerySlidingCollectionView
   - LQIndicoAPI
   - MGSwipeTableCell
   - PNChart
+  - PocketAPI (~> 1.0)
   - SDWebImage (~> 3.7)
   - Unirest
   - WeightedWordCloud (= 0.1.0)
@@ -72,11 +92,15 @@ SPEC CHECKSUMS:
   APLSearchBar: 7bf1576a0858d15203b4a9ced5c2cfe7a165dc16
   ARChromeActivity: 821c7849b566f49583987468733a896fee35aa4d
   BFPaperTabBarController: 197befdaa258e3790664be49f7c979e38264d355
+  Bolts: 722ab9a4f8b50fc4ed1b9998a5a7a2b3f16d80b4
   ChameleonFramework: 5abe69b1f2a6cc79c3c435fcd9d3d855748225ee
+  FBSDKCoreKit: 66a935d17b6e00b6b64e604f2eb9b72c9ab7deb8
+  KOPopupView: c69c0314b192f8a2a04896fa3af95e2d8af6b44f
   KSGallerySlidingCollectionView: 5bb49a24dad3642bb8659212b39a36e6fae80b87
   LQIndicoAPI: c83fdc66467118d262cb649aebb905ab8d8fb14b
   MGSwipeTableCell: 5ae3b9a15efda26b201adc8676b24040febe6ff6
   PNChart: c1755716bbd45386d2035b2bf2ce73e6d3f8cb22
+  PocketAPI: 561fd4f428a38a4662c5837247c85f9962393f01
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   TUSafariActivity: afc55a00965377939107ce4fdc7f951f62454546
   UIColor+BFPaperColors: 03101fe6c10ed00c6daae7c26553f1de41500853
@@ -84,4 +108,4 @@ SPEC CHECKSUMS:
   Unirest: 5e4d93eaf32463bf619a4ecd3bbc8c32acf21eac
   WeightedWordCloud: 74fbd3b6ee0bbdad88e5ea5f6ffbf561cc9ca74c
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0

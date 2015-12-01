@@ -33,6 +33,7 @@
 		AB675E1D1C04D6AA000ADB02 /* refactoringFile in Resources */ = {isa = PBXBuildFile; fileRef = AB675E1C1C04D6AA000ADB02 /* refactoringFile */; };
 		AB884DDF1C00CB6800A85496 /* DetailReadArticlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB884DDE1C00CB6800A85496 /* DetailReadArticlesViewController.m */; };
 		AB884E071C02132600A85496 /* DirectionalTone.m in Sources */ = {isa = PBXBuildFile; fileRef = AB884E061C02132600A85496 /* DirectionalTone.m */; };
+		ABCAC60B1C0C251000CD1B08 /* AggregatedAnalysisView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCAC60A1C0C250F00CD1B08 /* AggregatedAnalysisView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,8 @@
 		AB884DDE1C00CB6800A85496 /* DetailReadArticlesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailReadArticlesViewController.m; sourceTree = "<group>"; };
 		AB884E051C02132600A85496 /* DirectionalTone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionalTone.h; sourceTree = "<group>"; };
 		AB884E061C02132600A85496 /* DirectionalTone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionalTone.m; sourceTree = "<group>"; };
+		ABCAC6091C0C250F00CD1B08 /* AggregatedAnalysisView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AggregatedAnalysisView.h; sourceTree = "<group>"; };
+		ABCAC60A1C0C250F00CD1B08 /* AggregatedAnalysisView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AggregatedAnalysisView.m; sourceTree = "<group>"; };
 		F047351E0C4F1884A29A8967 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,6 +106,7 @@
 			children = (
 				5030C25A1BF92ACA00D3E3DB /* NewsViewController.h */,
 				5030C25B1BF92ACA00D3E3DB /* NewsViewController.m */,
+				5018E2641C00E45900F02538 /* NewsTableViewCell.h */,
 				5018E2651C00E45900F02538 /* NewsTableViewCell.m */,
 				5030C2781BFA807200D3E3DB /* ArticleViewController.h */,
 				5030C2791BFA807200D3E3DB /* ArticleViewController.m */,
@@ -157,7 +161,6 @@
 				5030C27E1BFB749400D3E3DB /* Model */,
 				5030C2A51BFD084600D3E3DB /* Controllers */,
 				5030C2661BF92FFA00D3E3DB /* Main.storyboard */,
-				5018E2641C00E45900F02538 /* NewsTableViewCell.h */,
 				50E83FD11C0219D100B3FD5E /* ArticleTableViewCell.xib */,
 				5079DC2E1BED7D32009AAD8F /* Assets.xcassets */,
 				5079DC301BED7D32009AAD8F /* LaunchScreen.storyboard */,
@@ -213,6 +216,8 @@
 				AB0529081C00224B00FC4D42 /* SavedArticleManager.m */,
 				AB0528FD1C00070800FC4D42 /* UserProfileViewController.h */,
 				AB0528FE1C00070800FC4D42 /* UserProfileViewController.m */,
+				ABCAC6091C0C250F00CD1B08 /* AggregatedAnalysisView.h */,
+				ABCAC60A1C0C250F00CD1B08 /* AggregatedAnalysisView.m */,
 				AB884DDD1C00CB6800A85496 /* DetailReadArticlesViewController.h */,
 				AB884DDE1C00CB6800A85496 /* DetailReadArticlesViewController.m */,
 				AB05290A1C00288F00FC4D42 /* ReadArticlesTableViewCell.h */,
@@ -252,6 +257,7 @@
 				5079DC1C1BED7D31009AAD8F /* Frameworks */,
 				5079DC1D1BED7D31009AAD8F /* Resources */,
 				B0A132945451FB461C70EC2A /* Copy Pods Resources */,
+				657159759CC56FC6D66E177B /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -273,7 +279,7 @@
 				TargetAttributes = {
 					5079DC1E1BED7D31009AAD8F = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = 26RHXP32FH;
+						DevelopmentTeam = MG3SWKAT37;
 					};
 				};
 			};
@@ -327,6 +333,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		657159759CC56FC6D66E177B /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B0A132945451FB461C70EC2A /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -362,6 +383,7 @@
 				5018E2631C00E26800F02538 /* TTUITableViewZoomController.m in Sources */,
 				AB0529061C0008BC00FC4D42 /* User.m in Sources */,
 				5030C25C1BF92ACA00D3E3DB /* NewsViewController.m in Sources */,
+				ABCAC60B1C0C251000CD1B08 /* AggregatedAnalysisView.m in Sources */,
 				AB884E071C02132600A85496 /* DirectionalTone.m in Sources */,
 				5030C27D1BFA971800D3E3DB /* AnalysisViewController.m in Sources */,
 				AB05290C1C00288F00FC4D42 /* ReadArticlesTableViewCell.m in Sources */,
@@ -479,10 +501,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Frame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jovannyespinal.Frame;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Bereket.Frame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -492,10 +516,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Frame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jovannyespinal.Frame;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Bereket.Frame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
