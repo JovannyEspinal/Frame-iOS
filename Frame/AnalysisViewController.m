@@ -70,7 +70,7 @@
                            [PNPieChartDataItem dataItemWithValue:articleObject.libertarian color:FlatYellow description:@"Libertarian"],
                            ];
         
-        self.pieChart = [[PNPieChart alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2.0 + 60, 380, 120.0, 120.0) items:items];
+        self.pieChart = [[PNPieChart alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2.0 - 70, 380, 120.0, 120.0) items:items];
         self.pieChart.descriptionTextColor = [UIColor whiteColor];
         self.pieChart.descriptionTextFont  = [UIFont fontWithName:@"Avenir" size:11.0];
         self.pieChart.descriptionTextFont = [UIFont boldSystemFontOfSize:12.0f];
@@ -86,7 +86,7 @@
         self.pieChart.legendFontColor = [UIColor flatWhiteColor];
         
         UIView *legend = [self.pieChart getLegendWithMaxWidth:200];
-        [legend setFrame:CGRectMake(265, 510, legend.frame.size.width, legend.frame.size.height)];
+        [legend setFrame:CGRectMake(145, 510, legend.frame.size.width, legend.frame.size.height)];
         
         
         [self.view addSubview:legend];

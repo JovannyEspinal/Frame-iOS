@@ -21,6 +21,7 @@
 #import <PNChart/PNChart.h>
 #import "AggregatedAnalysisView.h"
 #import <PocketAPI/PocketAPI.h>
+#import <ChameleonFramework/Chameleon.h>
 
 //kk
 
@@ -85,12 +86,20 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+ 
+
     
     //Cell below inherits from MGSwipeTableCell
     NewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReadArticleIdentifier" forIndexPath:indexPath];
     
+    
+    [cell setBackgroundColor:[UIColor clearColor]];
+    
+    
     Article *article = [SavedArticleManager sharedManager].myAccount.savedArticleArray[indexPath.row];
     cell.textLabel.text = article.headline;
+    cell.textLabel.font = [UIFont fontWithName:@"Avenir" size:15];
+    cell.textLabel.textColor = [UIColor whiteColor];
     
 //    [cell.articleImage sd_setImageWithURL:[NSURL URLWithString:article.imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
 //        cell.articleImage.image = image;
@@ -99,7 +108,7 @@
     //------------------------------------------------------------------------------------------------------
     //call back block to save to Pocket below
     
-    MGSwipeButton *pocketButton = [MGSwipeButton buttonWithTitle:@"Pocket" backgroundColor:[UIColor redColor] callback:^BOOL(MGSwipeTableCell *sender) {
+    MGSwipeButton *pocketButton = [MGSwipeButton buttonWithTitle:@"Pocket" backgroundColor:[UIColor flatRedColorDark] callback:^BOOL(MGSwipeTableCell *sender) {
         
         [self callPocketAPI:article.url];
         
@@ -111,13 +120,13 @@
     
     //initialize Pocket and FB buttons with MGSWipe Cocoapod Class
     cell.rightButtons = @[pocketButton,
-                          [MGSwipeButton buttonWithTitle:@"Share" backgroundColor:[UIColor lightGrayColor]]];
+                          [MGSwipeButton buttonWithTitle:@"Share" backgroundColor:[UIColor flatOrangeColor]]];
    
     
 //------------------------------------------------------------------------------------------------------
 //call back block to analyze articles below
 
-    cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"Analysis" backgroundColor:[UIColor blackColor] callback:^BOOL(MGSwipeTableCell *sender) {
+    cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"Analysis" backgroundColor:[UIColor flatYellowColorDark] callback:^BOOL(MGSwipeTableCell *sender) {
         //NSLog(@"%@", cell.headline.text);
         
         AnalysisViewController *avc = [self.storyboard instantiateViewControllerWithIdentifier:@"AnalysisViewController"];
