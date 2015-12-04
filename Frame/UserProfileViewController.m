@@ -20,8 +20,9 @@
 #import <KOPopupView/KOPopupView.h>
 #import <PNChart/PNChart.h>
 #import "AggregatedAnalysisView.h"
+#import <PocketAPI/PocketAPI.h>
 
-
+//kk
 
 
 @interface UserProfileViewController ()
@@ -41,10 +42,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    SavedArticleManager.sharedManager.myAccount.usersTotalBias.sumOfAllTones =  SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalPositiveToneCount +  SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNegativeToneCount + SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNeutralToneCount;
+    [[PocketAPI sharedAPI] setURLScheme:@"pocketapp48589"];
   
-    SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectivityAndSubjectivity = SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalsubjectiveArticleCount + SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalObjectiveArticleCount;
+    [[PocketAPI sharedAPI] setConsumerKey:@"48589-8599c7f45f7317f60c1964bf"];
 
     
     
@@ -96,11 +96,21 @@
 //        cell.articleImage.image = image;
 //    }];
 
+    //------------------------------------------------------------------------------------------------------
+    //call back block to save to Pocket below
+    
+    MGSwipeButton *pocketButton = [MGSwipeButton buttonWithTitle:@"Pocket" backgroundColor:[UIColor redColor] callback:^BOOL(MGSwipeTableCell *sender) {
+        
+        [self callPocketAPI:article.url];
+        
+        return true;
+    }];
     
     
+    //------------------------------------------------------------------------------------------------------
     
     //initialize Pocket and FB buttons with MGSWipe Cocoapod Class
-    cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"Pocket" backgroundColor:[UIColor redColor]],
+    cell.rightButtons = @[pocketButton,
                           [MGSwipeButton buttonWithTitle:@"Share" backgroundColor:[UIColor lightGrayColor]]];
    
     
@@ -118,18 +128,7 @@
         return true;
     }]];
  
-//------------------------------------------------------------------------------------------------------
-//call back block to save to Pocket below
-    
-    [MGSwipeButton buttonWithTitle:@"Pocket" backgroundColor:[UIColor lightGrayColor] callback:^BOOL(MGSwipeTableCell *sender) {
-        
-        [self callPocketAPI:article.url];
-        
-        return true;
-    }];
-    
-    
-//------------------------------------------------------------------------------------------------------
+
 //call back block to share articles on Facebook below
     
     [MGSwipeButton buttonWithTitle:@"Share" backgroundColor:[UIColor lightGrayColor] callback:^BOOL(MGSwipeTableCell *sender) {
@@ -151,30 +150,29 @@
 
 -(void)callPocketAPI:(NSString *)articleURL{
     
-    
-       NSString* APIKey = [NSString stringWithFormat:@"48589-8599c7f45f7317f60c1964bf"];
-       NSString* pocketURL = @"https://getpocket.com/v3/add";
-    
-        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    
-    
-        [manager GET:pocketURL
-          parameters: @{@"consumer_key" : APIKey,
-                        @"url"    :  articleURL,
-                        }
-    
-    
-             success:^(AFHTTPRequestOperation *operation, id responseObject){
-                 
-                 
-                 NSLog(@"%@",[responseObject description]);
-             }
-    
-             failure:^(AFHTTPRequestOperation *operation, NSError* error){
-                 NSLog(@"%@", error);
-                 NSLog(@"boo");
-             }];
+    NSURL *url = [NSURL URLWithString:articleURL];
+    [[PocketAPI sharedAPI] saveURL:url handler: ^(PocketAPI *API, NSURL *URL, NSError *error){
+        if(error){
+            NSLog(@"Cant connect homie");
+            
+        }else{
+            NSLog(@"We did it!");
+        }
+    }];
 
+    
+    
+    
+//    [[PocketAPI sharedAPI] loginWithHandler: ^(PocketAPI *API, NSError *error){
+//        if (error != nil)
+//        {
+//            NSLog(@"Yo its cool man but you messed up");
+//        }
+//        else
+//        {
+//            NSLog(@"Good job!");
+//        }
+//    }];
     
 }
 
@@ -187,11 +185,7 @@
 
 -(void)callFacebookShareAPI:(NSString *)articleURL {
     
-    
-    
-    
-    
-    
+
 }
 
 - (IBAction)biasViewButtonTapped:(id)sender {
@@ -243,6 +237,15 @@
 - (void)dismissPopup {
     [self.popup hideAnimated:YES];
 }
+
+
+
+
+
+
+
+
+
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 //    return 202.0;
