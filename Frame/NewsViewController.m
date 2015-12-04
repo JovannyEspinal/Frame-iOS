@@ -15,6 +15,7 @@
 #import <AFWebViewController/AFWebViewController.h>
 #import "AnalysisViewController.h"
 #import "SavedArticleManager.h"
+#import <ChameleonFramework/Chameleon.h>
 
 @interface NewsViewController () 
 @property (strong, nonatomic) NSMutableArray<Article *> *articleObjects;
@@ -142,7 +143,7 @@
         cell.articleImage.image = image;
     }];
     
-    cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"Analysis" backgroundColor:[UIColor blackColor] callback:^BOOL(MGSwipeTableCell *sender) {
+    cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"Analysis" backgroundColor:[UIColor flatYellowColorDark] callback:^BOOL(MGSwipeTableCell *sender) {
         NSLog(@"%@", cell.headline.text);
         
         AnalysisViewController *avc = [self.storyboard instantiateViewControllerWithIdentifier:@"AnalysisViewController"];
