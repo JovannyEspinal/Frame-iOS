@@ -224,6 +224,11 @@
     FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
     content.contentURL = [NSURL URLWithString:articleURL];
     
+    FBSDKShareButton *shareButton = [[FBSDKShareButton alloc] init];
+    shareButton.shareContent = content;
+    shareButton.center = self.view.center;
+    [self.view addSubview:shareButton];
+    
 
 }
 

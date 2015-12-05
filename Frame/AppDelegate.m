@@ -29,13 +29,28 @@
  sourceApplication:(NSString *)sourceApplication
         annotation:(id)annotation{
     
-    if([[PocketAPI sharedAPI] handleOpenURL:url]){
-        return YES;
-    }else{
-        // if you handle your own custom url-schemes, do it here
-        return NO;
-    }
+    if ([[url absoluteString] containsString:@"pocket"]) {
+        if([[PocketAPI sharedAPI] handleOpenURL:url] ){
+            return YES;
+        }else{
+            
+            // if you handle your own custom url-schemes, do it here
+            return YES;
+        }
+        
+        
+        
+        }
     
+    if ([[url absoluteString] containsString:@"facebook"]) {
+        [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                       openURL:url
+                                             sourceApplication:sourceApplication
+                                                    annotation:annotation];
+    }
+
+
+    return NO;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -45,6 +60,11 @@
     [[UINavigationBar appearance] setBarTintColor:[UIColor blackColor]];
     [[UITabBar appearance] setBarTintColor:[UIColor blackColor]];
     [[UITabBar appearance] setTintColor:[UIColor flatWhiteColor]];
+    
+    
+    [[FBSDKApplicationDelegate sharedInstance] application:application
+                             didFinishLaunchingWithOptions:launchOptions];
+
 
 
     
