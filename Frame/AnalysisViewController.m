@@ -143,6 +143,7 @@
               
               NSString *result = responseObject[@"output"][@"result"];
               
+              result = [result capitalizedString];
               self.articleObject.subjectivityAnalysis = result;
               
               
