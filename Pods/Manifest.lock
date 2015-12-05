@@ -45,6 +45,8 @@ PODS:
   - FBSDKCoreKit/no-arc (4.8.0):
     - Bolts (~> 1.1)
     - FBSDKCoreKit/arc
+  - FBSDKShareKit (4.8.0):
+    - FBSDKCoreKit
   - KOPopupView (0.1.0)
   - KSGallerySlidingCollectionView (0.0.1)
   - LQIndicoAPI (0.0.1):
@@ -76,6 +78,7 @@ DEPENDENCIES:
   - BFPaperTabBarController
   - ChameleonFramework
   - FBSDKCoreKit (~> 4.8)
+  - FBSDKShareKit (~> 4.8)
   - KOPopupView (~> 0.1)
   - KSGallerySlidingCollectionView
   - LQIndicoAPI
@@ -95,6 +98,7 @@ SPEC CHECKSUMS:
   Bolts: 722ab9a4f8b50fc4ed1b9998a5a7a2b3f16d80b4
   ChameleonFramework: 5abe69b1f2a6cc79c3c435fcd9d3d855748225ee
   FBSDKCoreKit: 66a935d17b6e00b6b64e604f2eb9b72c9ab7deb8
+  FBSDKShareKit: e7577ee3adf80fc04fb656dd133fbb522250672b
   KOPopupView: c69c0314b192f8a2a04896fa3af95e2d8af6b44f
   KSGallerySlidingCollectionView: 5bb49a24dad3642bb8659212b39a36e6fae80b87
   LQIndicoAPI: c83fdc66467118d262cb649aebb905ab8d8fb14b
@@ -108,4 +112,4 @@ SPEC CHECKSUMS:
   Unirest: 5e4d93eaf32463bf619a4ecd3bbc8c32acf21eac
   WeightedWordCloud: 74fbd3b6ee0bbdad88e5ea5f6ffbf561cc9ca74c
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0
