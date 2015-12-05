@@ -47,7 +47,7 @@
         self.wordCLoud = [[HITWeightedWordCloud alloc] initWithSize:CGSizeMake(CGRectGetWidth(self.view.bounds), 200)];
         self.wordCLoud.textColor = [UIColor whiteColor];
         self.wordCLoud.scale = [[UIScreen mainScreen] scale];
-
+        
         
         [self.wordCloudImage setImage:[self.wordCLoud imageWithWords:wordCloudDictionary]];
     };
@@ -114,26 +114,27 @@
     
     NSString *encodedArticleText = [self.articleObject.text stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
     if (!(self.articleObject.sentimentAnalysis && self.articleObject.subjectivityAnalysis)){
-        [self analysis:@"Sentiment" onText:encodedArticleText withManager:manager analysis:setLabel];
+        [self sentimentAnalysis:self.articleObject analysis:setLabel];
         [self analysis:@"Subjectivity" onText:encodedArticleText withManager:manager analysis:setLabel];
     }
     else{
         self.sentimentLabel.text = self.articleObject.sentimentAnalysis;
         self.subjectivityLabel.text = self.articleObject.subjectivityAnalysis;
     }
+    
     [self loadWordCloud:manager intoArray:setWordCloud];
     [self politicalAnalysis:self.articleObject analysis:politicalAnalysisBlock];
     
     
-
 }
+
 
 - (void)analysis:(NSString *)typeOfAnalysisForDatumBox
           onText:(NSString *)textToAnalyze
      withManager:(AFHTTPRequestOperationManager *)manager
         analysis:(void(^)(Article *))callback {
     
-    NSString *urlString = [NSString stringWithFormat:@"http://api.datumbox.com/1.0/%@Analysis.json", typeOfAnalysisForDatumBox];
+    NSString *urlString = @"http://api.datumbox.com/1.0/SubjectivityAnalysis.json";
     
     [manager POST:urlString
        parameters:@{@"api_key": @"8fe3f49401d945d0ca257445a6b1abef",
@@ -142,13 +143,8 @@
               
               NSString *result = responseObject[@"output"][@"result"];
               
-              if ([typeOfAnalysisForDatumBox isEqualToString:@"Sentiment"]) {
-                  self.articleObject.sentimentAnalysis = result;
-              }
+              self.articleObject.subjectivityAnalysis = result;
               
-              if ([typeOfAnalysisForDatumBox isEqualToString:@"Subjectivity"]){
-                  self.articleObject.subjectivityAnalysis = result;
-              }
               
               callback(self.articleObject);
               
@@ -157,6 +153,31 @@
           }];
     
 }
+
+-(void)sentimentAnalysis:(Article *)articleObject
+                analysis:(void(^)(Article *))callback{
+    
+    NSAttributedString *attributedText = [[NSAttributedString alloc] initWithData:[articleObject.text dataUsingEncoding:NSUTF8StringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding]} documentAttributes:nil error:nil];
+    NSString *text = [attributedText string];
+    
+    [[LQNetworkManager sharedManager] sentimentAnalysis:text completionHandler:^(NSDictionary *result, NSError *error) {
+        
+        
+        
+        float sentimentValue = [result[@"results"] floatValue];
+        
+        if (sentimentValue > 0.5) {
+            self.articleObject.sentimentAnalysis = @"Positive";
+            
+        } else {
+            self.articleObject.sentimentAnalysis = @"Negative";
+        }
+        
+        
+        callback(self.articleObject);
+    }];
+}
+
 
 -(void)politicalAnalysis:(Article *)articleObject
                 analysis:(void(^)(Article *))callback{
@@ -204,7 +225,6 @@
          success:^(AFHTTPRequestOperation *operation, id responseObject){
              
              NSArray *keywords = responseObject[@"keywords"];
-             NSLog(@"%@", keywords);
              
              for (NSDictionary *object in keywords) {
                  NSString *keyword = object[@"text"];
@@ -216,7 +236,6 @@
                  
              }
              callback(self.wordCloudData);
-             NSLog(@"%@", self.wordCloudData);
          }
      
          failure:^(AFHTTPRequestOperation *operation, NSError* error){
