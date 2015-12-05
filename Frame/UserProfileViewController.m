@@ -44,38 +44,6 @@
 @implementation UserProfileViewController
 
 
-// Getting managed object context -- CORE DATA
-
-- (NSManagedObjectContext *) managedObjectContext {
-    NSManagedObjectContext *context = nil;
-    
-    id delegate = [[UIApplication sharedApplication] delegate];
-    if ([delegate performSelector:@selector(managedObjectContext)]) {
-        context = [delegate managedObjectContext];
-    }
-    
-    return context;
-    
-}
-
-
-//  CORE DATA
-
-- (void) viewDidAppear:(BOOL)animated {
-    
-    [super viewDidAppear:animated];
-    
-    // Get articles from persistent data store
-    
-    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"ReadArticle"];
-    self.readArticlesArray = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
-    
-    [self.tableView reloadData];
-    
-    
-}
-
 
 
 
@@ -117,16 +85,9 @@
     return 1;
 }
 
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return [SavedArticleManager sharedManager].myAccount.savedArticleArray.count;
-//}
-
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return self.readArticlesArray.count;
+    return [SavedArticleManager sharedManager].myAccount.savedArticleArray.count;
 }
-
 
 
 
@@ -146,13 +107,18 @@
     
     Article *article = [SavedArticleManager sharedManager].myAccount.savedArticleArray[indexPath.row];
     
-    
-
-    
-    NSManagedObject *readArticle = [self.readArticlesArray objectAtIndex:indexPath.row];
-    [cell.textLabel setText:[NSString stringWithFormat:@"%@", [readArticle valueForKey:@"headline"]]];
+  
+    cell.textLabel.text = article.headline;
     cell.textLabel.font = [UIFont fontWithName:@"Avenir" size:15];
     cell.textLabel.textColor = [UIColor whiteColor];
+    
+    
+//
+//    
+//    NSManagedObject *readArticle = [self.readArticlesArray objectAtIndex:indexPath.row];
+//    [cell.textLabel setText:[NSString stringWithFormat:@"%@", [readArticle valueForKey:@"headline"]]];
+//    cell.textLabel.font = [UIFont fontWithName:@"Avenir" size:15];
+//    cell.textLabel.textColor = [UIColor whiteColor];
     
 //    [cell.articleImage sd_setImageWithURL:[NSURL URLWithString:article.imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
 //        cell.articleImage.image = image;
@@ -206,10 +172,7 @@
     
     cell.rightSwipeSettings.transition = MGSwipeTransitionBorder;
     
-//    
-//    
-//    NSManagedObject *readArticle = [self.readArticlesArray objectAtIndex:indexPath.row];
-    
+
     
     return cell;
 }
