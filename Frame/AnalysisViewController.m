@@ -32,6 +32,12 @@
     
     self.wordCloudData = [[NSMutableDictionary alloc] init];
     
+    
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     void(^setWordCloud)(NSMutableDictionary *);
@@ -44,14 +50,6 @@
         [self.wordCloudImage setImage:[self.wordCLoud imageWithWords:wordCloudDictionary]];
     };
     
-    [self loadWordCloud:manager intoArray:setWordCloud];
-    
-    
-    
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
     
     NSURL *url = [NSURL URLWithString:self.articleObject.url];
     
@@ -61,8 +59,6 @@
     void(^politicalAnalysisBlock)(Article *);
     
     politicalAnalysisBlock = ^(Article *articleObject){
-        self.sentimentLabel.text = self.articleObject.sentimentAnalysis;
-        self.subjectivityLabel.text = self.articleObject.subjectivityAnalysis;
         
         NSArray *items = @[[PNPieChartDataItem dataItemWithValue:articleObject.liberal color:FlatRed description:@"Liberal"],
                            [PNPieChartDataItem dataItemWithValue:articleObject.green color:FlatGreen description:@"Green"],
@@ -95,13 +91,68 @@
         
     };
     
+    void(^setLabel)(Article *);
+    
+    setLabel = ^(Article *articleObject){
+        if (self.articleObject.sentimentAnalysis) {
+            self.sentimentLabel.text = self.articleObject.sentimentAnalysis;
+        }
+        
+        if (self.articleObject.subjectivityAnalysis) {
+            self.subjectivityLabel.text = self.articleObject.subjectivityAnalysis;
+        }
+    };
+    
     
     //Sets API for Indico API
     [[LQNetworkManager sharedManager] setApiKey:@"9b41f9a9dec46968939722b005f52be4"];
     
+    self.articleObject.text = [NSString stringWithContentsOfURL:url encoding:NSASCIIStringEncoding error: &error];
+    
+    NSString *encodedArticleText = [self.articleObject.text stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+    if (!(self.articleObject.sentimentAnalysis && self.articleObject.subjectivityAnalysis)){
+        [self analysis:@"Sentiment" onText:encodedArticleText withManager:manager analysis:setLabel];
+        [self analysis:@"Subjectivity" onText:encodedArticleText withManager:manager analysis:setLabel];
+    }
+    else{
+        self.sentimentLabel.text = self.articleObject.sentimentAnalysis;
+        self.subjectivityLabel.text = self.articleObject.subjectivityAnalysis;
+    }
+    [self loadWordCloud:manager intoArray:setWordCloud];
     [self politicalAnalysis:self.articleObject analysis:politicalAnalysisBlock];
     
+    
 
+}
+
+- (void)analysis:(NSString *)typeOfAnalysisForDatumBox
+          onText:(NSString *)textToAnalyze
+     withManager:(AFHTTPRequestOperationManager *)manager
+        analysis:(void(^)(Article *))callback {
+    
+    NSString *urlString = [NSString stringWithFormat:@"http://api.datumbox.com/1.0/%@Analysis.json", typeOfAnalysisForDatumBox];
+    
+    [manager POST:urlString
+       parameters:@{@"api_key": @"8fe3f49401d945d0ca257445a6b1abef",
+                    @"text": textToAnalyze}
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              
+              NSString *result = responseObject[@"output"][@"result"];
+              
+              if ([typeOfAnalysisForDatumBox isEqualToString:@"Sentiment"]) {
+                  self.articleObject.sentimentAnalysis = result;
+              }
+              
+              if ([typeOfAnalysisForDatumBox isEqualToString:@"Subjectivity"]){
+                  self.articleObject.subjectivityAnalysis = result;
+              }
+              
+              callback(self.articleObject);
+              
+          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Error: %@", error);
+          }];
+    
 }
 
 -(void)politicalAnalysis:(Article *)articleObject
@@ -170,6 +221,7 @@
              NSLog(@"boo");
          }];
 }
+
 
 
 - (void)didReceiveMemoryWarning {

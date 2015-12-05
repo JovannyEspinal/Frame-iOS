@@ -17,7 +17,7 @@
 #import "SavedArticleManager.h"
 #import <ChameleonFramework/Chameleon.h>
 
-@interface NewsViewController () 
+@interface NewsViewController ()
 @property (strong, nonatomic) NSMutableArray<Article *> *articleObjects;
 
 @end
@@ -34,7 +34,7 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     self.navigationController.navigationBar.topItem.title = @"Trending News";
-
+    
     [[UINavigationBar appearance] setTitleTextAttributes: @{
                                                             NSForegroundColorAttributeName: [UIColor whiteColor],
                                                             NSFontAttributeName: [UIFont fontWithName:@"Rockwell-Bold" size:20.0f]}];
@@ -47,6 +47,7 @@
     void(^setArticleArray)(NSMutableArray *);
     
     setArticleArray = ^(NSMutableArray *array){
+        
         self.articleObjects = array;
         [self.tableView reloadData];
     };
@@ -60,7 +61,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-
+    
 }
 
 -(void)breakingNews:(AFHTTPRequestOperationManager *)manager
@@ -98,6 +99,7 @@
                  }
              }
              callback(articlesFromAPI);
+             
          }
          failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
              NSLog(@"%@", error);
@@ -105,17 +107,19 @@
     
 }
 
+
+
 #pragma MARK - UITableView Methods
 
 -(void)LayoutTableView
 {
-    self.cellZoomInitialAlpha = [NSNumber numberWithFloat:0.1]; 
+    self.cellZoomInitialAlpha = [NSNumber numberWithFloat:0.1];
     self.cellZoomAnimationDuration = [NSNumber numberWithFloat:0.3];
     self.cellZoomXScaleFactor = [NSNumber numberWithFloat:1.3];
     self.cellZoomYScaleFactor = [NSNumber numberWithFloat:1.3];
     self.cellZoomXOffset = [NSNumber numberWithFloat:-75];
     self.cellZoomYOffset = [NSNumber numberWithFloat:75];
-
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
