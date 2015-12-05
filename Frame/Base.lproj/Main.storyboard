@@ -76,7 +76,14 @@
                             <constraint firstAttribute="trailing" secondItem="xRJ-CJ-jv7" secondAttribute="trailing" id="yfA-W5-hl8"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="af8-26-UlU"/>
+                    <navigationItem key="navigationItem" id="af8-26-UlU">
+                        <barButtonItem key="rightBarButtonItem" title="Clear History" id="kNi-x0-EXB">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="clearHistoryButtonTapped:" destination="dYW-9F-0bY" id="1xE-IV-MYv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="tableView" destination="xRJ-CJ-jv7" id="5gA-lD-bFX"/>

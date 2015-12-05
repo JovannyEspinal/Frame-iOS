@@ -273,6 +273,13 @@
     [self.popup hideAnimated:YES];
 }
 
+- (IBAction)clearHistoryButtonTapped:(UIBarButtonItem *)sender {
+    
+    [[SavedArticleManager sharedManager].myAccount.savedArticleArray removeAllObjects];
+    [SavedArticleManager.sharedManager persistArticles];
+    [self.tableView reloadData];
+    
+}
 
 
 

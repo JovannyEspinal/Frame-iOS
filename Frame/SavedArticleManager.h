@@ -22,5 +22,7 @@
 -(SavedArticleAnalysis*)analyzeArticles;
 - (void)addArticle:(Article *)article;
 
+- (void)persistArticles;
+
 
 @end
