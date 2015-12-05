@@ -62,7 +62,7 @@
     self.aggregateAnalysisView.backgroundColor = [UIColor redColor];
     self.aggregateAnalysisView.alpha = 0.7;
     
-    self.navigationController.navigationBar.topItem.title = @"Profile";
+    self.navigationController.navigationBar.topItem.title = @"History";
     
     
     self.tableView.delegate = self;
@@ -282,6 +282,13 @@
     [self.popup hideAnimated:YES];
 }
 
+- (IBAction)clearHistoryButtonTapped:(UIBarButtonItem *)sender {
+    
+    [[SavedArticleManager sharedManager].myAccount.savedArticleArray removeAllObjects];
+    [SavedArticleManager.sharedManager persistArticles];
+    [self.tableView reloadData];
+    
+}
 
 
 
