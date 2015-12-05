@@ -760,11 +760,11 @@
             </objects>
             <point key="canvasLocation" x="1772" y="-1488"/>
         </scene>
-        <!--Profile-->
+        <!--History-->
         <scene sceneID="F62-II-uCl">
             <objects>
                 <navigationController id="Wl4-Py-uM9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="profile-30x30" id="b5e-c4-j4F"/>
+                    <tabBarItem key="tabBarItem" title="History" image="profile-30x30" id="b5e-c4-j4F"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="tfy-WX-5du">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

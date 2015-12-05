@@ -61,7 +61,7 @@
     self.aggregateAnalysisView.backgroundColor = [UIColor redColor];
     self.aggregateAnalysisView.alpha = 0.7;
     
-    self.navigationController.navigationBar.topItem.title = @"Profile";
+    self.navigationController.navigationBar.topItem.title = @"History";
     
     
     self.tableView.delegate = self;
