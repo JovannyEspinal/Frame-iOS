@@ -37,6 +37,7 @@
  */
 @property (nonatomic, copy) UIColor *textColor;
 
+
 /**
  *  Minimum font size. Defaults to UIFont.systemFontSize * 0.6
  */
