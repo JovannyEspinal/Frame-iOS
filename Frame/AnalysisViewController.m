@@ -43,9 +43,11 @@
     void(^setWordCloud)(NSMutableDictionary *);
     
     setWordCloud = ^(NSMutableDictionary *wordCloudDictionary){
+        
         self.wordCLoud = [[HITWeightedWordCloud alloc] initWithSize:CGSizeMake(CGRectGetWidth(self.view.bounds), 200)];
         self.wordCLoud.textColor = [UIColor whiteColor];
         self.wordCLoud.scale = [[UIScreen mainScreen] scale];
+
         
         [self.wordCloudImage setImage:[self.wordCLoud imageWithWords:wordCloudDictionary]];
     };
@@ -95,11 +97,12 @@
     
     setLabel = ^(Article *articleObject){
         if (self.articleObject.sentimentAnalysis) {
-            self.sentimentLabel.text = self.articleObject.sentimentAnalysis;
+            self.sentimentLabel.text = [self.articleObject.sentimentAnalysis uppercaseString];
+            
         }
         
         if (self.articleObject.subjectivityAnalysis) {
-            self.subjectivityLabel.text = self.articleObject.subjectivityAnalysis;
+            self.subjectivityLabel.text = [self.articleObject.subjectivityAnalysis uppercaseString];
         }
     };
     
