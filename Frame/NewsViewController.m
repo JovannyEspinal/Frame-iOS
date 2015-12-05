@@ -16,13 +16,34 @@
 #import "AnalysisViewController.h"
 #import "SavedArticleManager.h"
 #import <ChameleonFramework/Chameleon.h>
+#import <CoreData/CoreData.h>
 
-@interface NewsViewController () 
+@interface NewsViewController ()
+
 @property (strong, nonatomic) NSMutableArray<Article *> *articleObjects;
+@property (strong, nonatomic) NSMutableArray *readArticlesArray;
 
 @end
 
 @implementation NewsViewController
+
+
+//Core Data
+- (NSManagedObjectContext *) managedObjectContext {
+    NSManagedObjectContext *context = nil;
+    id delegate = [[UIApplication sharedApplication] delegate];
+    if ([delegate performSelector:@selector(managedObjectContext)]) {
+        context = [delegate managedObjectContext];
+    }
+    
+    return context;
+}
+
+
+
+
+
+
 
 - (void)viewDidLoad
 {
@@ -165,10 +186,62 @@
     NSLog(@"%@", self.articleObjects[indexPath.row]);
     
     detailViewController.detailArticle = self.articleObjects[indexPath.row];
+    
     //add the object to the Singleton Classes User properties array
     [SavedArticleManager.sharedManager.myAccount.savedArticleArray addObject:self.articleObjects[indexPath.row]];
+
+    
+    
+    
+    // ---SAVING TO STORE---
+    
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
+    // Create a new managed object
+    NSManagedObject *newReadArticle = [NSEntityDescription insertNewObjectForEntityForName:@"ReadArticle" inManagedObjectContext:context];
+    [newReadArticle setValue:self.articleObjects[indexPath.row] forKey:@"headline"];
+    
+    
+    NSError *error = nil;
+    // Save the object to persistent store
+    if (![context save:&error]) {
+        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+//    NSManagedObjectContext *context = [self managedObjectContext];
+//    
+//    // Create a new managed object
+//    NSManagedObject *newArticle = [NSEntityDescription insertNewObjectForEntityForName:@"ReadArticle" inManagedObjectContext:context];
+//    
+//    Article *articleObject = self.articleObjects[indexPath.row];
+//    
+//    [newArticle setValue:articleObject.headline forKey:@"headline"];
+//    
+//    NSError *error = nil;
+//    // Save the object to persistent store
+//    if (![context save:&error]) {
+//        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+//    }
+    
+    
     detailViewController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailViewController animated:YES];
+    
+    
+    
+    
+  
+    
+    
+    
 }
 
 
