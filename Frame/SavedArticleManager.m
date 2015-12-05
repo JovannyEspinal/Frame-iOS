@@ -9,10 +9,9 @@
 #import "SavedArticleManager.h"
 #import "Article.h"
 
+static NSString *FRSavedArticlesKey = @"FRSavedArticlesKey";
+
 @interface SavedArticleManager ()
-
-
-
 @end
 
 
@@ -34,10 +33,10 @@
         
         //user class
         self.myAccount= [[User alloc] init];
+        
         //users agreggated bias
         self.myAccount.usersTotalBias = [[AggregatedAnalysis alloc] init];
-        //array that stores article objects
-        self.myAccount.savedArticleArray = [[NSMutableArray alloc] init];
+        
 
         //Version one aggregator for user bias
             // political aggregator
@@ -54,9 +53,41 @@
         self.myAccount.usersTotalBias.totalPositiveToneCount = 0;
         self.myAccount.usersTotalBias.totalNegativeToneCount = 0;
         self.myAccount.usersTotalBias.totalNeutralToneCount  = 0;
+        
+        //array that stores article objects
+        NSArray *articles = [self loadPersistedArticles];
+        if (articles) {
+            self.myAccount.savedArticleArray = [articles mutableCopy];
+        } else {
+            self.myAccount.savedArticleArray = [[NSMutableArray alloc] init];
+        }
+        
+
 
     }
     return self;
+}
+
+- (void)addArticle:(Article *)article {
+    [self.myAccount.savedArticleArray addObject:article];
+    
+    [self persistArticles];
+}
+
+// this method is for saving articles to NSUserDefaults
+- (void)persistArticles {
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.myAccount.savedArticleArray];
+    [[NSUserDefaults standardUserDefaults] setObject:data forKey:FRSavedArticlesKey];
+}
+
+- (NSArray *)loadPersistedArticles {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults valueForKey:FRSavedArticlesKey] != nil) {
+        NSData *data = [defaults objectForKey:FRSavedArticlesKey];
+        NSArray *array = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        return array;
+    }
+    return nil;
 }
 
 -(void)saveArticle:(Article*)readArticle {
