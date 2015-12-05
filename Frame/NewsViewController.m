@@ -175,7 +175,8 @@
     detailViewController.detailArticle = self.articleObjects[indexPath.row];
     
     //add the object to the Singleton Classes User properties array
-    [SavedArticleManager.sharedManager.myAccount.savedArticleArray addObject:self.articleObjects[indexPath.row]];
+    Article *article = self.articleObjects[indexPath.row];
+    [SavedArticleManager.sharedManager addArticle:article];
 
     detailViewController.hidesBottomBarWhenPushed = YES;
     

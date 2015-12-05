@@ -20,6 +20,7 @@
 -(void)saveArticle:(Article*)readArticle;
 
 -(SavedArticleAnalysis*)analyzeArticles;
+- (void)addArticle:(Article *)article;
 
 
 @end

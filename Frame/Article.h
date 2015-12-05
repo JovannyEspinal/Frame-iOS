@@ -10,7 +10,8 @@
 #import <UIKit/UIKit.h>
 #import "DirectionalTone.h"
 
-@interface Article : NSObject
+@interface Article : NSObject <NSCoding>
+
 @property (strong, nonatomic) NSString *url;
 @property (strong, nonatomic) NSString *headline;
 @property (strong, nonatomic) NSString *imageUrl;
