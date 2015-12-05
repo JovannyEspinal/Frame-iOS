@@ -24,6 +24,8 @@
 		50EE22121BF67C6A0027B7B4 /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = 50EE22111BF67C6A0027B7B4 /* Article.m */; };
 		7A61CD67CE97508AD6DEE8FE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F15528B6B0E0224C6E7E9EC /* libPods.a */; };
 		89CF8A5D1C0231DD00922F2F /* Rockwell.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 89CF8A5C1C0231DD00922F2F /* Rockwell.ttf */; };
+		89ED1C3D1C12822D006F873F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89ED1C3C1C12822D006F873F /* CoreData.framework */; };
+		89ED1C401C128291006F873F /* UserDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89ED1C3E1C128291006F873F /* UserDataModel.xcdatamodeld */; };
 		AB0528FF1C00070800FC4D42 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0528FE1C00070800FC4D42 /* UserProfileViewController.m */; };
 		AB0529031C00089A00FC4D42 /* AggregatedAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0529021C00089A00FC4D42 /* AggregatedAnalysis.m */; };
 		AB0529061C0008BC00FC4D42 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0529051C0008BC00FC4D42 /* User.m */; };
@@ -65,6 +67,8 @@
 		50EE22101BF67C6A0027B7B4 /* Article.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Article.h; sourceTree = "<group>"; };
 		50EE22111BF67C6A0027B7B4 /* Article.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Article.m; sourceTree = "<group>"; };
 		89CF8A5C1C0231DD00922F2F /* Rockwell.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Rockwell.ttf; sourceTree = "<group>"; };
+		89ED1C3C1C12822D006F873F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		89ED1C3F1C128291006F873F /* UserDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserDataModel.xcdatamodel; sourceTree = "<group>"; };
 		8F495C2BA51DA9F25CAA5D75 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		9F15528B6B0E0224C6E7E9EC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB0528FD1C00070800FC4D42 /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
@@ -94,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89ED1C3D1C12822D006F873F /* CoreData.framework in Frameworks */,
 				7A61CD67CE97508AD6DEE8FE /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -165,6 +170,7 @@
 				5079DC2E1BED7D32009AAD8F /* Assets.xcassets */,
 				5079DC301BED7D32009AAD8F /* LaunchScreen.storyboard */,
 				5079DC331BED7D32009AAD8F /* Info.plist */,
+				89ED1C3E1C128291006F873F /* UserDataModel.xcdatamodeld */,
 				5079DC221BED7D32009AAD8F /* Supporting Files */,
 			);
 			path = Frame;
@@ -231,6 +237,7 @@
 		B29F95BEDAEDA40BAD817CB9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				89ED1C3C1C12822D006F873F /* CoreData.framework */,
 				9F15528B6B0E0224C6E7E9EC /* libPods.a */,
 			);
 			name = Frameworks;
@@ -366,6 +373,7 @@
 				AB0529091C00224B00FC4D42 /* SavedArticleManager.m in Sources */,
 				5018E2631C00E26800F02538 /* TTUITableViewZoomController.m in Sources */,
 				AB0529061C0008BC00FC4D42 /* User.m in Sources */,
+				89ED1C401C128291006F873F /* UserDataModel.xcdatamodeld in Sources */,
 				5030C25C1BF92ACA00D3E3DB /* NewsViewController.m in Sources */,
 				ABCAC60B1C0C251000CD1B08 /* AggregatedAnalysisView.m in Sources */,
 				AB884E071C02132600A85496 /* DirectionalTone.m in Sources */,
@@ -531,6 +539,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		89ED1C3E1C128291006F873F /* UserDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				89ED1C3F1C128291006F873F /* UserDataModel.xcdatamodel */,
+			);
+			currentVersion = 89ED1C3F1C128291006F873F /* UserDataModel.xcdatamodel */;
+			path = UserDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5079DC171BED7D31009AAD8F /* Project object */;
 }

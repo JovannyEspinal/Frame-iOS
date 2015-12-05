@@ -22,6 +22,7 @@
 #import "AggregatedAnalysisView.h"
 #import <PocketAPI/PocketAPI.h>
 #import <ChameleonFramework/Chameleon.h>
+#import <CoreData/CoreData.h>
 
 //kk
 
@@ -36,9 +37,48 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
+@property (strong, nonatomic) NSMutableArray *readArticlesArray;
+
 @end
 
 @implementation UserProfileViewController
+
+
+// Getting managed object context -- CORE DATA
+
+- (NSManagedObjectContext *) managedObjectContext {
+    NSManagedObjectContext *context = nil;
+    
+    id delegate = [[UIApplication sharedApplication] delegate];
+    if ([delegate performSelector:@selector(managedObjectContext)]) {
+        context = [delegate managedObjectContext];
+    }
+    
+    return context;
+    
+}
+
+
+//  CORE DATA
+
+- (void) viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
+    
+    // Get articles from persistent data store
+    
+    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"ReadArticle"];
+    self.readArticlesArray = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+    
+    [self.tableView reloadData];
+    
+    
+}
+
+
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -65,13 +105,11 @@
     [super viewWillAppear:animated];
     
     [self.tableView reloadData];
+    
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 #pragma mark - Table view data source
 
@@ -79,9 +117,18 @@
     return 1;
 }
 
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+//    return [SavedArticleManager sharedManager].myAccount.savedArticleArray.count;
+//}
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [SavedArticleManager sharedManager].myAccount.savedArticleArray.count;
+#warning Incomplete implementation, return the number of rows
+    return self.readArticlesArray.count;
 }
+
+
+
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -96,8 +143,14 @@
     [cell setBackgroundColor:[UIColor clearColor]];
     
     
+    
     Article *article = [SavedArticleManager sharedManager].myAccount.savedArticleArray[indexPath.row];
-    cell.textLabel.text = article.headline;
+    
+    
+
+    
+    NSManagedObject *readArticle = [self.readArticlesArray objectAtIndex:indexPath.row];
+    [cell.textLabel setText:[NSString stringWithFormat:@"%@", [readArticle valueForKey:@"headline"]]];
     cell.textLabel.font = [UIFont fontWithName:@"Avenir" size:15];
     cell.textLabel.textColor = [UIColor whiteColor];
     
@@ -109,6 +162,10 @@
     //call back block to save to Pocket below
     
     MGSwipeButton *pocketButton = [MGSwipeButton buttonWithTitle:@"Pocket" backgroundColor:[UIColor flatRedColorDark] callback:^BOOL(MGSwipeTableCell *sender) {
+        
+        
+    
+
         
         [self callPocketAPI:article.url];
         
@@ -148,6 +205,12 @@
     }];
     
     cell.rightSwipeSettings.transition = MGSwipeTransitionBorder;
+    
+//    
+//    
+//    NSManagedObject *readArticle = [self.readArticlesArray objectAtIndex:indexPath.row];
+    
+    
     return cell;
 }
 
