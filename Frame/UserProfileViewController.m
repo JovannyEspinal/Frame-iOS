@@ -17,6 +17,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <AFNetworking/AFNetworking.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
 #import <KOPopupView/KOPopupView.h>
 #import <PNChart/PNChart.h>
 #import "AggregatedAnalysisView.h"
@@ -219,6 +220,9 @@
 
 
 -(void)callFacebookShareAPI:(NSString *)articleURL {
+    
+    FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
+    content.contentURL = [NSURL URLWithString:articleURL];
     
 
 }
