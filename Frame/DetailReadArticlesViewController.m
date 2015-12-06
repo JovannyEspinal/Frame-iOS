@@ -22,7 +22,7 @@
     [super viewDidLoad];
     
     
-    NSURL *url = [NSURL URLWithString:self.libraryArticle.url];
+    NSURL *url = [NSURL URLWithString:self.libraryArticleURL];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
     
     

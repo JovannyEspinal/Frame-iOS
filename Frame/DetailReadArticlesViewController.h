@@ -15,7 +15,7 @@
 
 @property (strong, nonatomic) IBOutlet UIWebView *detailLibraryWebView;
 
-@property (nonatomic, strong) Article* libraryArticle;
+@property (nonatomic, strong) NSString* libraryArticleURL;
 
 
 @end

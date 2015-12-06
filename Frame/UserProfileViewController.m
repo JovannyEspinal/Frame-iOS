@@ -235,11 +235,12 @@
    
     
     
-    NSArray *items = @[[PNPieChartDataItem dataItemWithValue:10 color:PNRed description:@"Negative"],
-                       [PNPieChartDataItem dataItemWithValue:20 color:PNBlue description:@"Positive"],
-                       [PNPieChartDataItem dataItemWithValue:40 color:PNGreen description:@"Neutral"],
+    NSArray *items = @[[PNPieChartDataItem dataItemWithValue:[SavedArticleManager sharedManager].myAccount.usersTotalBias.totalNegativeToneCount color:PNRed description:@"Negative"],
+                       [PNPieChartDataItem dataItemWithValue:[SavedArticleManager sharedManager].myAccount.usersTotalBias.totalPositiveToneCount color:PNBlue description:@"Positive"],
+                       [PNPieChartDataItem dataItemWithValue:[SavedArticleManager sharedManager].myAccount.usersTotalBias.totalNeutralToneCount color:PNGreen description:@"Neutral"],
                        ];
-
+    
+    NSArray* subjectivityArray = @[[PNPieChartDataItem dataItemWithValue:[SavedArticleManager sharedManager].myAccount.usersTotalBias.totalsubjectiveArticleCount color:PNRed description:@"Subjective"], [PNPieChartDataItem dataItemWithValue:[SavedArticleManager sharedManager].myAccount.usersTotalBias.totalObjectiveArticleCount color:PNDarkBlue description:@"Objective"]];
     
     AggregatedAnalysisView* analyzedView = [[AggregatedAnalysisView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 40, self.view.frame.size.height - 40)];
     analyzedView.backgroundColor = [UIColor blackColor];
@@ -248,7 +249,7 @@
     CGSize frameSize = CGSizeMake(width, width);
     
     CGRect toneFrame = CGRectMake(0, analyzedView.center.y, frameSize.width, frameSize.height);
-    analyzedView.tonePieChart = [[PNPieChart alloc] initWithFrame:toneFrame items:items];
+    analyzedView.tonePieChart = [[PNPieChart alloc] initWithFrame:toneFrame items:subjectivityArray];
     
     CGRect objectiveFrame = CGRectMake(width, analyzedView.center.y, frameSize.width, frameSize.height);
     analyzedView.objectiveSubjectivePieChart = [[PNPieChart alloc] initWithFrame:objectiveFrame items:@[items[0], items[1]]];
@@ -291,12 +292,18 @@
     
     
     
-    DetailReadArticlesViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailReadArticleViewController"];
-    vc.libraryArticle = [SavedArticleManager sharedManager].myAccount.savedArticleArray[indexPath.row];
     
     
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    DetailReadArticlesViewController* vc = segue.destinationViewController;
+    Article *article = [SavedArticleManager sharedManager].myAccount.savedArticleArray[indexPath.row];
+    vc.libraryArticleURL = article.url;
+    
+}
 
 
 @end

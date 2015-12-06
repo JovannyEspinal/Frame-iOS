@@ -168,10 +168,11 @@
         float sentimentValue = [result[@"results"] floatValue];
         
         if (sentimentValue > 0.5) {
-            self.articleObject.sentimentAnalysis = @"Positive";
-            
+            self.articleObject.sentimentAnalysis = @"positive";
+        } else if (sentimentValue == 0.5){
+            self.articleObject.sentimentAnalysis = @"neutral";
         } else {
-            self.articleObject.sentimentAnalysis = @"Negative";
+            self.articleObject.sentimentAnalysis = @"negative";
         }
         
         

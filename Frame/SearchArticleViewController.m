@@ -22,6 +22,8 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
+     [[LQNetworkManager sharedManager] setApiKey:@"9b41f9a9dec46968939722b005f52be4"];
+    
     
     // Loads webview with url
     NSURL *url = [NSURL URLWithString:self.searchResult.url];
@@ -37,7 +39,7 @@
     
     NSString *encodedArticleText = [self.searchResult.text stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
     
-    [self analysis:@"Sentiment" onText:encodedArticleText withManager:manager];
+    [self sentimentAnalysis:self.searchResult];
     [self analysis:@"Subjectivity" onText:encodedArticleText withManager:manager];
     
     
@@ -66,8 +68,6 @@
         self.searchResult.green = green;
         self.searchResult.liberal = liberal;
         self.searchResult.libertarian = libertarian;
-        
-        NSLog(@"%f", self.searchResult.libertarian);
     }];
 
 
@@ -83,27 +83,41 @@
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               
               self.data = responseObject[@"output"][@"result"];
-              
-              if ([typeOfAnalysisForDatumBox isEqualToString:@"Sentiment"]) {
-                  self.searchResult.sentimentAnalysis = self.data;
-                  SavedArticleManager.sharedManager.myAccount.savedArticleArray.lastObject.sentimentAnalysis = self.searchResult.sentimentAnalysis;
-                  [self totalTone];
-              }
-              
-              if ([typeOfAnalysisForDatumBox isEqualToString:@"Subjectivity"]){
+
                   self.searchResult.subjectivityAnalysis = self.data;
                   
-                  SavedArticleManager.sharedManager.myAccount.savedArticleArray.lastObject.sentimentAnalysis = self.searchResult.sentimentAnalysis;
+                  SavedArticleManager.sharedManager.myAccount.savedArticleArray.lastObject.subjectivityAnalysis = self.searchResult.subjectivityAnalysis;
                   
                   [self totalSubjectivity];
-                  
-              }
               
               
           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"Error: %@", error);
           }];
     
+}
+
+-(void)sentimentAnalysis:(Article *)articleObject{
+    
+    NSAttributedString *attributedText = [[NSAttributedString alloc] initWithData:[articleObject.text dataUsingEncoding:NSUTF8StringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding]} documentAttributes:nil error:nil];
+    NSString *text = [attributedText string];
+    
+    [[LQNetworkManager sharedManager] sentimentAnalysis:text completionHandler:^(NSDictionary *result, NSError *error) {
+
+        float sentimentValue = [result[@"results"] floatValue];
+        
+        if (sentimentValue > 0.5) {
+            self.searchResult.sentimentAnalysis = @"positive";
+        } else if (sentimentValue == 0.5){
+            self.searchResult.sentimentAnalysis = @"neutral";
+        } else {
+            self.searchResult.sentimentAnalysis = @"negative";
+        }
+        
+        SavedArticleManager.sharedManager.myAccount.savedArticleArray.lastObject.sentimentAnalysis = self.searchResult.sentimentAnalysis;
+        
+        [self totalTone];
+    }];
 }
 
 -(void)totalTone{
@@ -120,7 +134,7 @@
     }
     
     else if ([self.searchResult.sentimentAnalysis isEqualToString: @"neutral"]) {
-        SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNegativeToneCount =  SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNeutralToneCount + 1;
+        SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNeutralToneCount =  SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNeutralToneCount + 1;
         NSLog(@"%@", self.searchResult.sentimentAnalysis);
         NSLog(@"Neutral tone count:, %ld", (long)SavedArticleManager.sharedManager.myAccount.usersTotalBias.totalNeutralToneCount);
         

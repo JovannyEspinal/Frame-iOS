@@ -99,7 +99,6 @@
                      
                      if (articleImageUrl) {
                      articleObject.imageUrl = articleImageUrl;
-                         NSLog(@"nahhhhh");
                      }
                     
                      
