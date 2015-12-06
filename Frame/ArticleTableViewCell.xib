@@ -31,7 +31,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jXG-2J-i2l" userLabel="Text and Image View">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="202"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7P-Kp-Rna">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7P-Kp-Rna">
                                 <rect key="frame" x="25" y="89" width="550" height="25"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="RockwellBold" family="Rockwell-Bold" pointSize="25"/>
