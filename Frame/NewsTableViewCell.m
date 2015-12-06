@@ -11,7 +11,9 @@
 @implementation NewsTableViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    
+    self.articleImage.image = [UIImage imageNamed:@"default-photo"];
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
