@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Article.h"
 
 @interface DetailReadArticlesViewController : UIViewController
 
 <UIWebViewDelegate>
+
+@property (strong, nonatomic) IBOutlet UIWebView *detailLibraryWebView;
+
+@property (nonatomic, strong) Article* libraryArticle;
+
 
 @end

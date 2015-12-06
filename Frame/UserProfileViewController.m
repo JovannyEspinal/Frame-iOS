@@ -287,7 +287,15 @@
 }
 
 
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    
+    DetailReadArticlesViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailReadArticleViewController"];
+    vc.libraryArticle = [SavedArticleManager sharedManager].myAccount.savedArticleArray[indexPath.row];
+    
+    
+}
 
 
 
