@@ -78,12 +78,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="af8-26-UlU">
                         <nil key="title"/>
-                        <view key="titleView" contentMode="scaleToFill" id="S85-78-UPY">
-                            <rect key="frame" x="180" y="5.5" width="240" height="33"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <animations/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </view>
                         <barButtonItem key="rightBarButtonItem" title="Clear History" id="kNi-x0-EXB">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -93,7 +87,6 @@
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
-                        <outlet property="FacebookLoginView" destination="S85-78-UPY" id="E0C-tb-exc"/>
                         <outlet property="tableView" destination="xRJ-CJ-jv7" id="5gA-lD-bFX"/>
                     </connections>
                 </viewController>
