@@ -45,6 +45,8 @@ PODS:
   - FBSDKCoreKit/no-arc (4.8.0):
     - Bolts (~> 1.1)
     - FBSDKCoreKit/arc
+  - FBSDKLoginKit (4.8.0):
+    - FBSDKCoreKit
   - FBSDKShareKit (4.8.0):
     - FBSDKCoreKit
   - KOPopupView (0.1.0)
@@ -78,6 +80,7 @@ DEPENDENCIES:
   - BFPaperTabBarController
   - ChameleonFramework
   - FBSDKCoreKit (~> 4.8)
+  - FBSDKLoginKit (~> 4.7)
   - FBSDKShareKit (~> 4.8)
   - KOPopupView (~> 0.1)
   - KSGallerySlidingCollectionView
@@ -98,6 +101,7 @@ SPEC CHECKSUMS:
   Bolts: 722ab9a4f8b50fc4ed1b9998a5a7a2b3f16d80b4
   ChameleonFramework: 5abe69b1f2a6cc79c3c435fcd9d3d855748225ee
   FBSDKCoreKit: 66a935d17b6e00b6b64e604f2eb9b72c9ab7deb8
+  FBSDKLoginKit: d893fcbb98d854496925e9ff73c67b896982d3c4
   FBSDKShareKit: e7577ee3adf80fc04fb656dd133fbb522250672b
   KOPopupView: c69c0314b192f8a2a04896fa3af95e2d8af6b44f
   KSGallerySlidingCollectionView: 5bb49a24dad3642bb8659212b39a36e6fae80b87

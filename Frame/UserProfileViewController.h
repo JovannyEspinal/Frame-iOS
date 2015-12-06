@@ -18,6 +18,7 @@ UITableViewDataSource>
 @property (strong, nonatomic) NSMutableArray* readArticlesOnProfile;
 @property (strong, nonatomic) NSMutableArray* bookmarkedArticles;
 
+@property (strong, nonatomic) IBOutlet UIView *FacebookLoginView;
 
 -(void)callPocketAPI:(NSString*)articleURL;
 -(void)callFacebookShareAPI:(NSString*)articleURL;

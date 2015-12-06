@@ -24,6 +24,8 @@
 #import <PocketAPI/PocketAPI.h>
 #import <ChameleonFramework/Chameleon.h>
 #import <CoreData/CoreData.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+
 
 //kk
 
@@ -56,7 +58,10 @@
   
     [[PocketAPI sharedAPI] setConsumerKey:@"48589-8599c7f45f7317f60c1964bf"];
 
-    
+    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
+    // Optional: Place the button in the center of your view.
+    loginButton.center = self.FacebookLoginView.center;
+    [self.FacebookLoginView addSubview:loginButton];
     
     self.aggregateAnalysisView  = [[KOPopupView alloc] initWithFrame:CGRectMake(0, -400, 500, 400)];
     self.aggregateAnalysisView.backgroundColor = [UIColor redColor];
@@ -160,26 +165,38 @@
         
         return true;
     }]];
- 
-
-//call back block to share articles on Facebook below
     
-    [MGSwipeButton buttonWithTitle:@"Share" backgroundColor:[UIColor lightGrayColor] callback:^BOOL(MGSwipeTableCell *sender) {
+    MGSwipeButton *fbButton = [MGSwipeButton buttonWithTitle:@"Share" backgroundColor:[UIColor lightGrayColor] callback:^BOOL(MGSwipeTableCell *sender) {
         
-        [self callFacebookShareAPI:article.url];
+        //[self callFacebookShareAPI:article.url];
+        
+        
+        
+        
         
         return true;
     }];
     
     cell.rightSwipeSettings.transition = MGSwipeTransitionBorder;
     
-
+    FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
+    content.contentURL = [NSURL URLWithString:article.url];
     
+    FBSDKShareButton *shareButton = [[FBSDKShareButton alloc] init];
+    shareButton.shareContent = content;
+    
+    shareButton.center =  [cell.rightButtons[0] center];
+    [fbButton addSubview:shareButton];
+    
+    cell.rightButtons = @[pocketButton, shareButton];
+
     return cell;
 }
 
-    
-    
+
+
+
+
 
 
 
@@ -194,6 +211,7 @@
         }else{
             NSLog(@"We did it!");
         }
+        
     }];
 
     
