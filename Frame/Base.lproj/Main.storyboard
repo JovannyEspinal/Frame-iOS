@@ -48,14 +48,14 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bX1-i6-Pwe">
-                                <rect key="frame" x="0.0" y="427" width="600" height="60"/>
+                                <rect key="frame" x="5" y="427" width="590" height="60"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.97670525312423706" green="0.60546392202377319" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Tht-gE-Syv"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
-                                <state key="normal" title="View bias">
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
+                                <state key="normal" title="VIEW YOUR BIAS">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -69,16 +69,16 @@
                             <constraint firstItem="bX1-i6-Pwe" firstAttribute="top" secondItem="xRJ-CJ-jv7" secondAttribute="bottom" id="KNL-eH-to2"/>
                             <constraint firstItem="Opz-xI-TUS" firstAttribute="top" secondItem="bX1-i6-Pwe" secondAttribute="bottom" id="Qd1-Mc-RSz"/>
                             <constraint firstItem="bX1-i6-Pwe" firstAttribute="top" secondItem="xRJ-CJ-jv7" secondAttribute="bottom" id="WNC-Fq-xgl"/>
-                            <constraint firstAttribute="trailing" secondItem="bX1-i6-Pwe" secondAttribute="trailing" id="WSG-fn-Aq0"/>
+                            <constraint firstAttribute="trailing" secondItem="bX1-i6-Pwe" secondAttribute="trailing" constant="5" id="WSG-fn-Aq0"/>
                             <constraint firstItem="xRJ-CJ-jv7" firstAttribute="leading" secondItem="KWE-lh-vxR" secondAttribute="leading" id="fsj-10-iRk"/>
                             <constraint firstItem="xRJ-CJ-jv7" firstAttribute="top" secondItem="cOs-fm-nAY" secondAttribute="bottom" id="sAe-T0-IqF"/>
-                            <constraint firstItem="bX1-i6-Pwe" firstAttribute="leading" secondItem="KWE-lh-vxR" secondAttribute="leading" id="xMY-ET-e0Z"/>
+                            <constraint firstItem="bX1-i6-Pwe" firstAttribute="leading" secondItem="KWE-lh-vxR" secondAttribute="leading" constant="5" id="xMY-ET-e0Z"/>
                             <constraint firstAttribute="trailing" secondItem="xRJ-CJ-jv7" secondAttribute="trailing" id="yfA-W5-hl8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="af8-26-UlU">
                         <nil key="title"/>
-                        <barButtonItem key="rightBarButtonItem" title="Clear History" id="kNi-x0-EXB">
+                        <barButtonItem key="rightBarButtonItem" title="Clear" id="kNi-x0-EXB">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="clearHistoryButtonTapped:" destination="dYW-9F-0bY" id="1xE-IV-MYv"/>
@@ -87,7 +87,9 @@
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
+                        <outlet property="clearButton" destination="kNi-x0-EXB" id="Ch2-2p-COf"/>
                         <outlet property="tableView" destination="xRJ-CJ-jv7" id="5gA-lD-bFX"/>
+                        <outlet property="viewBiasButton" destination="bX1-i6-Pwe" id="gfv-Wp-xXD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7qn-BY-eba" userLabel="First Responder" sceneMemberID="firstResponder"/>
