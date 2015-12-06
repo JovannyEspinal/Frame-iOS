@@ -23,6 +23,7 @@
 #import <ChameleonFramework/Chameleon.h>
 #import <CoreData/CoreData.h>
 #import <SIAlertView/SIAlertView.h>
+#import <QuartzCore/QuartzCore.h>
 
 // fartbook
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
@@ -34,14 +35,15 @@
 
 @interface UserProfileViewController ()
 
-
+//Buttons
 @property (nonatomic) UIButton* dismissButtonTapped;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *clearButton;
+@property (weak, nonatomic) IBOutlet UIButton *viewBiasButton;
 
+//On the view
 @property (nonatomic, strong) KOPopupView *popup;
 @property (nonatomic, strong) UIView* aggregateAnalysisView;
-
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-
 @property (strong, nonatomic) NSMutableArray *readArticlesArray;
 
 @end
@@ -56,6 +58,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    //change font of 'clear' button
+    [self.clearButton setTitleTextAttributes:@{
+                                               NSFontAttributeName: [UIFont fontWithName:@"Avenir" size:15],
+                                               NSForegroundColorAttributeName: [UIColor whiteColor]
+                                               } forState:UIControlStateNormal];
+    
+    [[self.viewBiasButton layer] setBorderColor:[UIColor whiteColor].CGColor];
+    [[self.viewBiasButton layer] setBorderWidth:1.0f];
     
     
     [[PocketAPI sharedAPI] setURLScheme:@"pocketapp48589"];
@@ -72,6 +83,7 @@
     self.tableView.dataSource = self;
 //    [self.tableView registerNib:[UINib nibWithNibName:@"ArticleTableViewCell" bundle:nil] forCellReuseIdentifier:@"ReadArticleIdentifier"];
 }
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -94,12 +106,7 @@
 }
 
 
-
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
- 
-
     
     //Cell below inherits from MGSwipeTableCell
     NewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReadArticleIdentifier" forIndexPath:indexPath];
@@ -120,7 +127,7 @@
     //------------------------------------------------------------------------------------------------------
     //call back block to save to Pocket below
     
-    MGSwipeButton *pocketButton = [MGSwipeButton buttonWithTitle:@"Pocket" backgroundColor:[UIColor flatRedColorDark] callback:^BOOL(MGSwipeTableCell *sender) {
+    MGSwipeButton *pocketButton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"pocket"]  backgroundColor:[UIColor flatWatermelonColorDark] callback:^BOOL(MGSwipeTableCell *sender) {
         
         [self callPocketAPI:article.url];
         
@@ -140,6 +147,7 @@
 
     cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"Analysis" backgroundColor:[UIColor flatYellowColorDark] callback:^BOOL(MGSwipeTableCell *sender) {
         //NSLog(@"%@", cell.headline.text);
+    
         
         AnalysisViewController *avc = [self.storyboard instantiateViewControllerWithIdentifier:@"AnalysisViewController"];
         avc.articleObject = article;
@@ -157,7 +165,7 @@
     FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
     content.contentURL = [NSURL URLWithString:article.url];
 
-    MGSwipeButton *shareButton = [MGSwipeButton buttonWithTitle:@"FB Share" backgroundColor:rgb(59, 89, 152) callback:^BOOL(MGSwipeTableCell *sender) {
+    MGSwipeButton *shareButton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"facebook"] backgroundColor:[UIColor flatBlueColor] callback:^BOOL(MGSwipeTableCell *sender) {
     
         [fbButton sendActionsForControlEvents:UIControlEventTouchUpInside];
     
@@ -281,66 +289,6 @@
 
 
 
-
-
-
-
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return 202.0;
-//}
-
-
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- } else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
-
-
-
- #pragma mark - Navigation
-
-//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    
-//    
-//}
-
- // In a storyboard-based application, you will often want to do a little preparation before navigation
-// - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//     
-//
-//   }
-// 
 
 
 @end
