@@ -22,6 +22,7 @@
 #import <PocketAPI/PocketAPI.h>
 #import <ChameleonFramework/Chameleon.h>
 #import <CoreData/CoreData.h>
+#import <SIAlertView/SIAlertView.h>
 
 // fartbook
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
@@ -191,7 +192,16 @@
             NSLog(@"Cant connect homie");
             
         }else{
-            NSLog(@"We did it!");
+            SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"Saved!" andMessage:@"Your article has been saved to Pocket for offline reading."];
+            
+            [alertView addButtonWithTitle:@"OK"
+                                     type:SIAlertViewButtonTypeDefault
+                                  handler:^(SIAlertView *alert) {
+                                  }];
+            
+            alertView.transitionStyle = SIAlertViewTransitionStyleBounce;
+            
+            [alertView show];
         }
         
     }];

@@ -11,6 +11,6 @@ pod 'MGSwipeTableCell'
 pod 'WeightedWordCloud', '0.1.0'
 pod 'KOPopupView', '~> 0.1'
 pod 'PocketAPI', '~> 1.0'
-
 pod 'FBSDKCoreKit', '~> 4.8'
 pod 'FBSDKShareKit', '~> 4.8'
+pod 'SIAlertView'
