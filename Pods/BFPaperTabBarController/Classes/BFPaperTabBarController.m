@@ -104,6 +104,10 @@ CGFloat const bfPaperTabBarController_tapCircleDiameterDefault = -2.f;
     
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Avenir" size:12.0f], NSFontAttributeName, nil] forState:UIControlStateNormal];
     
+    [[UIBarButtonItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                          [UIFont fontWithName:@"Avenir" size:16.0f],NSFontAttributeName,
+                                                          nil] forState:UIControlStateNormal];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated

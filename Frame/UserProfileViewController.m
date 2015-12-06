@@ -65,8 +65,8 @@
                                                NSForegroundColorAttributeName: [UIColor whiteColor]
                                                } forState:UIControlStateNormal];
     
-    [[self.viewBiasButton layer] setBorderColor:[UIColor whiteColor].CGColor];
-    [[self.viewBiasButton layer] setBorderWidth:1.0f];
+//    [[self.viewBiasButton layer] setBorderColor:[UIColor whiteColor].CGColor];
+//    [[self.viewBiasButton layer] setBorderWidth:1.0f];
     
     
     [[PocketAPI sharedAPI] setURLScheme:@"pocketapp48589"];
@@ -127,7 +127,7 @@
     //------------------------------------------------------------------------------------------------------
     //call back block to save to Pocket below
     
-    MGSwipeButton *pocketButton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"pocket"]  backgroundColor:[UIColor flatWatermelonColorDark] callback:^BOOL(MGSwipeTableCell *sender) {
+    MGSwipeButton *pocketButton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"pocket"]  backgroundColor:[UIColor flatRedColor] callback:^BOOL(MGSwipeTableCell *sender) {
         
         [self callPocketAPI:article.url];
         
@@ -165,7 +165,7 @@
     FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
     content.contentURL = [NSURL URLWithString:article.url];
 
-    MGSwipeButton *shareButton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"facebook"] backgroundColor:[UIColor flatBlueColor] callback:^BOOL(MGSwipeTableCell *sender) {
+    MGSwipeButton *shareButton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"facebook"] backgroundColor:[UIColor flatSkyBlueColor] callback:^BOOL(MGSwipeTableCell *sender) {
     
         [fbButton sendActionsForControlEvents:UIControlEventTouchUpInside];
     

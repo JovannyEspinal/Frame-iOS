@@ -36,11 +36,11 @@
 
 //    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 
-    self.navigationController.navigationBar.topItem.title = @"Trending News";
+    self.navigationController.navigationBar.topItem.title = @"Trending";
 
     [[UINavigationBar appearance] setTitleTextAttributes: @{
                                                             NSForegroundColorAttributeName: [UIColor whiteColor],
-                                                            NSFontAttributeName: [UIFont fontWithName:@"Rockwell-Bold" size:20.0f]}];
+                                                            NSFontAttributeName: [UIFont fontWithName:@"Avenir" size:17.0f]}];
 
     self.articleObjects = [[NSMutableArray alloc] init];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
