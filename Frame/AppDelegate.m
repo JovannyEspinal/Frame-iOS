@@ -42,12 +42,13 @@
         
         }
     
-    if ([[url absoluteString] containsString:@"facebook"]) {
-        [[FBSDKApplicationDelegate sharedInstance] application:application
-                                                       openURL:url
-                                             sourceApplication:sourceApplication
-                                                    annotation:annotation];
-    }
+    [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                   openURL:url
+                                         sourceApplication:sourceApplication
+                                                annotation:annotation];
+//    if ([[url absoluteString] containsString:@"fbauth"]) {
+//        
+//    }
 
 
     return NO;
@@ -62,8 +63,8 @@
     [[UITabBar appearance] setTintColor:[UIColor flatWhiteColor]];
     
     
-    [[FBSDKApplicationDelegate sharedInstance] application:application
-                             didFinishLaunchingWithOptions:launchOptions];
+//    [[FBSDKApplicationDelegate sharedInstance] application:application
+//                             didFinishLaunchingWithOptions:launchOptions];
 
 
 

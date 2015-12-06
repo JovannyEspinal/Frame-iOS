@@ -16,15 +16,16 @@
 #import <KOPopupView/KOPopupView.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <AFNetworking/AFNetworking.h>
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import <FBSDKShareKit/FBSDKShareKit.h>
 #import <KOPopupView/KOPopupView.h>
 #import <PNChart/PNChart.h>
 #import "AggregatedAnalysisView.h"
 #import <PocketAPI/PocketAPI.h>
 #import <ChameleonFramework/Chameleon.h>
 #import <CoreData/CoreData.h>
-#import <FBSDKLoginKit/FBSDKLoginKit.h>
+
+// fartbook
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
 
 
 //kk
@@ -54,14 +55,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    
     [[PocketAPI sharedAPI] setURLScheme:@"pocketapp48589"];
-  
     [[PocketAPI sharedAPI] setConsumerKey:@"48589-8599c7f45f7317f60c1964bf"];
-
-    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
-    // Optional: Place the button in the center of your view.
-    loginButton.center = self.FacebookLoginView.center;
-    [self.FacebookLoginView addSubview:loginButton];
     
     self.aggregateAnalysisView  = [[KOPopupView alloc] initWithFrame:CGRectMake(0, -400, 500, 400)];
     self.aggregateAnalysisView.backgroundColor = [UIColor redColor];
@@ -118,26 +115,11 @@
     cell.textLabel.font = [UIFont fontWithName:@"Avenir" size:15];
     cell.textLabel.textColor = [UIColor whiteColor];
     
-    
-//
-//    
-//    NSManagedObject *readArticle = [self.readArticlesArray objectAtIndex:indexPath.row];
-//    [cell.textLabel setText:[NSString stringWithFormat:@"%@", [readArticle valueForKey:@"headline"]]];
-//    cell.textLabel.font = [UIFont fontWithName:@"Avenir" size:15];
-//    cell.textLabel.textColor = [UIColor whiteColor];
-    
-//    [cell.articleImage sd_setImageWithURL:[NSURL URLWithString:article.imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-//        cell.articleImage.image = image;
-//    }];
 
     //------------------------------------------------------------------------------------------------------
     //call back block to save to Pocket below
     
     MGSwipeButton *pocketButton = [MGSwipeButton buttonWithTitle:@"Pocket" backgroundColor:[UIColor flatRedColorDark] callback:^BOOL(MGSwipeTableCell *sender) {
-        
-        
-    
-
         
         [self callPocketAPI:article.url];
         
@@ -149,7 +131,7 @@
     
     //initialize Pocket and FB buttons with MGSWipe Cocoapod Class
     cell.rightButtons = @[pocketButton,
-                          [MGSwipeButton buttonWithTitle:@"Share" backgroundColor:[UIColor flatOrangeColor]]];
+                          [MGSwipeButton buttonWithTitle:@"Share" backgroundColor:rgb(59, 89, 152)]];
    
     
 //------------------------------------------------------------------------------------------------------
@@ -166,40 +148,40 @@
         return true;
     }]];
     
-    MGSwipeButton *fbButton = [MGSwipeButton buttonWithTitle:@"Share" backgroundColor:[UIColor lightGrayColor] callback:^BOOL(MGSwipeTableCell *sender) {
-        
-        //[self callFacebookShareAPI:article.url];
-        
-        
-        
-        
-        
+    
+    FBSDKShareButton *fbButton = [[FBSDKShareButton alloc] init];
+    fbButton.hidden = TRUE;
+    
+    
+    FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
+    content.contentURL = [NSURL URLWithString:article.url];
+
+    MGSwipeButton *shareButton = [MGSwipeButton buttonWithTitle:@"FB Share" backgroundColor:rgb(59, 89, 152) callback:^BOOL(MGSwipeTableCell *sender) {
+    
+        [fbButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+    
         return true;
     }];
     
     cell.rightSwipeSettings.transition = MGSwipeTransitionBorder;
     
-    FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
-    content.contentURL = [NSURL URLWithString:article.url];
     
-    FBSDKShareButton *shareButton = [[FBSDKShareButton alloc] init];
-    shareButton.shareContent = content;
+ 
+ 
     
-    shareButton.center =  [cell.rightButtons[0] center];
-    [fbButton addSubview:shareButton];
+    
+    fbButton.shareContent = content;
+    
+       // fbButton.frame = shareButton.bounds;
+    fbButton.frame = CGRectMake(10, 10, shareButton.frame.size.width, shareButton.frame.size.height);
+//    shareButton.center =  [cell.rightButtons[0] center];
+    
+    [shareButton addSubview:fbButton];
     
     cell.rightButtons = @[pocketButton, shareButton];
 
     return cell;
 }
-
-
-
-
-
-
-
-
 
 -(void)callPocketAPI:(NSString *)articleURL{
     
@@ -213,29 +195,7 @@
         }
         
     }];
-
-    
-    
-    
-//    [[PocketAPI sharedAPI] loginWithHandler: ^(PocketAPI *API, NSError *error){
-//        if (error != nil)
-//        {
-//            NSLog(@"Yo its cool man but you messed up");
-//        }
-//        else
-//        {
-//            NSLog(@"Good job!");
-//        }
-//    }];
-    
 }
-
-
-
-
-
-
-
 
 -(void)callFacebookShareAPI:(NSString *)articleURL {
     
