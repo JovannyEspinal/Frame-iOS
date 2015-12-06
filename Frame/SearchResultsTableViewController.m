@@ -13,6 +13,7 @@
 #import "SearchArticleViewController.h"
 #import "SavedArticleManager.h"
 #import "Article.h"
+#import <ChameleonFramework/Chameleon.h>
 #import "AnalysisViewController.h"
 
 @interface SearchResultsTableViewController ()
@@ -68,7 +69,6 @@
       parameters:nil
          success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
              
-             NSLog(@"%@", responseObject);
              NSArray *results = responseObject[@"results"];
              
              for (NSDictionary *articleData in results){
@@ -81,6 +81,9 @@
                      articleObject.headline = title;
                      articleObject.url = articleUrl;
                      articleObject.imageUrl = articleImageUrl;
+                     
+                     NSLog(@"SEARCH IMAGE URL: %@", articleImageUrl);
+  
                      
                      [articlesFromAPI addObject:articleObject];
                  }
@@ -127,11 +130,20 @@
     
     cell.headline.text = articleObject.headline;
     
+    
+    if ([articleObject.imageUrl isEqualToString:@""]) {
+        
+        cell.articleImage.image = [UIImage imageNamed:@"default-photo-final"];
+    
+    } else {
+    
     [cell.articleImage sd_setImageWithURL:[NSURL URLWithString:articleObject.imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         cell.articleImage.image = image;
-    }];
+    }]; }
     
-    cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"Analysis" backgroundColor:[UIColor blackColor] callback:^BOOL(MGSwipeTableCell *sender) {
+    
+    
+    cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"Analysis" backgroundColor:[UIColor flatYellowColorDark] callback:^BOOL(MGSwipeTableCell *sender) {
         AnalysisViewController *avc = [self.storyboard instantiateViewControllerWithIdentifier:@"AnalysisViewController"];
         avc.articleObject = self.searchResultObjects[indexPath.row];
         
@@ -156,48 +168,5 @@
     [self.navigationController pushViewController:detailViewController animated:YES];
 
 }
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

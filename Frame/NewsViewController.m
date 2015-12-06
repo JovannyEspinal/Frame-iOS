@@ -34,7 +34,7 @@
     [super viewDidLoad];
 
 
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 
     self.navigationController.navigationBar.topItem.title = @"Trending News";
 
@@ -96,8 +96,13 @@
                      Article *articleObject = [[Article alloc] init];
                      articleObject.headline = title;
                      articleObject.url = articleUrl;
+                     
+                     if (articleImageUrl) {
                      articleObject.imageUrl = articleImageUrl;
-
+                         NSLog(@"nahhhhh");
+                     }
+                    
+                     
                      [articlesFromAPI addObject:articleObject];
                  }
              }
@@ -145,10 +150,25 @@
 
 
     cell.headline.text = articleObject.headline;
-
+//    
+//    cell.articleImage.image = [UIImage imageNamed:@"default-photo"];
+    
+    
+    
+    if ([articleObject.imageUrl isEqualToString:@""]) {
+    
+        cell.articleImage.image = [UIImage imageNamed:@"default-photo-final"];
+        
+    } else {
+    
     [cell.articleImage sd_setImageWithURL:[NSURL URLWithString:articleObject.imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        
         cell.articleImage.image = image;
+    
     }];
+       
+        
+    }
 
     cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"Analysis" backgroundColor:[UIColor flatYellowColorDark] callback:^BOOL(MGSwipeTableCell *sender) {
         NSLog(@"%@", cell.headline.text);
