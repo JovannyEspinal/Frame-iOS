@@ -78,8 +78,10 @@
               
               [self totalSubjectivity];
               
+              
+              
           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-              NSLog(@"Error: %@", error);
+              NSLog(@"Error: %@", [error localizedDescription]);
           }];
     
 }
@@ -90,7 +92,7 @@
     NSString *text = [attributedText string];
     
     [[LQNetworkManager sharedManager] sentimentAnalysis:text completionHandler:^(NSDictionary *result, NSError *error) {
-        
+        if(!error){
         float sentimentValue = [result[@"results"] floatValue];
         
         if (sentimentValue > 0.5) {
@@ -103,7 +105,15 @@
         
         SavedArticleManager.sharedManager.myAccount.savedArticleArray.lastObject.sentimentAnalysis = self.detailArticle.sentimentAnalysis;
         
-        [self totalTone];
+            [self totalTone];
+            
+            
+        }
+        else{
+            NSLog(@"Error : %@",[error localizedDescription]);
+            
+            
+        }
     }];
 }
 

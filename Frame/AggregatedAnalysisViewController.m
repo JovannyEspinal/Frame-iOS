@@ -16,6 +16,29 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSArray *items = @[[PNPieChartDataItem dataItemWithValue:[SavedArticleManager sharedManager].myAccount.usersTotalBias.totalNegativeToneCount color:PNRed description:@"Negative"],
+                       [PNPieChartDataItem dataItemWithValue:[SavedArticleManager sharedManager].myAccount.usersTotalBias.totalPositiveToneCount color:PNBlue description:@"Positive"],
+                       [PNPieChartDataItem dataItemWithValue:[SavedArticleManager sharedManager].myAccount.usersTotalBias.totalNeutralToneCount color:PNGreen description:@"Neutral"],
+                       ];
+    
+    NSArray* subjectivityArray = @[[PNPieChartDataItem dataItemWithValue:[SavedArticleManager sharedManager].myAccount.usersTotalBias.totalsubjectiveArticleCount color:PNRed description:@"Subjective"], [PNPieChartDataItem dataItemWithValue:[SavedArticleManager sharedManager].myAccount.usersTotalBias.totalObjectiveArticleCount color:PNDarkBlue description:@"Objective"]];
+
+    
+    
+    AggregatedAnalysisView* analyzedView = [[AggregatedAnalysisView alloc] initWithFrame:CGRectMake(0, 0, self.subjectivityView.frame.size.width, self.subjectivityView.frame.size.height)];
+    
+    
+    analyzedView.objectiveSubjectivePieChart = [[PNPieChart alloc] initWithFrame:analyzedView.frame items:subjectivityArray];
+    
+    analyzedView.tonePieChart = [[PNPieChart alloc] initWithFrame:analyzedView.frame items:items];
+
+    
+    [self.subjectivityView addSubview:analyzedView.objectiveSubjectivePieChart];
+    [self.positivityNegativityView addSubview:analyzedView.tonePieChart];
+
+    
+    
     // Do any additional setup after loading the view.
 }
 
@@ -34,4 +57,8 @@
 }
 */
 
+- (IBAction)dismissButtonTapped:(id)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end

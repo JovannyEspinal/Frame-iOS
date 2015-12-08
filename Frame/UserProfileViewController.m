@@ -24,6 +24,7 @@
 #import <CoreData/CoreData.h>
 #import <SIAlertView/SIAlertView.h>
 #import <QuartzCore/QuartzCore.h>
+#import "AggregatedAnalysisViewController.h"
 
 // fartbook
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
@@ -230,48 +231,54 @@
 
 - (IBAction)biasViewButtonTapped:(id)sender {
     
-    if(!self.popup)
-        self.popup = [KOPopupView popupView];
-   
+    AggregatedAnalysisViewController* viewController= [self.storyboard instantiateViewControllerWithIdentifier:@"AggregatedAnalysisID"];
+    
+    [self presentViewController:viewController animated:YES completion:nil];
     
     
-    NSArray *items = @[[PNPieChartDataItem dataItemWithValue:[SavedArticleManager sharedManager].myAccount.usersTotalBias.totalNegativeToneCount color:PNRed description:@"Negative"],
-                       [PNPieChartDataItem dataItemWithValue:[SavedArticleManager sharedManager].myAccount.usersTotalBias.totalPositiveToneCount color:PNBlue description:@"Positive"],
-                       [PNPieChartDataItem dataItemWithValue:[SavedArticleManager sharedManager].myAccount.usersTotalBias.totalNeutralToneCount color:PNGreen description:@"Neutral"],
-                       ];
     
-    NSArray* subjectivityArray = @[[PNPieChartDataItem dataItemWithValue:[SavedArticleManager sharedManager].myAccount.usersTotalBias.totalsubjectiveArticleCount color:PNRed description:@"Subjective"], [PNPieChartDataItem dataItemWithValue:[SavedArticleManager sharedManager].myAccount.usersTotalBias.totalObjectiveArticleCount color:PNDarkBlue description:@"Objective"]];
-    
-    AggregatedAnalysisView* analyzedView = [[AggregatedAnalysisView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 40, self.view.frame.size.height - 40)];
-    analyzedView.backgroundColor = [UIColor blackColor];
-    
-    CGFloat width = (self.view.frame.size.width - 40) / 2.0;
-    CGSize frameSize = CGSizeMake(width, width);
-    
-    CGRect toneFrame = CGRectMake(0, analyzedView.center.y, frameSize.width, frameSize.height);
-    analyzedView.tonePieChart = [[PNPieChart alloc] initWithFrame:toneFrame items:subjectivityArray];
-    
-    CGRect objectiveFrame = CGRectMake(width, analyzedView.center.y, frameSize.width, frameSize.height);
-    analyzedView.objectiveSubjectivePieChart = [[PNPieChart alloc] initWithFrame:objectiveFrame items:@[items[0], items[1]]];
-    
-    
-    analyzedView.dismissViewButton = [[UIButton alloc] initWithFrame:CGRectMake(250,100,50, 50)];
-    
-    [self.popup.handleView addSubview:analyzedView];
-    self.dismissButtonTapped.titleLabel.text = @"Dismiss";
-    self.dismissButtonTapped.titleLabel.backgroundColor = [UIColor redColor];
-    
-    
-    [analyzedView addSubview:analyzedView.tonePieChart];
-    [analyzedView addSubview:analyzedView.objectiveSubjectivePieChart];
-    [analyzedView addSubview:analyzedView.dismissViewButton];
-    
-    analyzedView.center = self.popup.handleView.center;
-    analyzedView.dismissViewButton.backgroundColor = [UIColor whiteColor];
-   
-    //adds a target to (void)dismissPopup
-    [analyzedView.dismissViewButton addTarget:self action:@selector(dismissPopup) forControlEvents:UIControlEventTouchUpInside];
-    [self.popup show];
+//    if(!self.popup)
+//        self.popup = [KOPopupView popupView];
+//   
+//    
+//    
+//    NSArray *items = @[[PNPieChartDataItem dataItemWithValue:[SavedArticleManager sharedManager].myAccount.usersTotalBias.totalNegativeToneCount color:PNRed description:@"Negative"],
+//                       [PNPieChartDataItem dataItemWithValue:[SavedArticleManager sharedManager].myAccount.usersTotalBias.totalPositiveToneCount color:PNBlue description:@"Positive"],
+//                       [PNPieChartDataItem dataItemWithValue:[SavedArticleManager sharedManager].myAccount.usersTotalBias.totalNeutralToneCount color:PNGreen description:@"Neutral"],
+//                       ];
+//    
+//    NSArray* subjectivityArray = @[[PNPieChartDataItem dataItemWithValue:[SavedArticleManager sharedManager].myAccount.usersTotalBias.totalsubjectiveArticleCount color:PNRed description:@"Subjective"], [PNPieChartDataItem dataItemWithValue:[SavedArticleManager sharedManager].myAccount.usersTotalBias.totalObjectiveArticleCount color:PNDarkBlue description:@"Objective"]];
+//    
+//    AggregatedAnalysisView* analyzedView = [[AggregatedAnalysisView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 40, self.view.frame.size.height - 40)];
+//    analyzedView.backgroundColor = [UIColor blackColor];
+//    
+//    CGFloat width = (self.view.frame.size.width - 40) / 2.0;
+//    CGSize frameSize = CGSizeMake(width, width);
+//    
+//    CGRect toneFrame = CGRectMake(0, analyzedView.center.y, frameSize.width, frameSize.height);
+//    analyzedView.tonePieChart = [[PNPieChart alloc] initWithFrame:toneFrame items:subjectivityArray];
+//    
+//    CGRect objectiveFrame = CGRectMake(width, analyzedView.center.y, frameSize.width, frameSize.height);
+//    analyzedView.objectiveSubjectivePieChart = [[PNPieChart alloc] initWithFrame:objectiveFrame items:@[items[0], items[1]]];
+//    
+//    
+//    analyzedView.dismissViewButton = [[UIButton alloc] initWithFrame:CGRectMake(250,100,50, 50)];
+//    
+//    [self.popup.handleView addSubview:analyzedView];
+//    self.dismissButtonTapped.titleLabel.text = @"Dismiss";
+//    self.dismissButtonTapped.titleLabel.backgroundColor = [UIColor redColor];
+//    
+//    
+//    [analyzedView addSubview:analyzedView.tonePieChart];
+//    [analyzedView addSubview:analyzedView.objectiveSubjectivePieChart];
+//    [analyzedView addSubview:analyzedView.dismissViewButton];
+//    
+//    analyzedView.center = self.popup.handleView.center;
+//    analyzedView.dismissViewButton.backgroundColor = [UIColor whiteColor];
+//   
+//    //adds a target to (void)dismissPopup
+//    [analyzedView.dismissViewButton addTarget:self action:@selector(dismissPopup) forControlEvents:UIControlEventTouchUpInside];
+//    [self.popup show];
     
 }
 
