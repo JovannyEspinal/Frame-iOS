@@ -10,6 +10,8 @@
 
 @interface AggregatedAnalysisViewController ()
 
+@property (nonatomic, strong) AggregatedAnalysisView *analyzedView;
+
 @end
 
 @implementation AggregatedAnalysisViewController
@@ -24,41 +26,25 @@
     
     NSArray* subjectivityArray = @[[PNPieChartDataItem dataItemWithValue:[SavedArticleManager sharedManager].myAccount.usersTotalBias.totalsubjectiveArticleCount color:PNRed description:@"Subjective"], [PNPieChartDataItem dataItemWithValue:[SavedArticleManager sharedManager].myAccount.usersTotalBias.totalObjectiveArticleCount color:PNDarkBlue description:@"Objective"]];
 
+    self.analyzedView = [[AggregatedAnalysisView alloc] initWithFrame:CGRectZero];
     
+    self.analyzedView.objectiveSubjectivePieChart = [[PNPieChart alloc] initWithFrame:CGRectZero items:subjectivityArray];
     
-    AggregatedAnalysisView* analyzedView = [[AggregatedAnalysisView alloc] initWithFrame:CGRectMake(0, 0, self.subjectivityView.frame.size.width, self.subjectivityView.frame.size.height)];
-    
-    
-    analyzedView.objectiveSubjectivePieChart = [[PNPieChart alloc] initWithFrame:analyzedView.frame items:subjectivityArray];
-    
-    analyzedView.tonePieChart = [[PNPieChart alloc] initWithFrame:analyzedView.frame items:items];
+    self.analyzedView.tonePieChart = [[PNPieChart alloc] initWithFrame:CGRectZero items:items];
 
-    
-    [self.subjectivityView addSubview:analyzedView.objectiveSubjectivePieChart];
-    [self.positivityNegativityView addSubview:analyzedView.tonePieChart];
-
-    
-    
-    // Do any additional setup after loading the view.
+    [self.subjectivityView addSubview:self.analyzedView.objectiveSubjectivePieChart];
+    [self.positivityNegativityView addSubview:self.analyzedView.tonePieChart];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    self.analyzedView.frame = CGRectMake(0, 0, self.subjectivityView.frame.size.width, self.subjectivityView.frame.size.height);
+    self.analyzedView.objectiveSubjectivePieChart.frame = self.analyzedView.frame;
+    self.analyzedView.tonePieChart.frame = self.analyzedView.frame;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (IBAction)dismissButtonTapped:(id)sender {
-    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 @end

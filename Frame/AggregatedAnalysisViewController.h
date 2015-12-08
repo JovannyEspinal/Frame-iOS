@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <PNChart/PNChart.h>
 #import "SavedArticleManager.h"
-#import "AggregatedAnalysisView.h"
+#import "AggregatedAnalysisView.h"``
 
 @interface AggregatedAnalysisViewController : UIViewController
 
