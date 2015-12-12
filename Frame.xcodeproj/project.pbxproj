@@ -264,7 +264,6 @@
 				5079DC1C1BED7D31009AAD8F /* Frameworks */,
 				5079DC1D1BED7D31009AAD8F /* Resources */,
 				B0A132945451FB461C70EC2A /* Copy Pods Resources */,
-				D246884E598A4336C963D59C /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -286,7 +285,7 @@
 				TargetAttributes = {
 					5079DC1E1BED7D31009AAD8F = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = MG3SWKAT37;
+						DevelopmentTeam = 26RHXP32FH;
 					};
 				};
 			};
@@ -353,21 +352,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D246884E598A4336C963D59C /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
