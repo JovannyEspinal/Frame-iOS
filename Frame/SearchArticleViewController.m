@@ -99,11 +99,15 @@
 
 -(void)sentimentAnalysis:(Article *)articleObject{
     
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        
     NSAttributedString *attributedText = [[NSAttributedString alloc] initWithData:[articleObject.text dataUsingEncoding:NSUTF8StringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding]} documentAttributes:nil error:nil];
     NSString *text = [attributedText string];
     
     [[LQNetworkManager sharedManager] sentimentAnalysis:text completionHandler:^(NSDictionary *result, NSError *error) {
-
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
         float sentimentValue = [result[@"results"] floatValue];
         
         if (sentimentValue > 0.5) {
@@ -117,7 +121,10 @@
         SavedArticleManager.sharedManager.myAccount.savedArticleArray.lastObject.sentimentAnalysis = self.searchResult.sentimentAnalysis;
         
         [self totalTone];
+        });
     }];
+        
+    });
 }
 
 -(void)totalTone{
