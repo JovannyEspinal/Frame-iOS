@@ -88,33 +88,41 @@
 
 -(void)sentimentAnalysis:(Article *)articleObject{
     
-    NSAttributedString *attributedText = [[NSAttributedString alloc] initWithData:[articleObject.text dataUsingEncoding:NSUTF8StringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding]} documentAttributes:nil error:nil];
-    NSString *text = [attributedText string];
-    
-    [[LQNetworkManager sharedManager] sentimentAnalysis:text completionHandler:^(NSDictionary *result, NSError *error) {
-        if(!error){
-        float sentimentValue = [result[@"results"] floatValue];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         
-        if (sentimentValue > 0.5) {
-            self.detailArticle.sentimentAnalysis = @"positive";
-        } else if (sentimentValue == 0.5){
-            self.detailArticle.sentimentAnalysis = @"neutral";
-        } else {
-            self.detailArticle.sentimentAnalysis = @"negative";
-        }
+        NSAttributedString *attributedText = [[NSAttributedString alloc] initWithData:[articleObject.text dataUsingEncoding:NSUTF8StringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding]} documentAttributes:nil error:nil];
+        NSString *text = [attributedText string];
         
-        SavedArticleManager.sharedManager.myAccount.savedArticleArray.lastObject.sentimentAnalysis = self.detailArticle.sentimentAnalysis;
-        
-            [self totalTone];
-            
-            
-        }
-        else{
-            NSLog(@"Error : %@",[error localizedDescription]);
-            
-            
-        }
-    }];
+        [[LQNetworkManager sharedManager] sentimentAnalysis:text completionHandler:^(NSDictionary *result, NSError *error) {
+            if(!error){
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    float sentimentValue = [result[@"results"] floatValue];
+                    
+                    if (sentimentValue > 0.5) {
+                        self.detailArticle.sentimentAnalysis = @"positive";
+                    } else if (sentimentValue == 0.5){
+                        self.detailArticle.sentimentAnalysis = @"neutral";
+                    } else {
+                        self.detailArticle.sentimentAnalysis = @"negative";
+                    }
+                    
+                    SavedArticleManager.sharedManager.myAccount.savedArticleArray.lastObject.sentimentAnalysis = self.detailArticle.sentimentAnalysis;
+                    
+                    [self totalTone];
+
+                });
+                
+                
+            }
+            else{
+                NSLog(@"Error : %@",[error localizedDescription]);
+                
+                
+            }
+        }];
+ 
+    });
 }
 
 //method checks the tone value and adds it to the count of the respective property on the Aggregated Analysis
