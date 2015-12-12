@@ -19,12 +19,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSArray *items = @[[PNPieChartDataItem dataItemWithValue:7 color:PNRed description:@"Negative"],
-                       [PNPieChartDataItem dataItemWithValue:5 color:PNBlue description:@"Positive"],
-                       [PNPieChartDataItem dataItemWithValue:8 color:PNGreen description:@"Neutral"],
+    NSArray *items = @[[PNPieChartDataItem dataItemWithValue:[SavedArticleManager sharedManager].myAccount.usersTotalBias.totalNegativeToneCount color:PNRed description:@"Negative"],
+                       [PNPieChartDataItem dataItemWithValue:[SavedArticleManager sharedManager].myAccount.usersTotalBias.totalPositiveToneCount color:PNBlue description:@"Positive"],
+                       [PNPieChartDataItem dataItemWithValue:[SavedArticleManager sharedManager].myAccount.usersTotalBias.totalNeutralToneCount color:PNGreen description:@"Neutral"],
                        ];
     
-    NSArray* subjectivityArray = @[[PNPieChartDataItem dataItemWithValue:8 color:PNRed description:@"Subjective"], [PNPieChartDataItem dataItemWithValue:12 color:PNDarkBlue description:@"Objective"]];
+    NSArray* subjectivityArray = @[[PNPieChartDataItem dataItemWithValue:[SavedArticleManager sharedManager].myAccount.usersTotalBias.totalObjectiveArticleCount color:PNRed description:@"Subjective"], [PNPieChartDataItem dataItemWithValue:[SavedArticleManager sharedManager].myAccount.usersTotalBias.totalsubjectiveArticleCount color:PNDarkBlue description:@"Objective"]];
 
     self.analyzedView = [[AggregatedAnalysisView alloc] initWithFrame:CGRectZero];
     
