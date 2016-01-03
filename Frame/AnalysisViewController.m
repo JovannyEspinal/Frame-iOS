@@ -164,7 +164,6 @@
     [[LQNetworkManager sharedManager] sentimentAnalysis:text completionHandler:^(NSDictionary *result, NSError *error) {
         
         
-        
         float sentimentValue = [result[@"results"] floatValue];
         
         if (sentimentValue > 0.5) {
