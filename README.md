@@ -4,6 +4,9 @@
 
 **Team Members:** Jovanny, Bereket, Lauren  
 
+![Alt text](http://i.imgur.com/JPpFS8a.png)
+![Alt text](http://i.imgur.com/Y1gdMLW.png)
+![Alt text](http://i.imgur.com/jqsMkgj.png)
 
 ## The Problem 
 Engagement in media is low due to bias and lack of diversity.   
@@ -16,6 +19,7 @@ For example, CNN Announces that Hillary Clinton won the First Democratic debate 
 
 ## The Solution 
 Frame aims to provide the user with a sense of what bias is coming out of the news so they can better adjust their frame or opinions and prevent internalizing implicit bias.
+
 
 Baseline Features:
   *  Article Analysis via Machine Learning APIs to provide the user with the implicit bias of the articles that they read. Article chaining, which allows user to attach articles of the same topic to provide a wholistic view from different perspectives. User profiles that contain the user's reading bias.
