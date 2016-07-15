@@ -11,15 +11,13 @@
 ## The Problem 
 Media bias often misinforms consumers and influences their decisions in ways they could negatively impact them.
 
-6 corporations control 90% of the media in America. Our users tend to be college educated, aged 18-28, aren't receiving a diverse set of news, and receive most of their news through social media outlets. 
-
 Use Cases:  CNN comments on Hillary Clintons performance in the first Democratic debate, but doesnt reveal that Time Warner is a donor to her campaign. The incentive could potentially influence how CNN chooses to color the event. Although the user, hasnt been informed of the app would tell them how them that CNN might have "framed" the article a certain way that might give them pause and look to other resources to make a more informed judgement of Clintons policies and appearance. 
-
 
 
 ## The Solution 
 Frame aims to provide the user with a sense of what bias is coming out of the news so they can better adjust their frame or opinions and prevent internalizing implicit bias.
 
+****NOTE: Analysis on a hidden button revelead when the article cell is swiped. Facebook and Pocket Sharing can also be found when the cells on the history tab are swiped****
 
 Baseline Features:
   *  Article Analysis via Machine Learning APIs to provide the user with the implicit bias of the articles that they read. Article chaining, which allows user to attach articles of the same topic to provide a wholistic view from different perspectives. User profiles that contain the user's reading bias.
